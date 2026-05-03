@@ -1,0 +1,595 @@
+/* =========================================================
+   VAULT BINDER - MAIN CSS
+   Shared stylesheet for index.html and collection.html
+   ========================================================= */
+
+/* =========================================================
+   1. GLOBAL / BASE STYLES
+   ========================================================= */
+
+body {
+    visibility: hidden;
+}
+
+h2 {
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+input,
+select,
+button {
+    border: 1px solid #cfc7bc;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 14px;
+    color: #565454;
+    background-color: #fffdf9;
+}
+
+input,
+select {
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.18);
+}
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    background-color: #c9f4e8;
+}
+
+button:hover {
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.18);
+}
+
+.disabledBtn {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.disabledBtn:hover {
+    opacity: 0.7;
+}
+
+/* =========================================================
+   2. SHARED NAVIGATION
+   Used on index.html and collection.html
+   ========================================================= */
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: rgba(10, 30, 60, 0.7);
+    font-size: 18px;
+    color: #fff;
+
+    padding: 15px 30px;
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+}
+
+.navBar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navBar a:hover  {
+    opacity: 0.7;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* =========================================================
+   3. INDEX PAGE / EXPLORE PAGE
+   API search, card presenter, learning area, footer
+   ========================================================= */
+
+.sectionDivider {
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    margin: 40px 0;
+}
+
+.cardLearnSection {
+    display: grid;
+    grid-template-columns: 0.6fr 0.8fr;
+    gap: 15px;
+
+    align-items: stretch;
+}
+#apiCardDisplay {
+    margin-left: -400px;
+}
+
+#tooltipsSection {
+    text-align: left;
+    margin-left: -400px;
+}
+
+#apiCardDisplay h2, 
+#tooltipsSection h2 {
+    margin-top: 0;
+}
+
+#apiCardDisplay h2 {
+    margin: 0 0 12px 0;
+}
+
+.apiCardResult {
+    text-align: center;
+    margin: 0;
+}
+
+.apiCardResult img {
+    width: min(100%, 200px);
+    height: auto;
+}
+
+.infoLabel {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.infoText {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.bottomNav {
+    width: 100%;
+    min-height: 200px;
+
+    background-color: #28272e;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+    color: #ddd;
+    box-sizing: border-box;
+}
+
+.bottomNav a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    margin: 6px 0;
+}
+
+.bottomNav a:hover {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .cardLearnSection {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .bottomNav {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   4. COLLECTION PAGE - SECTION LAYOUT
+   Main containers for add card / selected card / book area
+   ========================================================= */
+
+.sectionHeader {
+    border-radius: 20px;
+    margin: 10px;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+#loginBox,
+#profileBox {
+    max-width: 300px;
+    background-color: #888;
+    margin: 20px 10px;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+#addCardSection,
+#cardSelectionArea,
+#cardBookSection {
+    margin: 30px;
+    padding: 16px;
+    border-radius: 14px;
+}
+
+.editorGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.column {
+    padding: 5px;
+}
+
+.column:nth-child(1),
+.column:nth-child(2) {
+    border-right: 3px solid #404040;
+}
+
+#imagingBox {
+    justify-content: right;
+}
+
+/* =========================================================
+   5. COLLECTION PAGE - BOOK DISPLAY
+   Grid of rendered card containers
+   ========================================================= */
+
+#bookDisplay {
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.bookCard {
+    border-radius: 12px;
+    padding: 12px;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.selectedCard {
+    outline: 6px solid #000000;
+    outline-offset: 1px;
+}
+
+#pageControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* =========================================================
+   6. COLLECTION PAGE - NEW CARD COMPONENT
+   Sidebar buttons + card content views
+   ========================================================= */
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+
+    width: 440px;
+    padding: 12px;
+    gap: 12px;
+
+    border-radius: 12px;
+    background-color: #8e8b86;
+}
+
+.cardActionRow {
+    grid-column: span 2;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#buttonSideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100%;
+}
+
+.funcButton {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+}
+
+.cardContent {
+    position: relative;
+}
+
+#imageView,
+#infoView,
+#optionsView {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#imageView {
+
+}
+
+#infoView {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#optionsView {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.inputBox {
+    height: 36px;
+    padding: 0 10px;
+
+    border-radius: 10px;
+    border: none;
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputBox::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.fullWidth {
+    grid-column: span 2;
+}
+
+/* =========================================================
+   7. COLLECTION PAGE - OLD SELECTED CARD EDIT ROWS
+   Keep while still used; remove later if selected section retires
+   ========================================================= */
+
+.editRow {
+    padding: 12px;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 100px 8% 150px;
+}
+
+#selectedName {
+    min-width: 0;
+    word-break: break-word;
+}
+
+#ExampleText {
+    color: #565454;
+    font-family: 'Courier New';
+    font-size: 10px;
+    text-align: center;
+}
+
+/* =========================================================
+   8. POPUPS
+   Settings popup + notes popup
+   ========================================================= */
+
+#settingsPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #f2efe9;
+    color: #444;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+
+    z-index: 1000;
+}
+
+#notesPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 400px;
+    height: 300px;
+
+    background-color: #f2efe9;
+    color: #444;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+
+    z-index: 1000;
+
+}
+
+#notesInput {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+
+    border-radius: 10px;
+    border: none;
+
+    resize: none;
+    font-family: inherit;
+}
+
+#settingsBtn.active {
+    background-color: #c9f4e8;
+    box-shadow: inset 0px 3px 6px rgba(0,0,0,0.2);
+}
+
+/* =========================================================
+   9. THEMES - PASTEL SHERBET
+   ========================================================= */
+
+.theme-pastelSherbet {
+    background-color: #f2efe9;
+    color: #565454;
+
+    --psherb-addcard: 234, 224, 161;
+    --psherb-book: 143, 172, 204;
+}
+
+.theme-pastelSherbet .sectionHeader {
+    background-color: #c2dfad;
+    color: #3f3f3f;
+}
+
+.theme-pastelSherbet #addCardSection {
+    border: 4px solid rgb(var(--psherb-addcard));
+    background-color: rgba(var(--psherb-addcard), 0.45);
+}
+
+.theme-pastelSherbet #cardBookSection {
+    border: 4px solid rgb(var(--psherb-book));
+    background-color: rgba(var(--psherb-book), 0.45);
+}
+
+.theme-pastelSherbet .bookCard {
+    background-color: #ffffff;
+    color: #444;
+}
+
+.theme-pastelSherbet button {
+    background-color: #ffffff;
+    color: #444;
+    border: none;
+    border-radius: 10px;
+    padding: 6px 10px;
+}
+
+.theme-pastelSherbet button:hover {
+    background-color: #dff5ec;
+}
+
+/* =========================================================
+   10. THEMES - SLEEK MODERN
+   ========================================================= */
+
+.theme-sleekModern {
+    background-color: #4f3615;
+    color: #f7e6d0;
+
+    --smodern-addcard: 181, 169, 154;
+    --smodern-book: 94, 90, 85;
+}
+
+.theme-sleekModern .sectionHeader {
+    background-color: #f2efe9;
+    color: #444;
+}
+
+.theme-sleekModern #addCardSection {
+    border: 4px solid rgb(var(--smodern-addcard));
+    background-color: rgba(var(--smodern-addcard), 0.45);
+}
+
+.theme-sleekModern #cardBookSection {
+    border: 4px solid rgb(var(--smodern-book));
+    background-color: rgba(var(--smodern-book), 0.45);
+}
+
+.theme-sleekModern .bookCard {
+    background-color: #f2efe9;
+    color: #444;
+}
+
+.theme-sleekModern button {
+    background-color: #f2efe9;
+    color: #444;
+    border: none;
+    border-radius: 10px;
+    padding: 6px 10px;
+}
+
+.theme-sleekModern button:hover {
+    background-color: #f9eacc;
+}
+
+/* =========================================================
+   11. THEMES - MUTED NEON
+   ========================================================= */
+
+.theme-mutedNeon {
+    background-color: #03080d;
+    color: #2edf21;
+
+    --mneon-addcard: 212, 39, 8;
+    --mneon-book: 8, 110, 212;
+}
+
+.theme-mutedNeon .sectionHeader {
+    background-color: #03080d;
+    color: #ffffff;
+}
+
+.theme-mutedNeon #addCardSection {
+    border: 4px solid rgb(var(--mneon-addcard));
+    background-color: rgba(var(--mneon-addcard), 0.45);
+}
+
+.theme-mutedNeon #cardBookSection {
+    border: 4px solid rgb(var(--mneon-book));
+    background-color: rgba(var(--mneon-book), 0.45);
+}
+
+.theme-mutedNeon #addCardSection,
+.theme-mutedNeon #cardBookSection {
+    color: #ffffff;
+}
+
+.theme-mutedNeon .bookCard {
+    background-color: #03080d;
+    color: #f2efe9;
+}
+
+.theme-mutedNeon button {
+    background-color: #f2efe9;
+    color: #03080d;
+    border: none;
+    border-radius: 10px;
+    padding: 6px 10px;
+}
