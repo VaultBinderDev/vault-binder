@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- THIS DOCUMENT WILL BE FOR EXPLORING THE GENERIC CARDS FROM THE POKEMON TCG API -->
+         <!-- Pokémon -->
+        <title>Vault Binder</title>
+        <link rel="stylesheet" href="css/main-organized.css">
+    </head>
+    <body>
+        <div id="topPage"></div>
+        <div class="navBar">
+            <div class="navLogo"><a href="#topPage">VB</a></div>
+
+            <div class="navLinks">
+                <a href="#tooltipsSection">Learn</a>
+                <a href="collection.html">Collect Cards</a>
+                <a href="#aboutSection">About Us</a>
+                <a>Dev Log</a>
+            </div>
+        </div>
+  
+        <h1>Vault Binder</h1> <!-- Webpage Map/Guide along the top with Collection, Dev Log, and other tabs -->
+        <p>Learn Pokemon Cards, Search for new favorites, and Sort your Personal Collection!</p>
+
+        <div id="loginBox">
+            <h3>Welcome to Vault Binder</h3>
+            <p>Create a local profile to personalize your collection.</p>
+
+            <button onclick="createLocalProfile()">Create Profile</button>
+        </div>
+        <div id="profileBox" style="display: none;">
+            <p>Logged in as: <span id="usernameDisplay"></span></p>
+        </div>
+        <div class="sectionDivider"></div>
+
+        <h2>Learn About Pokemon Cards</h2> <!-- Picking a card and learning about them -->
+        <!-- API CARD USAGES -->
+        <div class="searchSection">
+        <input id="cardSearchInput" type="text" placeholder="Search for a Pokémon Card">
+        <button onclick="searchPokemonCard()">Search</button> <button onclick="randomCard()">Surprise Me!</button>
+        </div>
+        
+        <br><br>
+        <div class="cardLearnSection">
+            <div id="apiCardDisplay"></div>
+
+            <div id="tooltipsSection">
+                <h2>Tooltips:</h2>
+                <br>
+            <div class="infoItem">
+                <span class="infoLabel">1. Stage: </span><br>
+                <span class="infoText">"The stage of evolution a certain Pokemon is at. Basic, Stage 1, Stage 2."</span>
+            </div>
+            <div class="infoItem">
+                <span class="infoLabel">2. Name: </span><br>
+                <span class="infoText">"The name of this Pokemon card. It can sometimes help classify rarity (EX, GX)."</span>
+            </div>
+            <div class="infoItem">
+                <span class="infoLabel">3. HP: </span><br>
+                <span class="infoText">"The certain number of health points this Pokemon has."</span>
+            </div>
+            <div class="infoItem">
+                <span class="infoLabel">4. Type:</span><br>
+                <span class="infoText">"Each Pokémon has an elemental type, and cards have less types than the games and shows."</span>
+            </div>
+            <div class="infoItem">
+                <span class="infoLabel">5.0</span><br>
+                <span class="infoText">"The text usually placed below the image of the Pokémon describes the Pokémon in a more involved way. With their pokedex number, height, and weight."</span>
+            </div>
+            <div class="infoItem">
+                <span class="infoLabel">6. The Attacks:</span><br>
+                <span class="infoText">"These aren't quite as useful in collecting, but are needed for pokemon battling. It shows common attacks for this Pokémon."</span>
+            </div>
+            <div class="infoItem">
+                <span class="infoLabel">7. Retreat</span><br>
+                <span class="infoText">"The markings near the bottom left, usually, are the Weakness type(s) of this Pokémon, Resistance, and the cost of benching an active Pokémon."</span>
+            </div>
+            </div>
+        </div>
+
+    
+        <div class="sectionDivider"></div>
+        <h2 id="aboutSection">About The Site</h2>
+
+        <p>Vault Binder is helpful for searching, learning about, and collecting Pokemon cards.<br> 
+            It’s designed to help make Pokemon collecting easier to understand.<br>
+            Whether you’re a new player, or well-versed in the Trading Card Game,<br>
+            you can search for cards you want to find, or click the “Surprise Me!” button for a random card.<br> 
+            For now we only offer simple collecting features but we plan to add a more comprehensive system allowing dedicated<br> 
+            collectors an easier place to collect, grade, and purchase Pokemon Cards from.</p><br>
+        <div class="bottomNav">
+            <div>
+                <h3>Vault Binder</h3>
+                <p>Learn, Search and Collect Pokémon Cards.</p>
+            </div>
+
+            <div>
+                <h4>Explore</h4>
+                <a href="#topPage">Search Cards</a>
+                <a href="#topPage">Surprise Me</a>
+                <a href="#tooltipsSection">Tooltips</a>
+            </div>
+
+            <div>
+                <h4>Collect</h4>
+                <a href="collection.html">My Collection</a>
+            </div>
+
+            <div>
+                <h4>Learn</h4>
+                <a href="#aboutSection">About</a>
+                <a href="#howCardsWork">How Cards Work</a>
+            </div>
+        </div>
+
+        <script src="js/index.js"></script>
+    </body>
+</html>
