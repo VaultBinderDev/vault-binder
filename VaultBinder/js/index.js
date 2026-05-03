@@ -68,9 +68,7 @@
                 let display = document.getElementById("apiCardDisplay");
                 let randomDex = Math.floor(Math.random() * 1025) + 1;
 
-                let response = await fetch(`https://api.pokemontcg.io/v2/cards?q=nationalPokedexNumbers:${randomDex}`, 
-                    {headers: {"X-Api-Key": "8aca8cdb-17b8-44a7-889a-8a046abf98af"}}
-                );
+                let response = await fetch(`/.netlify/functions/searchCards?query=nationalPokedexNumbers:${randomDex}`);
 
                 let result = await response.json();
 
