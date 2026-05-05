@@ -44,8 +44,7 @@
                     display.innerHTML = "<p>Please enter a card name.</p>";
                     return;
                 }
-
-                let response = await fetch(`/.netlify/functions/searchCards?query=${searchText}`);
+                let response = await fetch(`/.netlify/functions/searchCards?query=name:${searchText}`);
                 
                 let result = await response.json();
 
