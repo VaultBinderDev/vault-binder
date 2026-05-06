@@ -57,7 +57,7 @@
 
                 display.innerHTML = `
                 <div class="apiCardResult">
-                    <h3>${card.name}</h3>
+                    <h2>${card.name}</h2>
                     <img src="${card.images.large}" alt="${card.name}">
                 </div>
                 `;
