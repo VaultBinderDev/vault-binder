@@ -44,7 +44,6 @@
                     display.innerHTML = "<p>Please enter a card name.</p>";
                     return;
                 }
-
                 let response = await fetch(`/.netlify/functions/searchCards?query=name:${searchText}`);
                 
                 let result = await response.json();
@@ -86,7 +85,21 @@
                 `;
             }
 
+            // CARD TYPES
+            function displayTypeGuide() {
+                let guide = document.getElementById("typeGuide");
+
+                pokemonTypes.forEach(type => {
+                    guide.innerHTML += `
+                    <div class="typeBadge" style="border-color:${type.color}">
+                        <span>${type.emoji}</span>
+                        <strong>${type.name}</strong>
+                    </div>
+                    `;
+                })
+            }
 
 
+            displayTypeGuide();
             document.body.style.visibility = "visible";
             loadLocalProfile();
