@@ -288,11 +288,24 @@
         Adds a new card to the collection, saves it, clears the form,
         and redraws the current page view.
     */
+
+    function fillTypeDropdown() {
+        let typeSelect = document.getElementById("typeInput");
+
+        pokemonTypes.forEach(type => {
+            typeSelect.innerHTML += `
+                <option value="${type.name}">
+                    ${type.emoji} ${type.name}
+                </option>
+            `;
+        })
+    }
+
     function addCard() {
         let name = document.getElementById("cardName").value;
         let dexNum = document.getElementById("pokeNum").value;
         let hp = document.getElementById("cardHp").value;
-        let type = document.getElementById("cardType").value;
+        let type = document.getElementById("typeInput").value;
         let stage = document.getElementById("cardStage").value;
         let holoType = document.querySelector('input[name="holoType"]:checked').value;
         let noteTaken = "";
@@ -516,6 +529,6 @@
         });
     }
 
-    
+    fillTypeDropdown();
     loadDefaultTheme();
     displayBookPage();

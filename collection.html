@@ -2,7 +2,7 @@
 <html>
     <!-- Freedom33* -->
 <head>
-    <title>Booky Page</title>
+    <title>Vault Binder</title>
     <script>
         const savedTheme = localStorage.getItem("defaultTheme") || "pastelSherbet";
         document.documentElement.classList.add("theme-" + savedTheme);
@@ -58,18 +58,8 @@
     <!-- ====================== -->
     <div class="column"> <!-- COLUMN TWO START -->
     <label>Type:</label>
-    <select id="cardType">
-        <option>Fire</option>
-        <option>Water</option>
-        <option>Grass</option>
-        <option>Electric</option>
-        <option>Psychic</option>
-        <option>Fighting</option>
-        <option>Dark</option>
-        <option>Metal</option>
-        <option>Fairy</option>
-        <option>Dragon</option>
-        <option>Colorless</option>
+    <select id="typeInput">
+        <option value="">Select a Type</option>
     </select>
     <br><br>
     <!-- ====================== -->
@@ -161,7 +151,7 @@
     </div>
 
 
-    
+    <script src="js/cardTypes.js"></script>
     <script src="js/collection.js"></script>
 </body>
 </html>
