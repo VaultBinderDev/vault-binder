@@ -35,6 +35,13 @@
             }
 
             // CARDS API
+            function showLoading() {
+                document.getElementById("apiCardDisplay").innerHTML = `
+                    <div class="loadingSpinner"></div>
+                    <p>Loading Card...</p>
+                `;
+            }
+
             
             async function searchPokemonCard() {
                 let searchText = document.getElementById("cardSearchInput").value.trim();
@@ -44,6 +51,7 @@
                     display.innerHTML = "<p>Please enter a card name.</p>";
                     return;
                 }
+                showLoading();
                 let response = await fetch(`/.netlify/functions/searchCards?query=name:${searchText}`);
                 
                 let result = await response.json();
@@ -57,7 +65,7 @@
 
                 display.innerHTML = `
                 <div class="apiCardResult">
-                    <h3>${card.name}</h3>
+                    <h2>${card.name}</h2>
                     <img src="${card.images.large}" alt="${card.name}">
                 </div>
                 `;
@@ -67,6 +75,7 @@
                 let display = document.getElementById("apiCardDisplay");
                 let randomDex = Math.floor(Math.random() * 1025) + 1;
 
+                showLoading();
                 let response = await fetch(`/.netlify/functions/searchCards?query=nationalPokedexNumbers:${randomDex}`);
 
                 let result = await response.json();
@@ -100,6 +109,6 @@
             }
 
 
-
+            displayTypeGuide();
             document.body.style.visibility = "visible";
             loadLocalProfile();
