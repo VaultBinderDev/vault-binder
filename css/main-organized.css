@@ -343,10 +343,6 @@ button:hover {
     width: 100%;
 }
 
-#imageView {
-
-}
-
 #infoView {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -612,6 +608,6 @@ button:hover {
 
 @keyframes spin {
     to {
-        trasnform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
