@@ -310,6 +310,7 @@
 
     // SAVE IMAGE
     function addCardWithImage() {
+        console.log("Add Card Clicked.");
         let imageInput = document.getElementById("cardImageInput");
         let file = event.target.files[0];
 
@@ -328,36 +329,24 @@
         reader.readAsDataURL(file);
     }
 
-    function addCard(imageData) {
-        if(!imageData) {
-            imageData = "";
-        }
-
-        let name = document.getElementById("cardName").value;
-        let dexNum = document.getElementById("pokeNum").value;
-        let hp = document.getElementById("cardHp").value;
-        let type = document.getElementById("typeInput").value;
-        let stage = document.getElementById("cardStage").value;
-        let holoType = document.querySelector('input[name="holoType"]:checked').value;
-        let imgData = imageData;
+    function addCard(imageData = "") {
         let noteTaken = "";
-        let pricedNum = "$0.00";
 
         let card = {
             id: createCardId(),
             createdAt: Date.now(),
 
-            name: name,
-            hp: hp,
-            type: type,
-            stage: stage,
-            holoType: holoType,
-            pokeNum: dexNum,
+            name: document.getElementById("cardName").value,
+            hp: document.getElementById("cardHp").value,
+            type: document.getElementById("typeInput").value,
+            stage: document.getElementById("cardStage").value,
+            holoType: document.querySelector('input[name="holoType"]:checked').value,
+            pokeNum: document.getElementById("pokeNum").value,
             fav: favorite,
-            notes:noteTaken,
-            pricing: pricedNum,
+            notes: noteTaken,
+            pricing: "0.00",
 
-            imageData: imgData,
+            imageData: imageData,
             imageLayout: "vertical"
         };
 
@@ -377,8 +366,6 @@
         document.getElementById("cardStage").selectedIndex = 0;
         document.querySelector('input[name="holoType"][value="None"]').checked = true;
 
-        saveEditedCard(selectedCardIndex);
-        loadDefaultTheme();
         displayBookPage();
     }
 
