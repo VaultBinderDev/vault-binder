@@ -362,7 +362,7 @@
         document.getElementById("cardName").value = "";
         document.getElementById("pokeNum").value = "";
         document.getElementById("cardHp").value = "";
-        document.getElementById("cardType").selectedIndex = 0;
+        document.getElementById("typeInput").selectedIndex = 0;
         document.getElementById("cardStage").selectedIndex = 0;
         document.querySelector('input[name="holoType"][value="None"]').checked = true;
 
