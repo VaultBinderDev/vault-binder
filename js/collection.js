@@ -366,6 +366,9 @@
         document.getElementById("cardStage").selectedIndex = 0;
         document.querySelector('input[name="holoType"][value="None"]').checked = true;
 
+        cards = JSON.parse(localStorage.getItem("cards")) || [];
+        cards = updateOldCards(cards);
+        localStorage.setItem("cards", JSON.stringify(cards));
         displayBookPage();
     }
 
