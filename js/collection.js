@@ -310,8 +310,9 @@
 
     // SAVE IMAGE
     function addCardWithImage() {
+        console.log("Add Card Clicked.");
         let imageInput = document.getElementById("cardImageInput");
-        let file = event.target.files[0];
+        let file = imageInput.files[0];
 
         if(!file) {
             addCard("");
