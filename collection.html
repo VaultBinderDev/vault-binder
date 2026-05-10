@@ -50,7 +50,7 @@
     <label>HP:</label>
     <input type="number" id="cardHp" placeholder="70">
     <br><br>
-    <button onclick="addCard()">Add Card</button>
+    <button onclick="addCardWithImage()">Add Card</button>
     
     </div>
     <!-- ====================== -->
@@ -91,10 +91,10 @@
             Take Photo
         </label>
             <input 
+                id="cardImageInput"
                 type="file"
                 accept="image/*"
                 capture="environment"
-                onchange="event.stopPropagation(); uploadCardImage(event, selectedCardIndex)"
                 >
         
 

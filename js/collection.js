@@ -195,21 +195,21 @@
     }
 
     // SAVE IMAGE
-    function uploadCardImage(event, index) {
+    function addCardWithImage() {
+        let imageInput = document.getElementById("cardImageInput");
         let file = event.target.files[0];
 
         if(!file) {
+            addCard("");
             return;
         } 
 
         let reader = new FileReader();
 
         reader.onload = function () {
-            cards[index].imageData = reader.result;
-            localStorage.setItem("cards", JSON.stringify(cards));
-
-            displayBookPage();
-        }
+            addCard(reader.result);
+            imageInput.value = "";
+        };
 
         reader.readAsDataURL(file);
     }
@@ -309,10 +309,6 @@
         }
     }
 
-
-    function createCardId() {
-        return Date.now() + "-" + Math.random().toString(36).slice(2, 8);
-    }
     /*
         Adds a new card to the collection, saves it, clears the form,
         and redraws the current page view.
@@ -330,7 +326,7 @@
         })
     }
 
-    function addCard() {
+    function addCard(imageData = "") {
         let name = document.getElementById("cardName").value;
         let dexNum = document.getElementById("pokeNum").value;
         let hp = document.getElementById("cardHp").value;
@@ -355,7 +351,8 @@
             notes:noteTaken,
             pricing: pricedNum,
 
-            imageData: imgData
+            imageData: imgData,
+            imageLayout: "vertical"
         };
 
         cards.push(card);
@@ -374,6 +371,9 @@
         document.getElementById("cardStage").selectedIndex = 0;
         document.querySelector('input[name="holoType"][value="None"]').checked = true;
 
+        cards.push(card);
+        localStorage.setItem("cards", JSON.stringify(cards));
+        saveEditedCard(selectedCardIndex);
         loadDefaultTheme();
         displayBookPage();
     }
