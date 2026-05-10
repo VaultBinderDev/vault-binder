@@ -72,11 +72,20 @@
 
             // PLACE IMAGE HTML HERE
             if(i === selectedCardIndex && selectedCardView === "image") {
-                cardViewHtml = `<div id="imageView">
-                    <h2>${card.name}</h2>
-                    <label>#${card.pokeNum}</label>
+                if(card.imageData) {
+                    cardViewHtml = `<div id="imageView">
+                    <h2>${card.name}</h2> <label>#${card.pokeNum}</label><br>
+                    <img src="${card.imageData}" alt="${card.name}">
                     <div id="pokemonImg"></div>
-                </div>`;
+                    </div>`;
+                } else {
+                    cardViewHtml = `<div id="imageView">
+                    <h2>${card.name}</h2> <label>#${card.pokeNum}</label>
+                    <p>No Image Found</p>
+                    <div id="pokemonImg"></div>
+                    </div>`;
+            }
+                
             // PLACE OPTIONS HTML HERE
             } else if(i === selectedCardIndex && selectedCardView === "options") {
                 cardViewHtml = `
@@ -183,6 +192,26 @@
             selectedCardView = "image";
         }
         displayBookPage();
+    }
+
+    // SAVE IMAGE
+    function uploadCardImage(event, index) {
+        let file = event.target.files[0];
+
+        if(!file) {
+            return;
+        } 
+
+        let reader = new FileReader();
+
+        reader.onload = function () {
+            cards[index].imageData = reader.result;
+            localStorage.setItem("cards", JSON.stringify(cards));
+
+            displayBookPage();
+        }
+
+        reader.readAsDataURL(file);
     }
     
     // THE POPUP WILL BE FOR NOTES, NOT FOR ALL OPTIONS!!
@@ -308,6 +337,7 @@
         let type = document.getElementById("typeInput").value;
         let stage = document.getElementById("cardStage").value;
         let holoType = document.querySelector('input[name="holoType"]:checked').value;
+        let imgData = "";
         let noteTaken = "";
         let pricedNum = "$0.00";
 
@@ -323,7 +353,9 @@
             pokeNum: dexNum,
             fav: favorite,
             notes:noteTaken,
-            pricing: pricedNum
+            pricing: pricedNum,
+
+            imageData: imgData
         };
 
         cards.push(card);
@@ -342,6 +374,7 @@
         document.getElementById("cardStage").selectedIndex = 0;
         document.querySelector('input[name="holoType"][value="None"]').checked = true;
 
+        loadDefaultTheme();
         displayBookPage();
     }
 
@@ -503,7 +536,35 @@
         })
     }
 
+    function createCardId() {
+        return Date.now() + "-" + Math.random().toString(36).slice(2,8);
+    }
 
+    function updateOldCards(cardList) {
+        return cardList.map(card => {
+            return {
+                id: card.id || createCardId(),
+                createdAt: card.createdAt || Date.now(),
+
+                name: card.name || "",
+                hp: card.hp || "",
+                type: card.type || "",
+                stage: card.stage || "",
+                holoType: card.holoType || "",
+                pokeNum: card.pokeNum || "",
+
+                fav: card.fav || false,
+                wishlist: card.wishlist || false,
+                notes: card.notes || "",
+
+                imageData: card.imageData || "",
+                imageSource: card.imageSource || "",
+                imageLayout: card.imageLayout || "",
+
+                ...card
+            };
+        });
+    }
 
     function showToast(message) {
         let toast = document.getElementById("toast");
@@ -531,4 +592,9 @@
 
     fillTypeDropdown();
     loadDefaultTheme();
+
+
+    cards = JSON.parse(localStorage.getItem("cards")) || [];
+    cards = updateOldCards(cards);
+    localStorage.setItem("cards", JSON.stringify(cards));
     displayBookPage();

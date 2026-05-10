@@ -85,9 +85,21 @@
     <!--     (LATER ON (tk))    -->
     <!-- ====================== -->
     <div class="column">
-            <label>Input your image here: </label><br>
-            <input type="file" id="inputImage"><br><br>
-            <button class="disabledBtn" title="Coming Soon">Upload Image.</button>
+        <label>Input your image here: </label><br>
+        <input type="file" id="inputImage"><br><br>
+
+        <label class="imageActionBtn">
+            Take Photo
+            <input 
+                type="file"
+                accept="image/*"
+                capture="environment"
+                onchange="uploadCardImage(event, selectedCardIndex)"
+                hidden>
+        </label>
+
+
+        <button class="disabledBtn" title="Coming Soon">Upload Image.</button>
     </div> <!-- COLUMN THREE START -->
     </div>
     </div>
