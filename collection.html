@@ -94,7 +94,7 @@
                 type="file"
                 accept="image/*"
                 capture="environment"
-                onchange="uploadCardImage(event, selectedCardIndex)"
+                onchange="event.stopPropagation(); uploadCardImage(event, selectedCardIndex)"
                 hidden>
         </label>
 
