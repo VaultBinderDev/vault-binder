@@ -352,6 +352,7 @@
 
         cards.push(card);
         localStorage.setItem("cards", JSON.stringify(cards));
+        showToast(`🎉 ${card.name} added to your collection!`);
 
         /*
             After adding a card, jump to the last page so the new card
