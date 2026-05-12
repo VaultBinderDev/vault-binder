@@ -355,12 +355,11 @@
 
         localStorage.setItem("cards", JSON.stringify(cards));
         
+        let newCardIndex = cards.length - 1;
 
-        /*
-            After adding a card, jump to the last page so the new card
-            is visible right away.
-        */
-        currentPage = Math.max(1, Math.ceil(cards.length / cardsPerPage));
+        currentPage =  Math.ceil(cards.length / cardsPerPage);
+        selectedCardIndex = newCardIndex;
+        selectedCardView = "info";
 
         document.getElementById("cardName").value = "";
         document.getElementById("pokeNum").value = "";
