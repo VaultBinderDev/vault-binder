@@ -38,7 +38,7 @@
         cardsPerPage controls how many cards appear on one page.
     */
     let currentPage = 1;
-    let cardsPerPage = 12;
+    let cardsPerPage = 18;
 
     /*
         This function draws the current page of cards into the bookDisplay area.
@@ -351,6 +351,8 @@
         };
         
         cards.push(card);
+        cards = updateOldCards(cards);
+
         localStorage.setItem("cards", JSON.stringify(cards));
         
 
@@ -367,9 +369,6 @@
         document.getElementById("cardStage").selectedIndex = 0;
         document.querySelector('input[name="holoType"][value="None"]').checked = true;
 
-        cards = JSON.parse(localStorage.getItem("cards")) || [];
-        cards = updateOldCards(cards);
-        localStorage.setItem("cards", JSON.stringify(cards));
         displayBookPage();
         showToast(`🎉 ${card.name} added to your collection!`);
     }
