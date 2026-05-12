@@ -267,7 +267,7 @@ button:hover {
 #bookDisplay {
     min-height: 300px;
     display: grid;
-    gap: 30px;
+    gap: 15px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(6, 1fr);
 }
