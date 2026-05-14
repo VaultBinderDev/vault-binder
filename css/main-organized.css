@@ -1,11 +1,11 @@
 /* =========================================================
    VAULT BINDER - MAIN CSS
    Shared stylesheet for index.html and collection.html
-   ========================================================= */
+========================================================= */
 
 /* =========================================================
    1. GLOBAL / BASE STYLES
-   ========================================================= */
+========================================================= */
 
 body {
     visibility: hidden;
@@ -59,7 +59,30 @@ button:hover {
 /* =========================================================
    2. SHARED NAVIGATION
    Used on index.html and collection.html
-   ========================================================= */
+========================================================= */
+
+.siteLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+    color: inherit;
+
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.siteLogo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+
+}
+
+.siteLogo:hover {
+    opacity: 0.85;
+}
 
 .navBar {
     display: flex;
@@ -70,7 +93,7 @@ button:hover {
     top: 0;
     z-index: 1000;
 
-    background-color: rgba(10, 30, 60, 0.7);
+    background-color: rgba(155, 181, 220, 0.7);
     font-size: 18px;
     color: #fff;
 
@@ -629,25 +652,3 @@ button:hover {
     }
 }
 
-.siteLogo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    text-decoration: none;
-    color: inherit;
-
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.siteLogo img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-
-}
-
-.siteLogo:hover {
-    opacity: 0.85;
-}
