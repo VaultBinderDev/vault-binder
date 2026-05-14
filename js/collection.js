@@ -411,6 +411,7 @@
         localStorage.setItem("cards", JSON.stringify(cards));
     }
 
+    // COME BACK TO THIS IDEA NOT WORKING RNNN
     function favoriteCard() {
         let favorite = document.getElementById("favButton");
         let card = cards[selectedCardIndex];
