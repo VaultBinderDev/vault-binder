@@ -106,6 +106,7 @@ button:hover {
 }
 
 .navBar a {
+    color: black;
     text-decoration: none;
 }
 
