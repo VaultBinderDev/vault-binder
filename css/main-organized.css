@@ -682,6 +682,11 @@ button:hover {
 }
 
 .emptyCardSlot {
+    width: 220px;
+    min-height: 320px;
+    border-radius: 16px;
+    padding: 10px;
+    
     background:
         repeating-linear-gradient(
             45deg,
