@@ -676,7 +676,7 @@ button:hover {
 
 .mainCardArea {
     flex: 1;
-    display: flex;
+    display: hidden;
     align-items: center;
     justify-content: center;
 }
