@@ -652,3 +652,31 @@ button:hover {
     }
 }
 
+
+
+
+/* New CSS for the New Vertical Card Layout*/
+
+.binderCard {
+    width: 220px;
+    min-height: 320px;
+    border-radius: 16px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cardTopTabs, .cardBottomActions {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.cardMainArea {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

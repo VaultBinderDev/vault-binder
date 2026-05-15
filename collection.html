@@ -86,16 +86,19 @@
     <!-- ====================== -->
     <div class="column">
         <label>Input your image here: </label><br>
-
         <label class="imageActionBtn">
             Take Photo
-        </label>
+        </label><br>
             <input 
                 id="cardImageInput"
                 type="file"
                 accept="image/*"
                 capture="environment"
                 >
+        <!-- EXPORT/IMPORT -->
+        <label>Export/Import Here</label>
+
+        <p></p>
         
 
     </div> <!-- COLUMN THREE START -->
@@ -157,6 +160,24 @@
         placeholder="Write your notes here...">
         </textarea>
         <div id="charCount">0 / 300</div>
+    </div>
+
+    <div class="binderCard">
+        <div class="cardTopTabs">
+            <button>Info</button>
+            <button>Image</button>
+            <button>Options</button>
+        </div>
+
+        <div class="mainCardArea">
+            <!-- Where the current page view goes -->
+        </div>
+
+        <div class="cardBottomActions">
+            <button>⭐</button>
+            <button>💲</button>
+            <button>💙</button>
+        </div>
     </div>
 
     <div class="toast"></div>
