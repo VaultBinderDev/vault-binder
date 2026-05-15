@@ -674,7 +674,7 @@ button:hover {
     gap: 6px;
 }
 
-.cardMainArea {
+.mainCardArea {
     flex: 1;
     display: flex;
     align-items: center;
