@@ -680,3 +680,52 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
+
+.emptyCardSlot {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.08) 8px,
+            rgba(255,255,255,0.03) 8px,
+            rgba(255,255,255,0.03) 16px
+        ),
+        rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    
+    /* Universal Card Outline */
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow: 
+        0 4px 10px rgba(0,0,0,0.10),
+        inset 0 1px 0 rgba(255,255,255,0.20),
+        inset 0 0 18px rgba(255,255,255, 0.03);    
+    
+    text-align: center;
+    opacity: 0.85;
+    transition: transform 0.2s ease, opactity 0.2s ease;
+}
+
+.emptyCardSlot:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.emptyCardIcon {
+    font-size: 48px;
+    opacity: 0.35;
+    margin-bottom: 12px;
+}
+
+.emptyCardSlot h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.emptyCardSlot p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.7;
+}
