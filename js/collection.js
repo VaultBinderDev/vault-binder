@@ -597,7 +597,7 @@
         });
     }
 
-    fillTypeDropdown();
+    // fillTypeDropdown();
     loadDefaultTheme();
 
 
