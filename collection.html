@@ -39,55 +39,80 @@
     <div class="editorGrid">
     <div class="column"> <!-- COLUMN ONE START -->
     <label>Card Name:</label>
-    <input type="text" id="cardName" placeholder="Bulbasaur">
-    <br><br>
-    <!-- ====================== -->
-    <!--  POKEDEX NUMBER INPUT  -->
-    <!-- ====================== -->
-    <label>Pokedex Number:</label>
-    <input type="number" id="pokeNum" placeholder="001">
-    <br><br>
-    <!-- ====================== -->
-    <!--   HEALTH POINT INPUT   -->
-    <!-- ====================== -->
-    <label>HP:</label>
-    <input type="number" id="cardHp" placeholder="70">
-    <br><br>
-    <button onclick="addCardWithImage()">Add Card</button>
+    <input type="text" id="cardName" placeholder="Bulbasaur"><br>
+
+    <label>Set Name</label>
+    <input type="text" id="setname" placeholder="team rocket"><br>
+
+    <label>Card Number</label>
+    <input type="text" id="cardnumber" placeholder="018"><br>
+
+
+    <label>Quantity</label>
+    <input type="number" min="0" id="quantity" placeholder="Ex. 1 2 3..."><br>
+
+
+<label>Rarity</label> <!-- DROPDOWN -->
+<select id="rarity">
+    <option>Choose a Rarity:</option>
+    <option value="common">● Common</option>
+    <option value="uncommon">◆ Uncommon</option>
+    <option value="rare">★ Rare</option>
+    <option value="double rare">★★ Double Rare</option>
+    <option value="triple rare">★★★ Triple Rare</option>
+    <option value="secret rare">✨ Secret Rare</option>
+    <option value="promo">PROMO Promo</option>
+    <option value="other">? Other</option>
+</select>
+
+<label>Variant</label> <!-- DROPDOWN -->
+<select id="variant">
+    <option>Choose a Variant:</option>
+    <option value="normal">Normal</option>
+    <option value="reverse holo">Reverse Holo</option>
+    <option value="holo">Holo</option>
+    <option value="full art">Full Art</option>
+    <option value="ultra rare">Ultra Rare</option>
+    <option value="secret rare">Secret Rare</option>
+    <option value="illustration rare">Illustration Rare</option>
+    <option value="special illustration rare">Special Illustration Rare</option>
+    <option value="promo">Promo</option>
+    <option value="1st edition">1st Edition</option>
+    <option value="shadowless">Shadowless</option>
+    <option value="error">Error</option>
+    <option value="other">Other</option>
+</select>
+
+<label>Condition</label> <!-- DROPDOWN -->
+<select id="condition">
+    <option>Choose a Condition:</option>
+    <option value="mint">Mint</option>
+    <option value="near mint">Near Mint</option>
+    <option value="lightly played">Lightly Played</option>
+    <option value="moderately played">Moderately Played</option>
+    <option value="heavily played">Heavily Played</option>
+    <option value="damaged">Damaged</option>
+    <option value="graded">Graded</option>
+</select>
+
+<label>Status</label> <!-- DROPDOWN -->
+<select id="status">
+    <option>Choose a Status:</option>
+    <option value="owned">Owned</option>
+    <option value="wishlist">Wishlist</option>
+    <option value="for trade">For Trade</option>
+    <option value="sold">Sold</option>
+</select>
+
+    <label>Estimated Value</label>
+
     
-    </div>
-    <!-- ====================== -->
-    <!--  CARD TYPE DROPDOWN    -->
-    <!-- ====================== -->
-    <div class="column"> <!-- COLUMN TWO START -->
-    <label>Type:</label>
-    <select id="typeInput">
-        <option value="">Select a Type</option>
-    </select>
-    <br><br>
-    <!-- ====================== -->
-    <!--    STAGE SELECTION     -->
-    <!-- ====================== -->
-    <label>Stage:</label>
-    <select id="cardStage">
-        <option>Basic</option>
-        <option>Stage 1</option>
-        <option>Stage 2</option>
-    </select>
-    <br><br>
-    <label>Holo Type:</label><br>
-    <input type="radio" name="holoType" value="None" checked>None<br>
-    <input type="radio" name="holoType" value="Holo">Holo<br>
-    <input type="radio" name="holoType" value="Reverse">Reverse<br>
-    <input type="radio" name="holoType" value="Full Art">Full Art<br>
-    <input type="radio" name="holoType" value="Ultra Rare">Ultra Rare<br>
-    <input type="radio" name="holoType" value="Secret Rare">Secret Rare<br>
-    <input type="radio" name="holoType" value="Illustration Rare">Illustration Rare</div>
+
     <!-- ====================== -->
     <!--     IMAGING COLUMN     --> 
     <!--     (LATER ON (tk))    -->
     <!-- ====================== -->
-    <div class="column">
+    <div class="column"> <!-- COLUMN TWO -->
         <label>Input your image here: </label><br>
         <label class="imageActionBtn">
             Take Photo

@@ -1,21 +1,18 @@
     //-------------------
         // START SCRIPT (tk)
         //-------------------
-        // Variable to tell if HP is Ascending or descending
-        let hpAscending = true;
+  
         // Variable to tell if a card is favorited or not
         let favorite = false;
         // Plain Text stars for fav: ★ and not fav: ☆
 
-        let editModeIndex = null;
+
 
         let isOldest = false;
 
         // Variable to help figure out the favorites toggle
         let showingFavorites = false;
 
-        // Variable to help the system tell the difference between multiples of the same card:
-        let cardID = "";
 
         // Variable for opening the custom settings popup
         let settingsOpen = false;
@@ -180,6 +177,8 @@
         let maxPage = Math.max(1, Math.ceil(cardList.length / cardsPerPage));
         document.getElementById("pageNumber").textContent = "Page " + currentPage + " of " + maxPage;
     }
+
+
     function toggleInfoView(index) {
         if(selectedCardIndex === index && selectedCardView === "image") {
             selectedCardView = "info";
@@ -332,20 +331,32 @@
     function addCard(imageData = "") {
         let noteTaken = "";
 
+
+
         let card = {
-            id: createCardId(),
+            id: createCardId(), // REDO THIS FUNCTION LATER ON
             createdAt: Date.now(),
 
             name: document.getElementById("cardName").value,
-            hp: document.getElementById("cardHp").value,
-            type: document.getElementById("typeInput").value,
-            stage: document.getElementById("cardStage").value,
-            holoType: document.querySelector('input[name="holoType"]:checked').value,
-            pokeNum: document.getElementById("pokeNum").value,
+
+            // NEW VALUES
+            setName: document.getElementById("setname").value,
+            cardNum: document.getElementById("cardnumber").value,
+            quantity: document.getElementById("quantity").value,
+
+            // DROP DOWNS
+            cardRarity: document.getElementById("rarity").value,
+            cardVariant: document.getElementById("variant").value,
+            cardCondition: document.getElementById("condition").value,
+            cardStatus: document.getElementById("status").value,
+            
+            estimatedValue: estValue,
+            marketValue: pricing = "0.00$",
+
+            // Space later for OCR variables possibly
+
             fav: favorite,
             notes: noteTaken,
-            pricing: "0.00",
-
             imageData: imageData,
             imageLayout: "vertical"
         };
