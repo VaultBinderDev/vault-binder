@@ -738,9 +738,21 @@ button:hover {
     opacity: 0.7;
 }
 
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .input {
-    justify-self: end;
-    text-indent: 40px;
+    width: 320px;
+    box-sizing: border-box;
+}
+
+.form-row label {
+    width: 140px;
+    text-align: right;
+    flex-shrink: 0;
 }
 
 .imgPreview {
