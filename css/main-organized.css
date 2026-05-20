@@ -709,13 +709,13 @@ button:hover {
 }
 
 .emptyCardSlot {
-    width: auto;
-    min-height: auto;
+    width: 220px;
+    min-height: 320px;
     padding: 0;
     border: none;
     background: transparent;
     text-align: center;
-    
+    justify-content: center;
     
 }
 
