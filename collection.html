@@ -39,21 +39,21 @@
     <div class="editorGrid">
     <div class="column"> <!-- COLUMN ONE START -->
     <label>Card Name:</label>
-    <input type="text" id="cardName" placeholder="Bulbasaur"><br>
+    <input type="text" class="input" id="cardName" placeholder="Bulbasaur"><br>
 
     <label>Set Name</label>
-    <input type="text" id="setname" placeholder="team rocket"><br>
+    <input type="text" class="input" id="setname" placeholder="team rocket"><br>
 
     <label>Card Number</label>
-    <input type="text" id="cardnumber" placeholder="018"><br>
+    <input type="text" class="input" id="cardnumber" placeholder="018"><br>
 
 
     <label>Quantity</label>
-    <input type="number" min="0" id="quantity" placeholder="Ex. 1 2 3..."><br>
+    <input type="number" min="0" class="input" id="quantity" placeholder="Ex. 1 2 3..."><br>
 
 
     <label>Rarity</label> <!-- DROPDOWN -->
-    <select id="rarity">
+    <select class="input" id="rarity">
         <option>Choose a Rarity:</option>
         <option value="common">● Common</option>
         <option value="uncommon">◆ Uncommon</option>
@@ -66,7 +66,7 @@
     </select><br>
 
     <label>Variant</label> <!-- DROPDOWN -->
-    <select id="variant">
+    <select class="input" id="variant">
         <option>Choose a Variant:</option>
         <option value="normal">Normal</option>
         <option value="reverse holo">Reverse Holo</option>
@@ -84,7 +84,7 @@
     </select><br>
 
     <label>Condition</label> <!-- DROPDOWN -->
-    <select id="condition">
+    <select class="input" id="condition">
         <option>Choose a Condition:</option>
         <option value="mint">Mint</option>
         <option value="near mint">Near Mint</option>
@@ -96,7 +96,7 @@
     </select><br>
 
     <label>Status</label> <!-- DROPDOWN -->
-    <select id="status">
+    <select class="input" id="status">
         <option>Choose a Status:</option>
         <option value="owned">Owned</option>
         <option value="wishlist">Wishlist</option>
@@ -114,7 +114,6 @@
     <!--     (LATER ON (tk))    -->
     <!-- ====================== -->
     <div class="column"> <!-- COLUMN TWO -->
-        <label>Input your image here: </label><br>
         <label class="imageActionBtn">
             Take Photo
         </label><br>
@@ -123,7 +122,7 @@
                 type="file"
                 accept="image/*"
                 capture="environment"
-                >
+                ><br><br><br>
         <!-- EXPORT/IMPORT -->
         <label>Export/Import Here</label>
 
@@ -133,6 +132,7 @@
     </div> <!-- COLUMN THREE START -->
     <div class="column">
         <label>Image Preview</label>
+        <div class="imgPreview"></div>
     </div>
     </div>
     </div>

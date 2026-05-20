@@ -663,6 +663,9 @@ button:hover {
     border-radius: 16px;
     padding: 10px;
 
+    /* Universal Card Outline */
+    border: 1px solid rgba(255,255,255,0.25);
+
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -733,4 +736,13 @@ button:hover {
     margin: 0;
     font-size: 14px;
     opacity: 0.7;
+}
+
+.input {
+    justify-self: end;
+    text-indent: 40px;
+}
+
+.imgPreview {
+    border: 1px solid rgba(255,255,255,0.25);
 }
