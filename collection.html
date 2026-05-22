@@ -125,6 +125,7 @@
                 type="file"
                 accept="image/*"
                 capture="environment"
+                onchange="previewImage()"
                 ><br><br><br>
         <!-- EXPORT/IMPORT -->
         <label>Export/Import Here</label>
@@ -134,8 +135,10 @@
 
     </div> <!-- COLUMN THREE START -->
     <div class="column">
-        <label>Image Preview</label>
-        <div class="imgPreview"></div>
+        
+        <div class="imgPreviewBox">
+            <p>Image Preview</p>
+        </div>
     </div>
     </div>
     </div>

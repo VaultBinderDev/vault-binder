@@ -35,7 +35,7 @@
         cardsPerPage controls how many cards appear on one page.
     */
     let currentPage = 1;
-    let cardsPerPage = 18;
+    let cardsPerPage = 12;
 
     /*
         This function draws the current page of cards into the bookDisplay area.
@@ -224,6 +224,29 @@
         displayBookPage(filteredCards);
 
     }
+
+    function previewImage() {
+        let imageInput = document.getElementById("cardImageInput");
+        let previewBox = document.getElementById("imagePreviewBox");
+
+        let file = imageInput.files[0];
+
+        if(!file) {
+            previewBox.innerHTML = "<p>No image selected.</p>";
+            return;
+        }
+
+        let reader = new FileReader();
+
+        reader.onload = function () {
+            previewBox.innerHTML = `
+                <img src="${reader.result}" alt="Card image preview">
+            `;
+        };
+
+        reader.readAsDataURL(file);
+    }
+
     function toggleFavorites() {
         showingFavorites = !showingFavorites;
 
@@ -597,7 +620,8 @@
         });
     }
 
-    // fillTypeDropdown();
+    // 
+    fillTypeDropdown();
     loadDefaultTheme();
 
 
