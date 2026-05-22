@@ -319,18 +319,6 @@
         and redraws the current page view.
     */
 
-    function fillTypeDropdown() {
-        let typeSelect = document.getElementById("typeInput");
-
-        pokemonTypes.forEach(type => {
-            typeSelect.innerHTML += `
-                <option value="${type.name}">
-                    ${type.emoji} ${type.name}
-                </option>
-            `;
-        })
-    }
-
     // SAVE IMAGE
     function addCardWithImage() {
         console.log("Add Card Clicked.");
