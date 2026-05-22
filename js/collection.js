@@ -51,6 +51,7 @@
         let totalCount = document.getElementById("TotalPokeCards");
         totalCount.textContent = cardList.length;
         let selectedClass = "";
+        let editModeIndex = -1;
         
 
         let start = (currentPage - 1) * cardsPerPage;
