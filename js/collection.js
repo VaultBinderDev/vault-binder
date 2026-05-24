@@ -1,620 +1,716 @@
-    //-------------------
-        // START SCRIPT (tk)
-        //-------------------
-  
-        // Variable to tell if a card is favorited or not
-        let favorite = false;
-        // Plain Text stars for fav: ★ and not fav: ☆
+//-------------------
+// START SCRIPT (tk)
+//-------------------
 
 
+//-------------------
+// GLOBAL VARIABLES
+//-------------------
 
-        let isOldest = false;
+let favorite = false;
+let isOldest = false;
+let showingFavorites = false;
+let settingsOpen = false;
 
-        // Variable to help figure out the favorites toggle
-        let showingFavorites = false;
+let selectedCardView = "info";
+let selectedCardIndex = "";
+
+let currentPage = 1;
+let cardsPerPage = 12;
+
+let currentTheme = "pastelSherbet";
+let settingsText = "";
+
+let editModeIndex = -1;
+
+let cards = JSON.parse(localStorage.getItem("cards")) || [];
 
 
-        // Variable for opening the custom settings popup
-        let settingsOpen = false;
+//-------------------
+// DISPLAY FUNCTIONS
+//-------------------
 
-        // Variable to flip between image view and regular info view
-        let selectedCardView = "info";
+function displayBookPage(cardList) {
+    if (!cardList) {
+        cardList = cards;
+    }
 
-        let isOptions = false;
+    let bookDisplay = document.getElementById("bookDisplay");
 
-        let settingsText = "";
-    /*
-        The main array that stores all cards.
-        It loads from localStorage if cards were previously saved.
-    */
-        let cards = JSON.parse(localStorage.getItem("cards")) || [];
-        let selectedCardIndex = "";
-    /*
-        Pagination settings:
-        currentPage tracks which page the user is on.
-        cardsPerPage controls how many cards appear on one page.
-    */
-    let currentPage = 1;
-    let cardsPerPage = 12;
+    if (!bookDisplay) return;
 
-    /*
-        This function draws the current page of cards into the bookDisplay area.
-        It only shows a limited number of cards at a time so the page stays compact.
-    */
-    function displayBookPage(cardList) {
-        if(!cardList) {
-            cardList = cards;
-        }
-        let bookDisplay = document.getElementById("bookDisplay");
-        bookDisplay.innerHTML = "";
+    bookDisplay.innerHTML = "";
 
-        let totalCount = document.getElementById("TotalPokeCards");
+    let totalCount = document.getElementById("TotalPokeCards");
+
+    if (totalCount) {
         totalCount.textContent = cardList.length;
-        let selectedClass = "";
-        let editModeIndex = -1;
-        
-
-        let start = (currentPage - 1) * cardsPerPage;
-        let end = start + cardsPerPage;
-
-        for (let i = start; i < end && i < cardList.length; i++) {
-            let card = cardList[i];
-            let cardViewHtml = "";
-            let isEditing = (editModeIndex === i);
-
-            if(selectedCardIndex != null && selectedCardIndex === i) {
-                selectedClass = " selectedCard";
-            } else {
-                selectedClass = "";
-            }
-
-            // PLACE IMAGE HTML HERE
-            if(i === selectedCardIndex && selectedCardView === "image") {
-                if(card.imageData) {
-                    cardViewHtml = `<div id="imageView">
-                    <h2>${card.name}</h2> <label>#${card.pokeNum}</label><br>
-                    <img src="${card.imageData}" alt="${card.name}">
-                    <div id="pokemonImg"></div>
-                    </div>`;
-                } else {
-                    cardViewHtml = `<div id="imageView">
-                    <h2>${card.name}</h2> <label>#${card.pokeNum}</label>
-                    <p>No Image Found</p>
-                    <div id="pokemonImg"></div>
-                    </div>`;
-            }
-                
-            // PLACE OPTIONS HTML HERE
-            } else if(i === selectedCardIndex && selectedCardView === "options") {
-                cardViewHtml = `
-                <div id="optionsPopup">
-                    <h2>Options Per Card: </h2><br>
-                    <label>Jot Down Some Notes</label><br>
-                    <button onclick="toggleNotesView(${i})">Notepad Paper</button><br><br>
-                </div>`;
-            // PLACE INFO HTML HERE AS DEFAULT
-            } else {
-                cardViewHtml = `<div id="infoView">
-                    <input 
-                        type="text" 
-                        id="editName-${i}" 
-                        value="${card.name}" 
-                        class="inputBox fullWidth" 
-                        placeholder="Name" 
-                        onclick="event.stopPropagation()"
-                        onmmousedown="event.stopPropagation()"
-                        ${isEditing ? "" : "readonly"}>
-                    <input 
-                        type="text" 
-                        id="editHp-${i}" 
-                        value="${card.hp}" 
-                        class="inputBox" 
-                        placeholder="HP" 
-                        onclick="event.stopPropagation()"
-                        onmmousedown="event.stopPropagation()"
-                        ${isEditing ? "" : "readonly"}>
-                    <input 
-                        type="text" 
-                        id="editDex-${i}" 
-                        value="${card.pokeNum}" 
-                        class="inputBox" 
-                        placeholder="Pokedex #" 
-                        onclick="event.stopPropagation()"
-                        onmmousedown="event.stopPropagation()"
-                        ${isEditing ? "" : "readonly"}>
-                    <input 
-                        type="text" 
-                        id="editStage-${i}" 
-                        value="${card.stage}" 
-                        class="inputBox" 
-                        placeholder="Stage" 
-                        onclick="event.stopPropagation()"
-                        onmmousedown="event.stopPropagation()"
-                        ${isEditing ? "" : "readonly"}>
-                    <input 
-                        type="text" 
-                        id="editType-${i}" 
-                        value="${card.type}" 
-                        class="inputBox" 
-                        placeholder="Type" 
-                        onclick="event.stopPropagation()"
-                        onmmousedown="event.stopPropagation()"
-                        d${isEditing ? "" : "readonly"}>
-                    <input 
-                        type="text" 
-                        id="editHolo-${i}" 
-                        value="${card.holoType}" 
-                        class="inputBox" 
-                        placeholder="Card Rarity" 
-                        onclick="event.stopPropagation()"
-                        onmmousedown="event.stopPropagation()"
-                        ${isEditing ? "" : "readonly"}><br>
-                    <div class="cardActionRow">
-                        <button id="editCard" onclick="event.stopPropagation(); editCard(${i})">
-                            ${isEditing ? "Save Edits" : "Edit Card"}
-                        </button>
-                        <button onclick="event.stopPropagation(); deleteCard(${i})">
-                            Delete Card
-                        </button>
-                    </div>
-                </div>`;
-            }
-            // IF STATEMENT HANDLES LOGIC BETWEEN LAYERS WHILE ORIGINAL RENDERING HOPEFULLY STAYS CONSISTENT
-            bookDisplay.innerHTML +=
-               `<div class="cardContainer${selectedClass}" id="card-${i}" onclick="selectCard(${i})">
-                    <div id="buttonSideBar">
-                        <button class="funcButton" onclick="event.stopPropagation(); toggleInfoView(${i})">I</button><br>
-                        <button class="funcButton" id="favButton"onclick="event.stopPropagation(); favoriteCard()">F</button><br>
-                        <button class="funcButton" onclick="event.stopPropagation(); ">W</button><br>
-                        <button class="funcButton" onclick="event.stopPropagation(); ">P</button><br>
-                        <button class="funcButton" id="optButton" onclick="event.stopPropagation(); toggleOptionsView(${i})">O</button>
-                    </div>
-                <div class="cardContent">
-                ${cardViewHtml}
-                </div>
-                </div>`;
-        }
-
-        let maxPage = Math.max(1, Math.ceil(cardList.length / cardsPerPage));
-        document.getElementById("pageNumber").textContent = "Page " + currentPage + " of " + maxPage;
     }
 
+    let start = (currentPage - 1) * cardsPerPage;
+    let end = start + cardsPerPage;
 
-    function toggleInfoView(index) {
-        if(selectedCardIndex === index && selectedCardView === "image") {
-            selectedCardView = "info";
-        } else if(selectedCardIndex === index && selectedCardView === "info") {
-            selectedCardIndex = index;
-            selectedCardView = "image";
-        } else {
-            // DEFAULT TO IMAGE FOR PROFESSIONAL FINISH
-            selectedCardIndex = index;
-            selectedCardView = "image";
-        }
-        displayBookPage();
-    }
+    for (let i = start; i < end && i < cardList.length; i++) {
 
-    
-    
-    // THE POPUP WILL BE FOR NOTES, NOT FOR ALL OPTIONS!!
-    function toggleNotesView(index) {
-        let notesInput = document.getElementById("notesInput");
-        let charCount = document.getElementById("charCount");
-        let popup = document.getElementById("notesPopup");
-        
+        let card = cardList[i];
 
-        notesInput.value = (cards[index].notes || "");
-        charCount.textContent = `${notesInput.value.length} / 300`;
-        popup.style.display = "block";
-    }
+        let selectedClass =
+            selectedCardIndex === i ? " selectedCard" : "";
 
-    function saveNotes(index) {
-        let popup = document.getElementById("notesPopup");
-        let notes = document.getElementById("notesInput").value;
-        cards[index].notes = notes;
-        localStorage.setItem("cards", JSON.stringify(cards));
-        popup.style.display = "none";
-    }
+        let cardViewHtml = "";
 
-    /* Searches the total set of pokemon cards and pushes the currently ordered list into displayBookPage() */
-    function search() {
-        let searchText = document.getElementById("searchBar").value.toLowerCase();
-        let filteredCards = cards.filter(function(card) {
-            return card.name.toLowerCase().includes(searchText);
-        })
-        displayBookPage(filteredCards);
+        //-------------------
+        // IMAGE VIEW
+        //-------------------
 
-    }
+        if (i === selectedCardIndex && selectedCardView === "info") {
+        cardViewHtml = `
+            <div class="compactInfoView">
+            <h3>${card.name || "Card Name"}</h3>
 
-    function previewImage() {
-        let imageInput = document.getElementById("cardImageInput");
-        let previewBox = document.getElementById("imagePreviewBox");
+            <div class="infoMiniRow">
+                <span class="miniLabel">Set</span>
+                <span class="miniValue">${card.setName || "Set Name"}</span>
+            </div>
 
-        let file = imageInput.files[0];
+            <div class="infoMiniRow">
+                <span class="miniLabel">No.</span>
+                <span class="miniValue">${card.cardNum || "Card Number"}</span>
+            </div>
 
-        if(!file) {
-            previewBox.innerHTML = "<p>No image selected.</p>";
-            return;
-        }
+            <div class="infoMiniRow">
+                <span class="miniLabel">Rarity</span>
+                <span class="miniValue">${card.cardRarity || "Rarity"}</span>
+            </div>
 
-        let reader = new FileReader();
+            <div class="infoMiniRow">
+                <span class="miniLabel">Variant</span>
+                <span class="miniValue">${card.cardVariant || "Variant"}</span>
+            </div>
 
-        reader.onload = function () {
-            previewBox.innerHTML = `
-                <img src="${reader.result}" alt="Card image preview">
+            <div class="infoMiniRow">
+                <span class="miniLabel">Condition</span>
+                <span class="miniValue">${card.cardCondition || "Condition"}</span>
+            </div>
+
+            <div class="infoMiniRow">
+                <span class="miniLabel">Status</span>
+                <span class="miniValue">${card.cardStatus || "Status"}</span>
+            </div>
+
+            <div class="infoMiniRow">
+                <span class="miniLabel">Qty</span>
+                <span class="miniValue">${card.quantity || "1"}</span>
+            </div>
+
+            <div class="infoMiniRow">
+                <span class="miniLabel">Value</span>
+                <span class="miniValue">${card.estimatedValue || "—"}</span>
+            </div>
+            </div>
+                `;
+        } else if (i === selectedCardIndex && selectedCardView === "options") {
+            cardViewHtml = `
+            <div class="optionsView">
+            <button onclick="event.stopPropagation(); toggleNotesView(${i})">
+                Notes
+            </button>
+            <button onclick="event.stopPropagation(); editCard(${i})">
+                Edit
+            </button>
+            <button onclick="event.stopPropagation(); deleteCard(${i})">
+                Delete
+            </button>
+            </div>
             `;
-        };
-
-        reader.readAsDataURL(file);
-    }
-
-    function toggleFavorites() {
-        showingFavorites = !showingFavorites;
-
-        if(showingFavorites) {
-            let filteredFavs = cards.filter(function(card) {
-                currentPage = 1;
-                return card.fav === true;
-            })
-            displayBookPage(filteredFavs);
         } else {
-            currentPage = 1;
-            displayBookPage(cards);
+            cardViewHtml = `
+            ${
+            card.imageData
+            ? `<img class="binderCardImage" src="${card.imageData}" alt="${card.name}">`
+            : `<div class="emptyCardSlot">
+                    <div class="emptyCardIcon">=</div>
+                    <h3>Empty Slot</h3>
+                    <p>Add an image to this card</p>
+               </div>`
         }
-    }
-    function toggleSettings() {
-        let popup = document.getElementById("settingsPopup");
-        let button = document.getElementById("settingsBtn");
-
-        settingsOpen = !settingsOpen;
-
-        if(settingsOpen) {
-            popup.style.display = "block";
-            button.classList.add("active");
-        } else {
-            popup.style.display = "none";
-            button.classList.remove("active");
+        `;
         }
 
+        //-------------------
+        // FINAL CARD RENDER
+        //-------------------
+
+        bookDisplay.innerHTML += `
+            <div class="binderCard${selectedClass}" id="card-${i}" onclick="selectCard(${i})">
+            <div class="cardTopTabs">
+            <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='image'; displayBookPage();">Image</button>
+            <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='info'; displayBookPage();">Info</button>
+            <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='options'; displayBookPage();">Options</button>
+            </div>
+
+            <div class="mainCardArea">
+            ${cardViewHtml}
+            </div>
+
+            <div class="cardBottomActions">
+            <button onclick="event.stopPropagation(); favoriteCard()">⭐</button>
+            <button onclick="event.stopPropagation();">💲</button>
+            <button onclick="event.stopPropagation();">💙</button>
+            </div>
+            </div>
+        `;
     }
 
-    function toggleOptionsView(index) {
-        if(selectedCardIndex === index) {
-            selectedCardView = "options";
-        } else {
-            selectedCardView = "image";
-        }
-        displayBookPage();
+    let maxPage = Math.max(
+        1,
+        Math.ceil(cardList.length / cardsPerPage)
+    );
+
+    let pageNumber = document.getElementById("pageNumber");
+
+    if (pageNumber) {
+        pageNumber.textContent =
+            "Page " + currentPage + " of " + maxPage;
+    }
+}
+
+
+//-------------------
+// IMAGE FUNCTIONS
+//-------------------
+
+function previewImage() {
+
+    let imageInput =
+        document.getElementById("cardImageInput");
+
+    let previewBox =
+        document.getElementById("imagePreviewBox");
+
+    let file = imageInput.files[0];
+
+    if (!file) {
+
+        previewBox.innerHTML =
+            "<p>No image selected.</p>";
+
+        return;
     }
 
-    function selectCard(index) {
-        selectedCardIndex = index;
-        displayBookPage();
+    let reader = new FileReader();
+
+    reader.onload = function () {
+
+        previewBox.innerHTML = `
+            <img
+                src="${reader.result}"
+                alt="Card image preview"
+            >
+        `;
+    };
+
+    reader.readAsDataURL(file);
+}
+
+function addCardWithImage() {
+
+    let imageInput =
+        document.getElementById("cardImageInput");
+
+    let file = imageInput.files[0];
+
+    if (!file) {
+        addCard("");
+        return;
     }
 
-    /*
-        Moves forward one page if another page exists.
-    */
-    function nextPage() {
-        let maxPage = Math.ceil(cards.length / cardsPerPage);
+    let reader = new FileReader();
 
-        if (currentPage < maxPage) {
-            currentPage++;
-            displayBookPage();
-        }
-    }
+    reader.onload = function () {
 
-    /*
-        Moves backward one page if the user is not already on page 1.
-    */
-    function previousPage() {
-        if (currentPage > 1) {
-            currentPage--;
-            displayBookPage();
-        }
-    }
+        addCard(reader.result);
 
-    /*
-        Adds a new card to the collection, saves it, clears the form,
-        and redraws the current page view.
-    */
+        imageInput.value = "";
+    };
 
-    // SAVE IMAGE
-    function addCardWithImage() {
-        console.log("Add Card Clicked.");
-        let imageInput = document.getElementById("cardImageInput");
-        let file = imageInput.files[0];
-
-        if(!file) {
-            addCard("");
-            return;
-        } 
-
-        let reader = new FileReader();
-
-        reader.onload = function () {
-            addCard(reader.result);
-            imageInput.value = "";
-        };
-
-        reader.readAsDataURL(file);
-    }
-
-    function addCard(imageData = "") {
-        let noteTaken = "";
+    reader.readAsDataURL(file);
+}
 
 
+//-------------------
+// CARD FUNCTIONS
+//-------------------
 
-        let card = {
-            id: createCardId(), // REDO THIS FUNCTION LATER ON
-            createdAt: Date.now(),
+function addCard(imageData = "") {
 
-            name: document.getElementById("cardName").value,
+    let card = {
 
-            // NEW VALUES
-            setName: document.getElementById("setname").value,
-            cardNum: document.getElementById("cardnumber").value,
-            quantity: document.getElementById("quantity").value,
+        id: createCardId(),
+        createdAt: Date.now(),
 
-            // DROP DOWNS
-            cardRarity: document.getElementById("rarity").value,
-            cardVariant: document.getElementById("variant").value,
-            cardCondition: document.getElementById("condition").value,
-            cardStatus: document.getElementById("status").value,
-            
-            estimatedValue: estValue,
-            marketValue: pricing = "0.00$",
+        name:
+            document.getElementById("cardName").value,
 
-            // Space later for OCR variables possibly
+        setName:
+            document.getElementById("setname").value,
 
-            fav: favorite,
-            notes: noteTaken,
-            imageData: imageData,
-            imageLayout: "vertical"
-        };
-        
-        cards.push(card);
-        cards = updateOldCards(cards);
+        cardNum:
+            document.getElementById("cardnumber").value,
 
-        localStorage.setItem("cards", JSON.stringify(cards));
-        
-        let newCardIndex = cards.length - 1;
+        quantity:
+            document.getElementById("quantity").value,
 
-        currentPage =  Math.ceil(cards.length / cardsPerPage);
-        selectedCardIndex = newCardIndex;
-        selectedCardView = "info";
+        cardRarity:
+            document.getElementById("rarity").value,
 
-        document.getElementById("cardName").value = "";
-        document.getElementById("pokeNum").value = "";
-        document.getElementById("cardHp").value = "";
-        document.getElementById("typeInput").selectedIndex = 0;
-        document.getElementById("cardStage").selectedIndex = 0;
-        document.querySelector('input[name="holoType"][value="None"]').checked = true;
+        cardVariant:
+            document.getElementById("variant").value,
 
-        displayBookPage();
-        showToast(`🎉 ${card.name} added to your collection!`);
-    }
+        cardCondition:
+            document.getElementById("condition").value,
 
-    
-    /*
-       Deletes the currently selected card and selects the next available card.
-    */
-    function deleteCard(index) {
-        cards.splice(index, 1);
-        localStorage.setItem("cards", JSON.stringify(cards));
-        selectedCardIndex = null;
-        displayBookPage();
-    }
+        cardStatus:
+            document.getElementById("status").value,
 
-    /*
-        Edit Function replacing the current variables if needed.
-    */
-    function editCard(index) {
-        console.log("editCard ran. Index = ", index);
+        estimatedValue: "",
 
-        if(editModeIndex === index) {
-            // SAVE MODE
-            saveEditedCard(index);
-            editModeIndex = null;
-        } else {
-            // EDIT MODE
-            editModeIndex = index;
-        }
-        displayBookPage();
-    }
+        fav: favorite,
+        notes: "",
 
-    function saveEditedCard(index) {
-        cards[index].name = document.getElementById(`editName-${index}`).value;
-        cards[index].hp = document.getElementById(`editHp-${index}`).value;
-        cards[index].pokeNum = document.getElementById(`editDex-${index}`).value;
-        cards[index].stage = document.getElementById(`editStage-${index}`).value;
-        cards[index].type = document.getElementById(`editType-${index}`).value;
-        cards[index].holoType = document.getElementById(`editHolo-${index}`).value;
+        imageData: imageData,
+        imageLayout: "vertical"
+    };
 
-        localStorage.setItem("cards", JSON.stringify(cards));
-    }
+    cards.push(card);
 
-    // COME BACK TO THIS IDEA NOT WORKING RNNN
-    function favoriteCard() {
-        let favorite = document.getElementById("favButton");
-        let card = cards[selectedCardIndex];
-        
-        if(card.fav) {
-            card.fav = false;
-            favorite.textContent = "☆";
-        } else {
-            card.fav = true;
-            favorite.textContent = "★"
-        }
-
-        localStorage.setItem("cards", JSON.stringify(cards));
-        displayBookPage();
-        selectCard(selectedCardIndex);
-       
-    }
-    function sortDuplicates() {
-        isOldest = !isOldest;
-
-        if(isOldest) {
-            cards.sort(function(a, b) {
-                return b.createdAt - a.createdAt;
-            });
-        } else {
-            cards.sort(function(a, b) {
-                return a.createdAt - b.createdAt;
-            })
-        }
-        currentPage = 1;
-        displayBookPage();
-    }
-
-    function sortCardName() {
-        cards.sort(function(a, b) {
-            return a.name.localeCompare(b.name);
-        });
-
-        currentPage = 1;
-        displayBookPage();
-    }
-    function sortCardType() {
-        
-        let typeOrder = ["Colorless", "Fire", "Water", "Grass", "Electric", "Dark", "Psychic", "Fighting", "Metal", "Dragon", "Fairy"];
-        
-
-        cards.sort(function(a, b) {
-            let indexA = typeOrder.indexOf(a.type);
-            let indexB = typeOrder.indexOf(b.type);
-            return indexA - indexB;
-        });
-
-        currentPage = 1;
-        displayBookPage();
-    }
-    function sortCardHp() {
-        if(hpAscending) {
-            hpAscending = false;
-            cards.sort(function(a,b) {
-                
-                return  Number(a.hp) - Number(b.hp);
-            });
-        } else {
-            hpAscending = true;
-            cards.sort(function(a,b) {
-                return Number(b.hp) - Number(a.hp);
-            });
-        }
-        currentPage = 1;
-        displayBookPage();
-    }
-    function sortCardStage() {
-        let stageOrder = ["Stage 2", "Stage 1", "Basic"];
-        cards.sort(function(a,b) {
-            let indexA = stageOrder.indexOf(a.stage);
-            let indexB = stageOrder.indexOf(b.stage);
-            return indexA - indexB;
-        })
-        currentPage = 1;
-        displayBookPage();
-    }
-
-    let currentTheme = "pastelSherbet";
-
-    function applyTheme(themeName) {
-        currentTheme = themeName;
-
-        document.body.classList.remove("theme-pastelSherbet","theme-sleekModern","theme-mutedNeon");
-
-        document.body.classList.add("theme-" + themeName);
-
-        if(currentTheme === "mutedNeon" || currentTheme === "sleekModern") {
-            settingsText = "#f2efe9";
-        } else {
-            settingsText = "#444";
-        }
-    }
-
-    function setDefaultTheme() {
-        localStorage.setItem("defaultTheme", currentTheme);
-        showToast("Default Theme Saved!");
-    }
-
-    function loadDefaultTheme() {
-        let savedTheme = localStorage.getItem("defaultTheme");
-
-        if(savedTheme) {
-            applyTheme(savedTheme);
-        } else {
-            applyTheme("pastelSherbet");
-        }
-
-        window.addEventListener("DOMContentLoaded", () => {
-            loadDefaultTheme();
-
-            document.body.style.visibility = "visible";
-        })
-    }
-
-    function createCardId() {
-        return Date.now() + "-" + Math.random().toString(36).slice(2,8);
-    }
-
-    function updateOldCards(cardList) {
-        return cardList.map(card => {
-            return {
-                id: card.id || createCardId(),
-                createdAt: card.createdAt || Date.now(),
-
-                name: card.name || "",
-                hp: card.hp || "",
-                type: card.type || "",
-                stage: card.stage || "",
-                holoType: card.holoType || "",
-                pokeNum: card.pokeNum || "",
-
-                fav: card.fav || false,
-                wishlist: card.wishlist || false,
-                notes: card.notes || "",
-
-                imageData: card.imageData || "",
-                imageSource: card.imageSource || "",
-                imageLayout: card.imageLayout || "",
-
-                ...card
-            };
-        });
-    }
-
-    function showToast(message) {
-        console.log("Toast is shown")
-        let toast = document.getElementById("toast");
-
-        toast.textContent = message;
-        toast.classList.add("show");
-
-        setTimeout(function () {
-            toast.classList.remove("show");
-        }, 2500);
-    }
-
-    /*
-        Draw the saved cards immediately when the page first loads.
-    */
-
-    let notesInput = document.getElementById("notesInput");
-    let charCount = document.getElementById("charCount");
-
-    if(notesInput && charCount) {
-        notesInput.addEventListener("input", () => {
-            charCount.textContent = `${notesInput.value.length} / 300`;
-        });
-    }
-
-    // 
-    fillTypeDropdown();
-    loadDefaultTheme();
-
-
-    cards = JSON.parse(localStorage.getItem("cards")) || [];
     cards = updateOldCards(cards);
-    localStorage.setItem("cards", JSON.stringify(cards));
+
+    localStorage.setItem(
+        "cards",
+        JSON.stringify(cards)
+    );
+
+    currentPage =
+        Math.ceil(cards.length / cardsPerPage);
+
+    selectedCardIndex = cards.length - 1;
+
     displayBookPage();
+
+    showToast(`🎉 ${card.name} added!`);
+}
+
+function deleteCard(index) {
+
+    cards.splice(index, 1);
+
+    localStorage.setItem(
+        "cards",
+        JSON.stringify(cards)
+    );
+
+    selectedCardIndex = null;
+
+    displayBookPage();
+}
+
+function editCard(index) {
+
+    if (editModeIndex === index) {
+
+        saveEditedCard(index);
+
+        editModeIndex = -1;
+
+    } else {
+
+        editModeIndex = index;
+    }
+
+    displayBookPage();
+}
+
+function saveEditedCard(index) {
+
+    cards[index].name =
+        document.getElementById(`editName-${index}`).value;
+
+    cards[index].setName =
+        document.getElementById(`editSet-${index}`).value;
+
+    cards[index].cardNum =
+        document.getElementById(`editNumber-${index}`).value;
+
+    cards[index].cardRarity =
+        document.getElementById(`editRarity-${index}`).value;
+
+    cards[index].cardCondition =
+        document.getElementById(`editCondition-${index}`).value;
+
+    localStorage.setItem(
+        "cards",
+        JSON.stringify(cards)
+    );
+}
+
+function favoriteCard() {
+
+    let card = cards[selectedCardIndex];
+
+    if (!card) return;
+
+    card.fav = !card.fav;
+
+    localStorage.setItem(
+        "cards",
+        JSON.stringify(cards)
+    );
+
+    displayBookPage();
+}
+
+
+//-------------------
+// NOTES FUNCTIONS
+//-------------------
+
+function toggleNotesView(index) {
+
+    let notesInput =
+        document.getElementById("notesInput");
+
+    let charCount =
+        document.getElementById("charCount");
+
+    let popup =
+        document.getElementById("notesPopup");
+
+    notesInput.value =
+        cards[index].notes || "";
+
+    charCount.textContent =
+        `${notesInput.value.length} / 300`;
+
+    popup.style.display = "block";
+}
+
+function saveNotes(index) {
+
+    let popup =
+        document.getElementById("notesPopup");
+
+    let notes =
+        document.getElementById("notesInput").value;
+
+    cards[index].notes = notes;
+
+    localStorage.setItem(
+        "cards",
+        JSON.stringify(cards)
+    );
+
+    popup.style.display = "none";
+}
+
+
+//-------------------
+// SEARCH / SORT
+//-------------------
+
+function search() {
+
+    let searchText =
+        document.getElementById("searchBar")
+        .value
+        .toLowerCase();
+
+    let filteredCards =
+        cards.filter(card =>
+            card.name.toLowerCase()
+            .includes(searchText)
+        );
+
+    displayBookPage(filteredCards);
+}
+
+function toggleFavorites() {
+
+    showingFavorites = !showingFavorites;
+
+    if (showingFavorites) {
+
+        let filteredFavs =
+            cards.filter(card => card.fav);
+
+        displayBookPage(filteredFavs);
+
+    } else {
+
+        displayBookPage(cards);
+    }
+}
+
+function sortDuplicates() {
+
+    isOldest = !isOldest;
+
+    cards.sort((a, b) => {
+
+        return isOldest
+            ? b.createdAt - a.createdAt
+            : a.createdAt - b.createdAt;
+    });
+
+    displayBookPage();
+}
+
+function sortCardName() {
+
+    cards.sort((a, b) =>
+        a.name.localeCompare(b.name)
+    );
+
+    displayBookPage();
+}
+
+
+//-------------------
+// SETTINGS / THEMES
+//-------------------
+
+function toggleSettings() {
+
+    let popup =
+        document.getElementById("settingsPopup");
+
+    let button =
+        document.getElementById("settingsBtn");
+
+    settingsOpen = !settingsOpen;
+
+    if (settingsOpen) {
+
+        popup.style.display = "block";
+
+        button.classList.add("active");
+
+    } else {
+
+        popup.style.display = "none";
+
+        button.classList.remove("active");
+    }
+}
+
+function applyTheme(themeName) {
+
+    currentTheme = themeName;
+
+    document.body.classList.remove(
+        "theme-pastelSherbet",
+        "theme-sleekModern",
+        "theme-mutedNeon"
+    );
+
+    document.body.classList.add(
+        "theme-" + themeName
+    );
+}
+
+function setDefaultTheme() {
+
+    localStorage.setItem(
+        "defaultTheme",
+        currentTheme
+    );
+
+    showToast("Default Theme Saved!");
+}
+
+function loadDefaultTheme() {
+
+    let savedTheme =
+        localStorage.getItem("defaultTheme");
+
+    if (savedTheme) {
+
+        applyTheme(savedTheme);
+
+    } else {
+
+        applyTheme("pastelSherbet");
+    }
+}
+
+
+//-------------------
+// PAGE CONTROL
+//-------------------
+
+function selectCard(index) {
+
+    selectedCardIndex = index;
+
+    displayBookPage();
+}
+
+function toggleInfoView(index) {
+
+    selectedCardIndex = index;
+
+    selectedCardView =
+        selectedCardView === "image"
+        ? "info"
+        : "image";
+
+    displayBookPage();
+}
+
+function toggleOptionsView(index) {
+
+    selectedCardIndex = index;
+
+    selectedCardView = "options";
+
+    displayBookPage();
+}
+
+function nextPage() {
+
+    let maxPage =
+        Math.ceil(cards.length / cardsPerPage);
+
+    if (currentPage < maxPage) {
+
+        currentPage++;
+
+        displayBookPage();
+    }
+}
+
+function previousPage() {
+
+    if (currentPage > 1) {
+
+        currentPage--;
+
+        displayBookPage();
+    }
+}
+
+
+//-------------------
+// UTILITY FUNCTIONS
+//-------------------
+
+function createCardId() {
+
+    return (
+        Date.now() +
+        "-" +
+        Math.random()
+            .toString(36)
+            .slice(2, 8)
+    );
+}
+
+function updateOldCards(cardList) {
+
+    return cardList.map(card => {
+
+        return {
+
+            id:
+                card.id || createCardId(),
+
+            createdAt:
+                card.createdAt || Date.now(),
+
+            name:
+                card.name || "",
+
+            setName:
+                card.setName || "",
+
+            cardNum:
+                card.cardNum || "",
+
+            quantity:
+                card.quantity || 1,
+
+            cardRarity:
+                card.cardRarity || "",
+
+            cardVariant:
+                card.cardVariant || "",
+
+            cardCondition:
+                card.cardCondition || "",
+
+            cardStatus:
+                card.cardStatus || "Owned",
+
+            estimatedValue:
+                card.estimatedValue || "",
+
+            fav:
+                card.fav || false,
+
+            wishlist:
+                card.wishlist || false,
+
+            notes:
+                card.notes || "",
+
+            imageData:
+                card.imageData || "",
+
+            imageLayout:
+                card.imageLayout || "vertical",
+
+            ...card
+        };
+    });
+}
+
+function showToast(message) {
+
+    let toast =
+        document.getElementById("toast");
+
+    if (!toast) {
+        console.log("Toast element missing");
+        return;
+    }
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+}
+
+
+//-------------------
+// STARTUP
+//-------------------
+
+loadDefaultTheme();
+
+cards = JSON.parse(
+    localStorage.getItem("cards")
+) || [];
+
+cards = updateOldCards(cards);
+
+localStorage.setItem(
+    "cards",
+    JSON.stringify(cards)
+);
+
+displayBookPage();
