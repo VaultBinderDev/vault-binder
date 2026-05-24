@@ -775,3 +775,31 @@ button:hover {
 
     border: 3px solid rgba(28, 26, 26, 0.80);
 }
+
+
+.compactInfoView {
+    width: 100%;
+    padding: 8px;
+}
+
+.infoMiniRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 4px 0;
+}
+
+.miniLabel {
+    opacity: 0.65;
+    font-weight: bold;
+}
+
+.miniValue {
+    text-align: right;
+}
+
+.binderCardImage {
+    max-width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+}
