@@ -281,9 +281,15 @@ button:hover {
 /* =========================================================
    5. COLLECTION PAGE - BOOK DISPLAY
    Grid of rendered card containers
-   ========================================================= */
+========================================================= */
 
-#bookDisplay {
+#binderBook {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+}
+
+#binderPage {
     width: min(90vw, 760px);
     aspect-ratio: 4 / 5.5;
     margin: 0 auto;
@@ -307,11 +313,10 @@ button:hover {
     margin: 0;
     padding: 8px;
 
+}
 
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    overflow: hidden;
+#binderSidebar {
+
 }
 
 .selectedCard {
@@ -319,7 +324,7 @@ button:hover {
     outline-offset: 1px;
 }
 
-#pageControls {
+#binderNavigation {
     display: flex;
     align-items: center;
     gap: 12px;

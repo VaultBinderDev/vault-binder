@@ -35,11 +35,11 @@ function displayBookPage(cardList) {
         cardList = cards;
     }
 
-    let bookDisplay = document.getElementById("bookDisplay");
+    let binderPage = document.getElementById("binderPage");
 
-    if (!bookDisplay) return;
+    if (!binderPage) return;
 
-    bookDisplay.innerHTML = "";
+    binderPage.innerHTML = "";
 
     let totalCount = document.getElementById("TotalPokeCards");
 
@@ -141,7 +141,7 @@ function displayBookPage(cardList) {
         // FINAL CARD RENDER
         //-------------------
 
-        bookDisplay.innerHTML += `
+        binderPage.innerHTML += `
             <div class="binderCard${selectedClass}" id="card-${i}" onclick="selectCard(${i})">
             <div class="cardTopTabs">
             <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='image'; displayBookPage();">Image</button>

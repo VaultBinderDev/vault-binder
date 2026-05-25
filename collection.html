@@ -145,40 +145,59 @@
     </div>
     </div>
 
-    <!-- CARD BOOK STRUCTURE (tk) -->
-    <div id="cardBookSection">
-    <h2 class="sectionHeader">My Card Book</h2>
-    <div id="cardSortArea">
-        <label>Sort By: </label>
-        <button onclick="sortCardName()">Name</button>
-        <button onclick="sortCardHp()">HP</button>
-        <button onclick="sortCardType()">Type</button>
-        <button onclick="sortCardStage()">Stage</button>
-        <input oninput="search()" type="text" id="searchBar">
-        <button onclick="toggleFavorites()">Favorites</button>
-        <label>Total Count: <span id="TotalPokeCards"></span></label>
-    </div>
-    <br>
 
-    <!--
-        This is where the current "page" of cards will be rendered.
-        Instead of choosing one card from a dropdown, the app now shows
-        a few cards at a time like pages in a book.
-    -->
-    <div id="bookDisplay"></div>
+    <div id="vaultBinderApp">
 
-    <br>
+        <!-- Left slide-out drawer later -->
+        <aside id="binderSidebar">
+            <button id="closeSidebarBtn">×</button>
 
-    <!--
-        Page controls let the user move forward and backward through
-        the card collection without infinitely scrolling.
-    -->
-    <div id="pageControls">
-        <button onclick="previousPage()">Previous</button>
-        <span id="pageNumber">Page 1</span>
-        <button onclick="nextPage()">Next</button>
+            <h2>Binder Tools</h2>
+
+            <div class="sideBarSection">
+                <label for="binderSearch">Search</label>
+                <input id="binderSearch" type="text" placeholder="Seach cards..." />
+            </div>
+
+            <div class="sidebarSection">
+                <h3>Sort</h3>
+                <button>Name</button>
+                <button>Set</button>
+                <button>Rarity</button>
+                <button>Value</button>
+                <button>Conditions</button>
+            </div>
+        </aside>
+
+        <!-- Main binder area -->
+        <section id="binderViewport">
+
+            <header id="binderHeader">
+                <button id="openSidebarBtn">≡</button>
+                <h1>Vault Binder</h1>
+                <p id="binderCount">Total Cards: 0</p>
+            </header>
+
+            <section id="binderBook">
+                <div id="binderPage">
+                    <!-- card slots / cards here -->
+                </div>
+            </section>
+
+            <nav id="binderNavigation">
+                <button id="prevPageBtn">←</button>
+                <span id="pageIndicator">Page 1 / 1</span>
+                <input id="pageSlider" type="range" min="1" max="1" value="1" />
+                <button id="nextPageBtn">→</button>
+            </nav>
+
+        </section>
+
     </div>
-    </div>
+
+
+
+
     <!-- Settings Custom Popup -->
     <div id="settingsPopup">
         <h2>Settings</h2>
@@ -202,29 +221,7 @@
         <div id="charCount">0 / 300</div>
     </div>
 
-    <div class="binderCard">
-        <div class="cardTopTabs">
-            <button>Info</button>
-            <button>Image</button>
-            <button>Options</button>
-        </div>
-
-        <div class="mainCardArea">
-            <!-- Where the current page view goes -->
-        </div>
-
-        <div class="emptyCardSlot">
-            <div class="emptyCardIcon">=</div>
-            <h3>Empty Slot</h3>
-            <p>Add a card to this space</p>
-        </div>
-
-        <div class="cardBottomActions">
-            <button>⭐</button>
-            <button>💲</button>
-            <button>💙</button>
-        </div>
-    </div>
+    
 
     <div class="toast"></div>
     <script src="js/cardTypes.js"></script>
