@@ -35,6 +35,18 @@ function displayBookPage(cardList) {
         cardList = cards;
     }
 
+    const sidebar = document.getElementById("binderSidebar");
+    const openSidebarBtn = document.getElementById("openSidebarBtn");
+    const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+
+    if(openSidebarBtn && sidebar) {
+        openSidebarBtn.onclick = () => sidebar.classList.add("open");
+    }
+
+    if(closeSidebarBtn && sidebar) {
+        closeSidebarBtn.onclick = () => sidebar.classList.remove("open");
+    }
+
     let binderPage = document.getElementById("binderPage");
 
     if (!binderPage) return;

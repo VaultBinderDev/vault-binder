@@ -283,40 +283,78 @@ button:hover {
    Grid of rendered card containers
 ========================================================= */
 
+#vaultBinderApp {
+    min-height: 100vh;
+    background: #f4f1ea;
+    position: relative;
+}
+
+#binderViewport {
+    min-height: 100vh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #binderBook {
+    width: min(92vw, 900px);
     display: flex;
     justify-content: center;
-    padding: 24px;
 }
 
 #binderPage {
-    width: min(90vw, 760px);
-    aspect-ratio: 4 / 5.5;
-    margin: 0 auto;
-    padding: 24px;
+    width: min(92vw, 860px);
+    aspect-ratio: 4 / 5.2;
+    padding: 28px;
     box-sizing: border-box;
 
     display: grid;
     gap: 14px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 18px;
 
-    border-radius: 28px;
-    background: #1b1b1b;
+    border-radius: 30px;
+    background: #111;
     overflow: hidden;
 }
 
-.bookCard {
+.binderCard, .bookCard {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+    min-width: 0;
+    min-height: 0;
     margin: 0;
     padding: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
 
 }
 
 #binderSidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100vh;
+    padding: 20px;
+    background: #eee;
+    z-index: 1000;
+    transition: left 0.25 ease;
+    box-shadow: 4px 0 18px rgba(0,0,0,0.25);
+}
 
+#binderSidebar.open {
+    left: 0;
+}
+
+#openSidebarBtn {
+    position: fixed;
+    left: 12px;
+    top: 120px;
+    z-index: 1001;
 }
 
 .selectedCard {
