@@ -304,7 +304,7 @@ button:hover {
 }
 
 #binderPage {
-    width: min(92vw, 1000px);
+    width: min(92vw, 1500px);
     aspect-ratio: 4 / 5.2;
     padding: 28px;
     box-sizing: border-box;
