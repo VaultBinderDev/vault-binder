@@ -288,14 +288,16 @@ button:hover {
     aspect-ratio: 4 / 5.5;
     margin: 0 auto;
     padding: 24px;
+    box-sizing: border-box;
 
     display: grid;
     gap: 14px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
 
     border-radius: 28px;
     background: #1b1b1b;
+    overflow: hidden;
 }
 
 .bookCard {
