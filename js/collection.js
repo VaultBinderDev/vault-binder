@@ -16,7 +16,7 @@ let selectedCardView = "info";
 let selectedCardIndex = "";
 
 let currentPage = 1;
-let cardsPerPage = 12;
+let cardsPerPage = 15;
 
 let currentTheme = "pastelSherbet";
 let settingsText = "";
@@ -64,64 +64,64 @@ function displayBookPage(cardList) {
         //-------------------
 
         if (i === selectedCardIndex && selectedCardView === "info") {
-        cardViewHtml = `
-            <div class="compactInfoView">
-            <h3>${card.name || "Card Name"}</h3>
+            cardViewHtml = `
+                <div class="compactInfoView">
+                <h3>${card.name || "Card Name"}</h3>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">Set</span>
-                <span class="miniValue">${card.setName || "Set Name"}</span>
-            </div>
+                <div class="infoMiniRow">
+                    <span class="miniLabel">Set</span>
+                    <span class="miniValue">${card.setName || "Set Name"}</span>
+                </div>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">No.</span>
-                <span class="miniValue">${card.cardNum || "Card Number"}</span>
-            </div>
+                <div class="infoMiniRow">
+                    <span class="miniLabel">No.</span>
+                    <span class="miniValue">${card.cardNum || "Card Number"}</span>
+                </div>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">Rarity</span>
-                <span class="miniValue">${card.cardRarity || "Rarity"}</span>
-            </div>
+                <div class="infoMiniRow">
+                    <span class="miniLabel">Rarity</span>
+                    <span class="miniValue">${card.cardRarity || "Rarity"}</span>
+                </div>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">Variant</span>
-                <span class="miniValue">${card.cardVariant || "Variant"}</span>
-            </div>
+                <div class="infoMiniRow">
+                    <span class="miniLabel">Variant</span>
+                    <span class="miniValue">${card.cardVariant || "Variant"}</span>
+                </div>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">Condition</span>
-                <span class="miniValue">${card.cardCondition || "Condition"}</span>
-            </div>
+                <div class="infoMiniRow">
+                    <span class="miniLabel">Condition</span>
+                    <span class="miniValue">${card.cardCondition || "Condition"}</span>
+                </div>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">Status</span>
-                <span class="miniValue">${card.cardStatus || "Status"}</span>
-            </div>
+                <div class="infoMiniRow">
+                    <span class="miniLabel">Status</span>
+                    <span class="miniValue">${card.cardStatus || "Status"}</span>
+                </div>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">Qty</span>
-                <span class="miniValue">${card.quantity || "1"}</span>
-            </div>
+                <div class="infoMiniRow">
+                    <span class="miniLabel">Qty</span>
+                    <span class="miniValue">${card.quantity || "1"}</span>
+                </div>
 
-            <div class="infoMiniRow">
-                <span class="miniLabel">Value</span>
-                <span class="miniValue">${card.estimatedValue || "—"}</span>
-            </div>
-            </div>
-                `;
+                <div class="infoMiniRow">
+                    <span class="miniLabel">Value</span>
+                    <span class="miniValue">${card.estimatedValue || "—"}</span>
+                </div>
+                </div>
+            `;
         } else if (i === selectedCardIndex && selectedCardView === "options") {
             cardViewHtml = `
-            <div class="optionsView">
-            <button onclick="event.stopPropagation(); toggleNotesView(${i})">
-                Notes
-            </button>
-            <button onclick="event.stopPropagation(); editCard(${i})">
-                Edit
-            </button>
-            <button onclick="event.stopPropagation(); deleteCard(${i})">
-                Delete
-            </button>
-            </div>
+                <div class="optionsView">
+                <button onclick="event.stopPropagation(); toggleNotesView(${i})">
+                    Notes
+                </button>
+                <button onclick="event.stopPropagation(); editCard(${i})">
+                    Edit
+                </button>
+                <button onclick="event.stopPropagation(); deleteCard(${i})">
+                    Delete
+                </button>
+                </div>
             `;
         } else {
             cardViewHtml = `
