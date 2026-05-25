@@ -304,7 +304,7 @@ button:hover {
 }
 
 #binderPage {
-    width: min(92vw, 860px);
+    width: min(92vw, 1000px);
     aspect-ratio: 4 / 5.2;
     padding: 28px;
     box-sizing: border-box;
@@ -716,6 +716,7 @@ button:hover {
     min-height: 320px;
     border-radius: 16px;
     padding: 10px;
+    color: white;
 
     display: flex;
     flex-direction: column;
@@ -770,8 +771,6 @@ button:hover {
     background: transparent;
     text-align: center;
     justify-content: center;
-
-    color: #fff;
     
 }
 
