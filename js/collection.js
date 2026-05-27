@@ -39,12 +39,14 @@ function displayBookPage(cardList) {
     const openSidebarBtn = document.getElementById("openSidebarBtn");
     const closeSidebarBtn = document.getElementById("closeSidebarBtn");
 
-    if(openSidebarBtn && sidebar) {
-        openSidebarBtn.onclick = () => sidebar.classList.add("open");
+    openSidebarBtn.onclick() = () => {
+        sidebar.classList.add("open");
+        openSidebarBtn.style.display = "none";
     }
 
-    if(closeSidebarBtn && sidebar) {
-        closeSidebarBtn.onclick = () => sidebar.classList.remove("open");
+    closeSidebarBtn.onclick() = () => {
+        sidebar.classList.remove("open");
+        openSidebarBtn.style.display = "block";
     }
 
     let binderPage = document.getElementById("binderPage");
