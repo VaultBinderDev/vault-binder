@@ -39,12 +39,12 @@ function displayBookPage(cardList) {
     const openSidebarBtn = document.getElementById("openSidebarBtn");
     const closeSidebarBtn = document.getElementById("closeSidebarBtn");
 
-    openSidebarBtn.onclick() = () => {
+    openSidebarBtn.onclick = () => {
         sidebar.classList.add("open");
         openSidebarBtn.style.display = "none";
     }
 
-    closeSidebarBtn.onclick() = () => {
+    closeSidebarBtn.onclick = () => {
         sidebar.classList.remove("open");
         openSidebarBtn.style.display = "block";
     }

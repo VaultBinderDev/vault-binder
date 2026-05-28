@@ -342,7 +342,7 @@ button:hover {
     padding: 20px;
     background: #eee;
     z-index: 1000;
-    transition: left 0.25 ease;
+    transition: left 0.25s ease;
     box-shadow: 4px 0 18px rgba(0,0,0,0.25);
     
 }
@@ -713,8 +713,6 @@ button:hover {
 /* New CSS for the New Vertical Card Layout*/
 
 .binderCard {
-    width: 220px;
-    min-height: 320px;
     border-radius: 16px;
     padding: 10px;
     color: white;
@@ -765,8 +763,6 @@ button:hover {
 }
 
 .emptyCardSlot {
-    width: 220px;
-    min-height: 320px;
     padding: 0;
     border: none;
     background: transparent;
