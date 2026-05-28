@@ -314,7 +314,7 @@ button:hover {
 
 #binderPage {
     width: min(88vw, 1400px);
-    min-height: 82vh;
+    min-height: 95vh;
 
     padding: 40px;
     box-sizing: border-box;
