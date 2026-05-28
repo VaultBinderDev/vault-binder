@@ -297,6 +297,11 @@ button:hover {
     align-items: center;
 }
 
+.compactInfoView, .optionsView, .emptyCardSlot {
+    width: 100%;
+    height: 100%;
+}
+
 #binderBook {
     width: 100%;
     display: flex;
@@ -711,12 +716,14 @@ button:hover {
 /* New CSS for the New Vertical Card Layout*/
 
 .binderCard {
-    border-radius: 16px;
-    padding: 10px;
-    color: white;
+    width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
+
+    border-radius: 16px;
+    padding: 10px;
     box-sizing: border-box;
 
     background:
@@ -733,7 +740,6 @@ button:hover {
     
     /* Universal Card Outline */
     border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 16px;
 
     box-shadow: 
         0 4px 10px rgba(0,0,0,0.10),
@@ -754,10 +760,13 @@ button:hover {
 
 .mainCardArea {
     flex: 1;
+    min-height: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 0;
+    
+    overflow: hidden;
 }
 
 .emptyCardSlot {
