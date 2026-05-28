@@ -331,14 +331,6 @@ button:hover {
     overflow: hidden;
 }
 
-.binderCard, .bookCard {
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    min-height: 0;
-
-}
-
 #binderSidebar {
     position: fixed;
     top: 0;
@@ -720,6 +712,7 @@ button:hover {
     padding: 10px;
     box-sizing: border-box;
 
+    color: white;
     background:
         repeating-linear-gradient(
             45deg,
