@@ -168,9 +168,9 @@ function displayBookPage(cardList) {
             </div>
 
             <div class="cardBottomActions">
-            <button onclick="event.stopPropagation(); favoriteCard()">⭐</button>
-            <button onclick="event.stopPropagation();">💲</button>
-            <button onclick="event.stopPropagation();">💙</button>
+            <button onclick="event.stopPropagation(); favoriteCard()">★</button>
+            <button onclick="event.stopPropagation();">$</button>
+            <button onclick="event.stopPropagation();">♥</button>
             </div>
             </div>
         `;
