@@ -59,7 +59,7 @@
     <div class="form-row">
     <label>Rarity</label> <!-- DROPDOWN -->
     <select class="input" id="rarity">
-        <option>Choose a Rarity:</option>
+        <option value="">Choose a Rarity:</option>
         <option value="common">● Common</option>
         <option value="uncommon">◆ Uncommon</option>
         <option value="rare">★ Rare</option>
@@ -73,7 +73,7 @@
     <div class="form-row">
     <label>Variant</label> <!-- DROPDOWN -->
     <select class="input" id="variant">
-        <option>Choose a Variant:</option>
+        <option value="">Choose a Variant:</option>
         <option value="normal">Normal</option>
         <option value="reverse holo">Reverse Holo</option>
         <option value="holo">Holo</option>
@@ -92,7 +92,7 @@
     <div class="form-row">
     <label>Condition</label> <!-- DROPDOWN -->
     <select class="input" id="condition">
-        <option>Choose a Condition:</option>
+        <option value="">Choose a Condition:</option>
         <option value="mint">Mint</option>
         <option value="near mint">Near Mint</option>
         <option value="lightly played">Lightly Played</option>
@@ -105,7 +105,7 @@
     <div class="form-row">
     <label>Status</label> <!-- DROPDOWN -->
     <select class="input" id="status">
-        <option>Choose a Status:</option>
+        <option value="">Choose a Status:</option>
         <option value="owned">Owned</option>
         <option value="wishlist">Wishlist</option>
         <option value="for trade">For Trade</option>
@@ -206,8 +206,6 @@
         <p>-------------------</p>
         <label>Themes:</label><br>
         <input type="radio" name="theme" onchange="applyTheme('pastelSherbet')">Pastel Sherbet<br>
-        <input type="radio" name="theme" onchange="applyTheme('sleekModern')">Sleek Modern<br>
-        <input type="radio" name="theme" onchange="applyTheme('mutedNeon')">Muted Neon<br>
         <button onclick="setDefaultTheme()">Make Default</button>
         <button onclick="toggleSettings()">Close</button>
     </div>
