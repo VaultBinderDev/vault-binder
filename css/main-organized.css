@@ -7,40 +7,63 @@
    1. GLOBAL / BASE STYLES
 ========================================================= */
 
-h2 {
-    margin: 0;
+:root {
+    --page-bg: #f2efe9;
+    --text-main: #565454;
+    --panel-bg: #fffdf9;
+    --soft-border: #cfc7bc;
+    --binder-bg: #111111;
+    --binder-surface: #f4f1ea;
+    --accent-soft: #c9f4e8;
+    --accent-highlight: #f5f1ad;
+    --shadow-soft: 0 6px 12px rgba(0,0,0,0.18);
+    --shadow-panel: 0 10px 25px rgba(0,0,0,0.20);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
+body {
+    margin: 0;
+    background-color: var(--page-bg);
+    color: var(--text-main);
+}
+
+h2 {
+    margin: 0;
+}
+
 input,
 select,
 button {
-    border: 1px solid #cfc7bc;
+    border: 1px solid var(--soft-border);
     border-radius: 10px;
     padding: 8px 10px;
     font-size: 14px;
-    color: #565454;
-    background-color: #fffdf9;
+    color: var(--text-main);
+    background-color: var(--panel-bg);
 }
 
 input,
 select {
-    box-shadow: 0px 6px 12px rgba(0,0,0,0.18);
+    box-shadow: var(--shadow-soft);
 }
 
 button {
     cursor: pointer;
 }
 
-button:active {
-    background-color: #c9f4e8;
+button:hover {
+    box-shadow: var(--shadow-soft);
 }
 
-button:hover {
-    box-shadow: 0px 6px 12px rgba(0,0,0,0.18);
+button:active {
+    background-color: var(--accent-soft);
 }
 
 .disabledBtn {
@@ -54,7 +77,6 @@ button:hover {
 
 /* =========================================================
    2. SHARED NAVIGATION
-   Used on index.html and collection.html
 ========================================================= */
 
 .siteLogo {
@@ -73,7 +95,6 @@ button:hover {
     width: 40px;
     height: 40px;
     object-fit: contain;
-
 }
 
 .siteLogo:hover {
@@ -106,41 +127,14 @@ button:hover {
     text-decoration: none;
 }
 
-.navBar a:hover  {
+.navBar a:hover {
     opacity: 0.7;
-}
-
-.toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    
-
-    background: #2e7d32;
-    color: white;
-
-    padding: 12px 20px;
-    border-radius: 10px;
-
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-
-    opacity: 0;
-    pointer-events: none;
-
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* =========================================================
    3. INDEX PAGE / EXPLORE PAGE
-   API search, card presenter, learning area, footer
-   ========================================================= */
+   Temporary API/search area. Later this can become Explore.
+========================================================= */
 
 .sectionDivider {
     width: 100%;
@@ -153,9 +147,9 @@ button:hover {
     display: grid;
     grid-template-columns: 0.6fr 0.8fr;
     gap: 15px;
-
     align-items: stretch;
 }
+
 #apiCardDisplay {
     margin-left: -400px;
 }
@@ -165,7 +159,7 @@ button:hover {
     margin-left: -400px;
 }
 
-#apiCardDisplay h2, 
+#apiCardDisplay h2,
 #tooltipsSection h2 {
     margin-top: 0;
 }
@@ -199,13 +193,13 @@ button:hover {
     min-height: 200px;
 
     background-color: #28272e;
+    color: #ddd;
 
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 30px;
+
     padding: 30px;
-    color: #ddd;
-    box-sizing: border-box;
 }
 
 .bottomNav a {
@@ -221,10 +215,15 @@ button:hover {
 
 @media (max-width: 768px) {
     .cardLearnSection {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         align-items: center;
         margin-left: 0;
         width: 100%;
+    }
+
+    #apiCardDisplay,
+    #tooltipsSection {
+        margin-left: 0;
     }
 
     .bottomNav {
@@ -233,9 +232,9 @@ button:hover {
 }
 
 /* =========================================================
-   4. COLLECTION PAGE - SECTION LAYOUT
-   Main containers for add card / selected card / book area
-   ========================================================= */
+   4. COLLECTION EDITOR
+   Add Card section and image preview area.
+========================================================= */
 
 .sectionHeader {
     border-radius: 20px;
@@ -244,17 +243,7 @@ button:hover {
     text-align: center;
 }
 
-#loginBox,
-#profileBox {
-    max-width: 300px;
-    background-color: #888;
-    margin: 20px 10px;
-    padding: 16px;
-    border-radius: 12px;
-}
-
-#addCardSection,
-#cardBookSection {
+#addCardSection {
     margin: 30px;
     padding: 16px;
     border-radius: 14px;
@@ -262,7 +251,8 @@ button:hover {
 
 .editorGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
 .column {
@@ -274,18 +264,56 @@ button:hover {
     border-right: 3px solid #404040;
 }
 
-#imagingBox {
-    justify-content: right;
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-row label {
+    width: 140px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.input {
+    width: 320px;
+    max-width: 100%;
+}
+
+#imagePreviewBox,
+.imgPreviewBox,
+.imgPreview {
+    width: 220px;
+    min-height: 320px;
+    border-radius: 16px;
+    padding: 10px;
+    border: 3px solid rgba(28, 26, 26, 0.80);
+    background-color: rgba(255,255,255,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+#imagePreviewBox img,
+.imgPreviewBox img,
+.imgPreview img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
 /* =========================================================
-   5. COLLECTION PAGE - BOOK DISPLAY
-   Grid of rendered card containers
+   5. BINDER WORKSPACE
+   Main app shell, binder page, card grid, sidebar, navigation.
 ========================================================= */
 
 #vaultBinderApp {
     min-height: 100vh;
-    background: #f4f1ea;
+    background: var(--binder-surface);
     position: relative;
 }
 
@@ -297,12 +325,8 @@ button:hover {
     align-items: center;
 }
 
-#imageView,
-#infoView,
-#optionsView,
-.compactInfoView {
-    width: 100%;
-    height: 100%;
+#binderHeader {
+    text-align: center;
 }
 
 #binderBook {
@@ -315,38 +339,204 @@ button:hover {
 #binderPage {
     width: min(88vw, 1400px);
     min-height: 95vh;
-
     padding: 40px;
-    box-sizing: border-box;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: 18px;
 
     border-radius: 36px;
-    background: #111;
+    background: var(--binder-bg);
+    overflow: hidden;
+}
+
+.binderCard {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+    border-radius: 16px;
+    overflow: hidden;
+
+    color: white;
+    text-align: center;
+    opacity: 0.9;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.08) 8px,
+            rgba(255,255,255,0.03) 8px,
+            rgba(255,255,255,0.03) 16px
+        ),
+        rgba(255,255,255,0.18);
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.10),
+        inset 0 1px 0 rgba(255,255,255,0.20),
+        inset 0 0 18px rgba(255,255,255,0.03);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.binderCard:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.selectedCard {
+    outline: 4px solid var(--accent-highlight);
+    outline-offset: 1px;
+}
+
+.cardTopTabs,
+.cardBottomActions {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.cardTopTabs button,
+.cardBottomActions button {
+    padding: 5px 8px;
+    font-size: 12px;
+}
+
+.cardBottomActions {
+    margin-top: auto;
+}
+
+.mainCardArea {
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     overflow: hidden;
+}
+
+#imageView,
+#infoView,
+#optionsView,
+.compactInfoView,
+.optionsView,
+.emptyCardSlot {
+    width: 100%;
+    height: 100%;
+}
+
+.emptyCardSlot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-align: center;
+}
+
+.emptyCardIcon {
+    font-size: 48px;
+    opacity: 0.35;
+    margin-bottom: 12px;
+}
+
+.emptyCardSlot h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.emptyCardSlot p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.compactInfoView {
+    padding: 8px;
+    overflow: auto;
+}
+
+.infoMiniRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    font-size: 0.8rem;
+    padding: 4px 0;
+}
+
+.miniLabel {
+    opacity: 0.65;
+    font-weight: bold;
+}
+
+.miniValue {
+    text-align: right;
+}
+
+.optionsView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.binderCardImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 #binderSidebar {
     position: fixed;
     top: 0;
-    left: -280px;
-    width: 260px;
+    left: -300px;
+
+    width: 280px;
     height: 100vh;
     padding: 20px;
+
     background: #eee;
     z-index: 1000;
+
     transition: left 0.25s ease;
     box-shadow: 4px 0 18px rgba(0,0,0,0.25);
-    
 }
 
 #binderSidebar.open {
     left: 0;
+}
+
+.sidebarSection,
+.sideBarSection {
+    margin-top: 18px;
+}
+
+.sidebarSection button,
+.sideBarSection button {
+    width: 100%;
+    margin: 5px 0;
 }
 
 #openSidebarBtn {
@@ -356,21 +546,27 @@ button:hover {
     z-index: 1001;
 }
 
-.selectedCard {
-    outline: 4px solid #f5f1ad;
-    outline-offset: 1px;
+#closeSidebarBtn {
+    float: right;
 }
 
 #binderNavigation {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
+    padding-bottom: 32px;
+}
+
+#pageSlider {
+    min-width: 180px;
 }
 
 /* =========================================================
-   6. COLLECTION PAGE - NEW CARD COMPONENT
-   Sidebar buttons + card content views
-   ========================================================= */
+   6. LEGACY CARD COMPONENTS
+   Keep only while old selected-card/editor code still exists.
+   Remove after binderCard fully replaces these.
+========================================================= */
 
 .cardContainer {
     display: grid;
@@ -410,8 +606,6 @@ button:hover {
 
     border-radius: 10px;
     border: none;
-
-    cursor: pointer;
 }
 
 .cardContent {
@@ -433,12 +627,6 @@ button:hover {
     gap: 20px;
 }
 
-#optionsView {
-    display: none;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
 .inputBox {
     height: 36px;
     padding: 0 10px;
@@ -447,7 +635,6 @@ button:hover {
     border: none;
 
     width: 100%;
-    box-sizing: border-box;
 }
 
 .inputBox::placeholder {
@@ -460,9 +647,9 @@ button:hover {
 }
 
 /* =========================================================
-   7. COLLECTION PAGE - OLD SELECTED CARD EDIT ROWS
-   Keep while still used; remove later if selected section retires
-   ========================================================= */
+   7. LEGACY SELECTED CARD EDIT ROWS
+   Keep while still used; remove when selected section retires.
+========================================================= */
 
 .editRow {
     padding: 12px;
@@ -477,33 +664,17 @@ button:hover {
 }
 
 #ExampleText {
-    color: #565454;
-    font-family: 'Courier New';
+    color: var(--text-main);
+    font-family: 'Courier New', monospace;
     font-size: 10px;
     text-align: center;
 }
 
 /* =========================================================
    8. POPUPS
-   Settings popup + notes popup
-   ========================================================= */
+========================================================= */
 
-#settingsPopup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    background-color: #f2efe9;
-    color: #444;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
-
-    z-index: 1000;
-}
-
+#settingsPopup,
 #notesPopup {
     display: none;
     position: fixed;
@@ -511,17 +682,18 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 400px;
-    height: 300px;
-
     background-color: #f2efe9;
     color: #444;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-panel);
 
     z-index: 1000;
+}
 
+#notesPopup {
+    width: 400px;
+    height: 300px;
 }
 
 #notesInput {
@@ -537,17 +709,18 @@ button:hover {
 }
 
 #settingsBtn.active {
-    background-color: #c9f4e8;
-    box-shadow: inset 0px 3px 6px rgba(0,0,0,0.2);
+    background-color: var(--accent-soft);
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.2);
 }
 
 /* =========================================================
    9. THEMES - PASTEL SHERBET
-   ========================================================= */
+   Main active theme.
+========================================================= */
 
 .theme-pastelSherbet {
     background-color: #f2efe9;
-    color: #565454;
+    color: var(--text-main);
 
     --psherb-addcard: 234, 224, 161;
     --psherb-book: 143, 172, 204;
@@ -563,16 +736,6 @@ button:hover {
     background-color: rgba(var(--psherb-addcard), 0.45);
 }
 
-.theme-pastelSherbet #cardBookSection {
-    border: 4px solid rgb(var(--psherb-book));
-    background-color: rgba(var(--psherb-book), 0.45);
-}
-
-.theme-pastelSherbet .bookCard {
-    background-color: #ffffff;
-    color: #444;
-}
-
 .theme-pastelSherbet button {
     background-color: #ffffff;
     color: #444;
@@ -586,99 +749,34 @@ button:hover {
 }
 
 /* =========================================================
-   10. THEMES - SLEEK MODERN
-   ========================================================= */
+   10. UTILITIES / ANIMATIONS
+========================================================= */
 
-.theme-sleekModern {
-    background-color: #4f3615;
-    color: #f7e6d0;
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
 
-    --smodern-addcard: 181, 169, 154;
-    --smodern-book: 94, 90, 85;
-}
+    background: #2e7d32;
+    color: white;
 
-.theme-sleekModern .sectionHeader {
-    background-color: #f2efe9;
-    color: #444;
-}
-
-.theme-sleekModern #addCardSection {
-    border: 4px solid rgb(var(--smodern-addcard));
-    background-color: rgba(var(--smodern-addcard), 0.45);
-}
-
-.theme-sleekModern #cardBookSection {
-    border: 4px solid rgb(var(--smodern-book));
-    background-color: rgba(var(--smodern-book), 0.45);
-}
-
-.theme-sleekModern .bookCard {
-    background-color: #f2efe9;
-    color: #444;
-}
-
-.theme-sleekModern button {
-    background-color: #f2efe9;
-    color: #444;
-    border: none;
+    padding: 12px 20px;
     border-radius: 10px;
-    padding: 6px 10px;
+
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.theme-sleekModern button:hover {
-    background-color: #f9eacc;
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }
-
-/* =========================================================
-   11. THEMES - MUTED NEON
-   ========================================================= */
-
-.theme-mutedNeon {
-    background-color: #03080d;
-    color: #2edf21;
-
-    --mneon-addcard: 212, 39, 8;
-    --mneon-book: 8, 110, 212;
-}
-
-.theme-mutedNeon .sectionHeader {
-    background-color: #03080d;
-    color: #ffffff;
-}
-
-.theme-mutedNeon #addCardSection {
-    border: 4px solid rgb(var(--mneon-addcard));
-    background-color: rgba(var(--mneon-addcard), 0.45);
-}
-
-.theme-mutedNeon #cardBookSection {
-    border: 4px solid rgb(var(--mneon-book));
-    background-color: rgba(var(--mneon-book), 0.45);
-}
-
-.theme-mutedNeon #addCardSection,
-.theme-mutedNeon #cardBookSection {
-    color: #ffffff;
-}
-
-.theme-mutedNeon .bookCard {
-    background-color: #03080d;
-    color: #f2efe9;
-}
-
-.theme-mutedNeon button {
-    background-color: #f2efe9;
-    color: #03080d;
-    border: none;
-    border-radius: 10px;
-    padding: 6px 10px;
-}
-
-
-/* =========================================================
-   12. NEWLY ADDED 
-   ========================================================= */
-
 
 .loadingSpinner {
     width: 40px;
@@ -694,152 +792,4 @@ button:hover {
     to {
         transform: rotate(360deg);
     }
-}
-
-
-
-
-/* New CSS for the New Vertical Card Layout*/
-
-.binderCard {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    border-radius: 16px;
-    padding: 10px;
-    box-sizing: border-box;
-
-    color: white;
-    background:
-        repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,0.08),
-            rgba(255,255,255,0.08) 8px,
-            rgba(255,255,255,0.03) 8px,
-            rgba(255,255,255,0.03) 16px
-        ),
-        rgba(255,255,255,0.18);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    
-    /* Universal Card Outline */
-    border: 1px solid rgba(255,255,255,0.25);
-
-    box-shadow: 
-        0 4px 10px rgba(0,0,0,0.10),
-        inset 0 1px 0 rgba(255,255,255,0.20),
-        inset 0 0 18px rgba(255,255,255, 0.03);    
-    
-    text-align: center;
-    opacity: 0.85;
-    transition: transform 0.2s ease, opactity 0.2s ease;
-}
-
-.cardTopTabs {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    flex-shrink: 0;
-}
-
-.mainCardArea {
-    flex: 1;
-    min-height: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    overflow: hidden;
-}
-
-.emptyCardSlot {
-    padding: 0;
-    border: none;
-    background: transparent;
-    text-align: center;
-    justify-content: center;
-    
-}
-
-.cardBottomActions {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-top: auto;
-    flex-shrink: 0;
-}
-
-.emptyCardSlot:hover {
-    transform: translateY(-2px);
-    opacity: 1;
-}
-
-.emptyCardIcon {
-    font-size: 48px;
-    opacity: 0.35;
-    margin-bottom: 12px;
-}
-
-.emptyCardSlot h3 {
-    margin: 0 0 6px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.emptyCardSlot p {
-    margin: 0;
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-.form-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.input {
-    width: 320px;
-    box-sizing: border-box;
-}
-
-.form-row label {
-    width: 140px;
-    text-align: right;
-    flex-shrink: 0;
-}
-
-.imgPreview {
-    width: 220px;
-    min-height: 320px;
-    border-radius: 16px;
-    padding: 10px;
-
-    border: 3px solid rgba(28, 26, 26, 0.80);
-}
-
-.infoMiniRow {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    padding: 4px 0;
-}
-
-.miniLabel {
-    opacity: 0.65;
-    font-weight: bold;
-}
-
-.miniValue {
-    text-align: right;
-}
-
-.binderCardImage {
-    max-width: 100%;
-    max-height: 220px;
-    object-fit: contain;
 }
