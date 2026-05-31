@@ -55,7 +55,7 @@ function displayBookPage(cardList) {
 
     binderPage.innerHTML = "";
 
-    let totalCount = document.getElementById("TotalPokeCards");
+    let totalCount = document.getElementById("binderCount");
 
     if (totalCount) {
         totalCount.textContent = cardList.length;
@@ -68,9 +68,8 @@ function displayBookPage(cardList) {
         let cardIndex = start + slot;
         let card = cardList[cardIndex];
 
-        console.log(slot, cardIndex, card);
         if(card) {
-            let selectedClass = selectedCardIndex === cardIndex ? "selectedCard" : "";
+            let selectedClass = selectedCardIndex === cardIndex ? " selectedCard" : "";
             // Render Real card
             if (cardIndex === selectedCardIndex && selectedCardView === "info") {
                 cardViewHtml = `
