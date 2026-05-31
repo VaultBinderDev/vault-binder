@@ -17,6 +17,7 @@ let selectedCardIndex = "";
 
 let currentPage = 1;
 let cardsPerPage = 8;
+let slotsPerPage = 8;
 
 let currentTheme = "pastelSherbet";
 let settingsText = "";
@@ -61,8 +62,26 @@ function displayBookPage(cardList) {
         totalCount.textContent = cardList.length;
     }
 
+
+   
+
+
+
+
+
     let start = (currentPage - 1) * cardsPerPage;
     let end = start + cardsPerPage;
+
+    for(let slot = 0; slot < slotsPerPage; slot++) {
+        let cardIndex = start + slot;
+        let card = cardList[cardIndex];
+
+        if(card) {
+            // Render Real card
+        } else {
+            // Render Empty slot
+        }
+    }
 
     for (let i = start; i < end && i < cardList.length; i++) {
 
