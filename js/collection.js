@@ -84,32 +84,32 @@ function displayBookPage(cardList) {
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Set</span>
-                    <span class="miniValue">${card.setName || "Set Name"}</span>
+                    <span class="miniValue">${card.setName || "--~--"}</span>
                 </div>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">No.</span>
-                    <span class="miniValue">${card.cardNum || "Card Number"}</span>
+                    <span class="miniValue">${card.cardNum || "--~--"}</span>
                 </div><br>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Rarity</span>
-                    <span class="miniValue">${card.cardRarity || "Rarity"}</span>
+                    <span class="miniValue">${card.cardRarity || "--~--"}</span>
                 </div>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Variant</span>
-                    <span class="miniValue">${card.cardVariant || "Variant"}</span>
+                    <span class="miniValue">${card.cardVariant || "--~--"}</span>
                 </div><br>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Condition</span>
-                    <span class="miniValue">${card.cardCondition || "Condition"}</span>
+                    <span class="miniValue">${card.cardCondition || "--~--"}</span>
                 </div>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Status</span>
-                    <span class="miniValue">${card.cardStatus || "Status"}</span>
+                    <span class="miniValue">${card.cardStatus || "--~--"}</span>
                 </div><br>
 
                 <div class="infoMiniRow">
@@ -119,7 +119,7 @@ function displayBookPage(cardList) {
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Value</span>
-                    <span class="miniValue">${card.estimatedValue || "—"}</span>
+                    <span class="miniValue">${card.estimatedValue || "--~--"}</span>
                 </div>
                 </div>
             `;
