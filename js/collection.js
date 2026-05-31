@@ -90,7 +90,7 @@ function displayBookPage(cardList) {
                 <div class="infoMiniRow">
                     <span class="miniLabel">No.</span>
                     <span class="miniValue">${card.cardNum || "--~--"}</span>
-                </div><br>
+                </div>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Rarity</span>
@@ -100,7 +100,7 @@ function displayBookPage(cardList) {
                 <div class="infoMiniRow">
                     <span class="miniLabel">Variant</span>
                     <span class="miniValue">${card.cardVariant || "--~--"}</span>
-                </div><br>
+                </div>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Condition</span>
@@ -110,7 +110,7 @@ function displayBookPage(cardList) {
                 <div class="infoMiniRow">
                     <span class="miniLabel">Status</span>
                     <span class="miniValue">${card.cardStatus || "--~--"}</span>
-                </div><br>
+                </div>
 
                 <div class="infoMiniRow">
                     <span class="miniLabel">Qty</span>
