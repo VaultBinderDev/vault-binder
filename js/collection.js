@@ -172,7 +172,7 @@ function displayBookPage(cardList) {
             `;
         } else {
             // Render Empty slot
-            binderPage.innerHTML = `
+            binderPage.innerHTML += `
                 <div class="binderCard emptySlot testSlot">
                     <div class="mainCardArea">
                         <div class="emptySlotContent">
