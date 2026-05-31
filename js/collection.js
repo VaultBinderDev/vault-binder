@@ -69,6 +69,7 @@ function displayBookPage(cardList) {
         let card = cardList[cardIndex];
 
         if(card) {
+            let selectedClass = selectedCardIndex === cardIndex ? "selectedCard" : "";
             // Render Real card
             if (cardIndex === selectedCardIndex && selectedCardView === "info") {
                 cardViewHtml = `
@@ -119,13 +120,13 @@ function displayBookPage(cardList) {
             } else if (cardIndex === selectedCardIndex && selectedCardView === "options") {
             cardViewHtml = `
                 <div class="optionsView">
-                <button onclick="event.stopPropagation(); toggleNotesView(${i})">
+                <button onclick="event.stopPropagation(); toggleNotesView(${cardIndex})">
                     Notes
                 </button>
-                <button onclick="event.stopPropagation(); editCard(${i})">
+                <button onclick="event.stopPropagation(); editCard(${cardIndex})">
                     Edit
                 </button>
-                <button onclick="event.stopPropagation(); deleteCard(${i})">
+                <button onclick="event.stopPropagation(); deleteCard(${cardIndex})">
                     Delete
                 </button>
                 </div>
@@ -150,11 +151,11 @@ function displayBookPage(cardList) {
 
 
             binderPage.innerHTML += `
-            <div class="binderCard${selectedClass}" id="card-${i}" onclick="selectCard(${i})">
+            <div class="binderCard${selectedClass}" id="card-${cardIndex}" onclick="selectCard(${cardIndex})">
             <div class="cardTopTabs">
-            <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='image'; displayBookPage();">Image</button>
-            <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='info'; displayBookPage();">Info</button>
-            <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='options'; displayBookPage();">Options</button>
+            <button onclick="event.stopPropagation(); selectedCardIndex=${cardIndex}; selectedCardView='image'; displayBookPage();">Image</button>
+            <button onclick="event.stopPropagation(); selectedCardIndex=${cardIndex}; selectedCardView='info'; displayBookPage();">Info</button>
+            <button onclick="event.stopPropagation(); selectedCardIndex=${cardIndex}; selectedCardView='options'; displayBookPage();">Options</button>
             </div>
 
             <div class="mainCardArea">
