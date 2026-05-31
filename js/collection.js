@@ -16,7 +16,7 @@ let selectedCardView = "info";
 let selectedCardIndex = "";
 
 let currentPage = 1;
-let cardsPerPage = 15;
+let cardsPerPage = 8;
 
 let currentTheme = "pastelSherbet";
 let settingsText = "";
