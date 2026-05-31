@@ -16,7 +16,6 @@ let selectedCardView = "info";
 let selectedCardIndex = "";
 
 let currentPage = 1;
-let cardsPerPage = 8;
 let slotsPerPage = 8;
 
 let currentTheme = "pastelSherbet";
@@ -62,15 +61,8 @@ function displayBookPage(cardList) {
         totalCount.textContent = cardList.length;
     }
 
-
-   
-
-
-
-
-
-    let start = (currentPage - 1) * cardsPerPage;
-    let end = start + cardsPerPage;
+    let start = (currentPage - 1) * slotsPerPage;
+    let end = start + slotsPerPage;
 
     for(let slot = 0; slot < slotsPerPage; slot++) {
         let cardIndex = start + slot;
@@ -78,26 +70,8 @@ function displayBookPage(cardList) {
 
         if(card) {
             // Render Real card
-        } else {
-            // Render Empty slot
-        }
-    }
-
-    for (let i = start; i < end && i < cardList.length; i++) {
-
-        let card = cardList[i];
-
-        let selectedClass =
-            selectedCardIndex === i ? " selectedCard" : "";
-
-        let cardViewHtml = "";
-
-        //-------------------
-        // IMAGE VIEW
-        //-------------------
-
-        if (i === selectedCardIndex && selectedCardView === "info") {
-            cardViewHtml = `
+            if (cardIndex === selectedCardIndex && selectedCardView === "info") {
+                cardViewHtml = `
                 <div class="compactInfoView">
                 <h3>${card.name || "Card Name"}</h3>
 
@@ -141,8 +115,8 @@ function displayBookPage(cardList) {
                     <span class="miniValue">${card.estimatedValue || "--~--"}</span>
                 </div>
                 </div>
-            `;
-        } else if (i === selectedCardIndex && selectedCardView === "options") {
+                `;
+            } else if (cardIndex === selectedCardIndex && selectedCardView === "options") {
             cardViewHtml = `
                 <div class="optionsView">
                 <button onclick="event.stopPropagation(); toggleNotesView(${i})">
@@ -156,25 +130,26 @@ function displayBookPage(cardList) {
                 </button>
                 </div>
             `;
-        } else {
+            } else {
             cardViewHtml = `
             ${
             card.imageData
             ? `<img class="binderCardImage" src="${card.imageData}" alt="${card.name}">`
             : `<div class="emptyCardSlot">
                     <div class="emptyCardIcon">=</div>
-                    <h3>Empty Slot</h3>
+                    <h3>No Image Here</h3>
                     <p>Add an image to this card</p>
                </div>`
-        }
-        `;
-        }
+            }
+            `;
+            }
 
-        //-------------------
-        // FINAL CARD RENDER
-        //-------------------
 
-        binderPage.innerHTML += `
+
+
+
+
+            binderPage.innerHTML += `
             <div class="binderCard${selectedClass}" id="card-${i}" onclick="selectCard(${i})">
             <div class="cardTopTabs">
             <button onclick="event.stopPropagation(); selectedCardIndex=${i}; selectedCardView='image'; displayBookPage();">Image</button>
@@ -192,12 +167,26 @@ function displayBookPage(cardList) {
             <button onclick="event.stopPropagation();">♥</button>
             </div>
             </div>
-        `;
+            `;
+        } else {
+            // Render Empty slot
+            binderPage.innerHTML = `
+                <div class="binderCard emptySlot testSlot">
+                    <div class="mainCardArea">
+                        <div class="emptySlotContent">
+                            <h3>Empty Slot</h3>
+                            <p>Awaiting Card</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
     }
+
 
     let maxPage = Math.max(
         1,
-        Math.ceil(cardList.length / cardsPerPage)
+        Math.ceil(cardList.length / slotsPerPage)
     );
 
     let pageNumber = document.getElementById("pageNumber");
@@ -325,7 +314,7 @@ function addCard(imageData = "") {
     );
 
     currentPage =
-        Math.ceil(cards.length / cardsPerPage);
+        Math.ceil(cards.length / slotsPerPage);
 
     selectedCardIndex = cards.length - 1;
 
@@ -630,7 +619,7 @@ function toggleOptionsView(index) {
 function nextPage() {
 
     let maxPage =
-        Math.ceil(cards.length / cardsPerPage);
+        Math.ceil(cards.length / slotsPerPage);
 
     if (currentPage < maxPage) {
 
