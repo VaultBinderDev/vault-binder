@@ -451,7 +451,7 @@ button:active {
 .testSlot {
     width: 240px;
     aspect-ratio: 63 / 88;
-    color: white;
+    color: #3f3f3f;
 }
 
 #imageView,
