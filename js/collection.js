@@ -68,6 +68,7 @@ function displayBookPage(cardList) {
         let cardIndex = start + slot;
         let card = cardList[cardIndex];
 
+        console.log(slot, cardIndex, card);
         if(card) {
             let selectedClass = selectedCardIndex === cardIndex ? "selectedCard" : "";
             // Render Real card
