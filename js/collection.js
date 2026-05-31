@@ -312,7 +312,25 @@ function addCard(imageData = "") {
 
     displayBookPage();
 
+    clearAddCardForm();
+
     showToast(`🎉 ${card.name} added!`);
+}
+
+function clearAddCardForm() {
+
+    document.getElementById("cardName").value = "";
+    document.getElementById("setname").value = "";
+    document.getElementById("cardnumber").value = "";
+    document.getElementById("quantity").value = 1;
+    document.getElementById("rarity").value = "";
+    document.getElementById("variant").value = "";
+    document.getElementById("condition").value = "";
+    document.getElementById("status").value = "";
+
+    document.getElementById("cardImageInput").value = "";
+
+    document.getElementById("imagePreviewBox").innerHTML = `<p>Image Preview</p>`;
 }
 
 function deleteCard(index) {
