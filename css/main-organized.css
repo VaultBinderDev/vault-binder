@@ -342,8 +342,8 @@ button:active {
     padding: 40px;
 
     display: grid;
-    grid-template-columns: repeat(4, 180px);
-    grid-template-rows: repeat(2, 252px);
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(2, 280px);
     justify-content: center;
     align-content: start;
     gap: 24px;
