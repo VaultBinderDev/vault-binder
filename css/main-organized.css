@@ -337,13 +337,16 @@ button:active {
 }
 
 #binderPage {
+    --columns: 4;
+    --rows: 4;
+
     width: min(88vw, 1400px);
     min-height: 95vh;
     padding: 40px;
 
     display: grid;
-    grid-template-columns: repeat(4, 240px);
-    grid-template-rows: repeat(2, 336px);
+    grid-template-columns: repeat(var(--columns), 240px);
+    grid-template-rows: repeat(var(--rows), 336px);
     justify-content: center;
     align-content: start;
     gap: 28px;

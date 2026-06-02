@@ -16,7 +16,17 @@ let selectedCardView = "info";
 let selectedCardIndex = "";
 
 let currentPage = 1;
-let slotsPerPage = 8;
+
+
+// JUST CHANGE THESE VARIABLES TO CHANGE THE ENTIRE LAYOUT
+const COLUMNS = 4;
+const ROWS = 4;
+
+binderPage.style.setProperty("--columns", COLUMNS);
+binderPage.style.setProperty("--rows", ROWS);
+
+const SLOTS_PER_PAGE = COLUMNS * ROWS;
+let slotsPerPage = SLOTS_PER_PAGE;
 
 let currentTheme = "pastelSherbet";
 let settingsText = "";
