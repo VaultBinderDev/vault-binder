@@ -196,18 +196,7 @@ function displayBookPage(cardList) {
         }
     }
 
-
-    let maxPage = Math.max(
-        1,
-        Math.ceil(cardList.length / slotsPerPage)
-    );
-
-    let pageNumber = document.getElementById("pageNumber");
-
-    if (pageNumber) {
-        pageNumber.textContent =
-            "Page " + currentPage + " of " + maxPage;
-    }
+    updatePageIndicator()
 }
 
 //-------------------
@@ -626,6 +615,22 @@ function toggleOptionsView(index) {
     selectedCardView = "options";
 
     displayBookPage();
+}
+
+function updatePageIndicator() {
+
+    let pageIndicator = document.getElementById("pageIndicator");
+
+    if(!pageIndicator) return;
+
+    pageIndicator.textContent = `Page ${currentPage} / ${totalPages}`;
+
+    console.log(
+        "Current: ",
+        currentPage,
+        "Total: ",
+        totalPages
+    );
 }
 
 function nextPage() {
