@@ -341,7 +341,7 @@ button:active {
     --rows: 4;
 
     width: min(88vw, 1400px);
-    min-height: 95vh;
+    min-height: 190vh;
     padding: 40px;
 
     display: grid;
