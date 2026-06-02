@@ -397,11 +397,7 @@ button:active {
     opacity: 1;
 }
 
-.selectedCard {
-    outline: 4px solid var(--accent-highlight);
-    outline-offset: 1px;
-}
-
+/* NEW Selected Card Underline :D*/
 .selectedCard::after {
     content: "";
     position: absolute;
