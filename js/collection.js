@@ -16,6 +16,8 @@ let selectedCardView = "info";
 let selectedCardIndex = "";
 
 let currentPage = 1;
+let totalPages = Number(localStorage.getItem("totalPages")) || 1;
+let maxPage = totalPages;
 
 
 // JUST CHANGE THESE VARIABLES TO CHANGE THE ENTIRE LAYOUT
@@ -207,7 +209,6 @@ function displayBookPage(cardList) {
             "Page " + currentPage + " of " + maxPage;
     }
 }
-
 
 //-------------------
 // IMAGE FUNCTIONS
@@ -628,28 +629,28 @@ function toggleOptionsView(index) {
 }
 
 function nextPage() {
-
-    let maxPage =
-        Math.ceil(cards.length / slotsPerPage);
-
-    if (currentPage < maxPage) {
-
+    if (currentPage < totalPages) {
         currentPage++;
-
         displayBookPage();
     }
 }
 
 function previousPage() {
-
     if (currentPage > 1) {
-
         currentPage--;
-
         displayBookPage();
     }
 }
 
+function addPage() {
+    totalPages++;
+
+    localStorage.setItem("totalPages", totalPages);
+
+    currentPage = totalPages;
+
+    displayBookPage();
+}
 
 //-------------------
 // UTILITY FUNCTIONS
