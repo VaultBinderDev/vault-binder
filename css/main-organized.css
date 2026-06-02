@@ -399,7 +399,20 @@ button:active {
 
 .selectedCard {
     outline: 4px solid var(--accent-highlight);
-    outline-offset: -4px;
+    outline-offset: 1px;
+}
+
+.selectedCard::after {
+    content: "";
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    bottom: 8px;
+    height: 4px;
+
+    border-radius: 999px;
+    background: var(--accent-highlight);
+    box-shadow: 0 0 10px rgba(245, 241, 173,0.8);
 }
 
 .cardTopTabs,
