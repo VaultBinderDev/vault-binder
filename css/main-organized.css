@@ -342,7 +342,7 @@ button:active {
     padding: 40px;
 
     display: grid;
-    grid-template-columns: repeat(4, 280px);
+    grid-template-columns: repeat(4, 240px);
     grid-template-rows: repeat(2, 336px);
     justify-content: center;
     align-content: start;
@@ -399,7 +399,7 @@ button:active {
 
 .selectedCard {
     outline: 4px solid var(--accent-highlight);
-    outline-offset: 1px;
+    outline-offset: -4px;
 }
 
 .cardTopTabs,
