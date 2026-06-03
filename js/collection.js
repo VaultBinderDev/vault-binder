@@ -771,6 +771,7 @@ function updateOldCards(cardList) {
     return cardList.map(card => {
 
         return {
+            binderId: card.binderId || "main",
 
             id:
                 card.id || createCardId(),
