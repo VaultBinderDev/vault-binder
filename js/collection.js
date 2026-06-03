@@ -216,7 +216,7 @@ function displayBookPage(cardList) {
         }
     }
 
-    updatePageIndicator()
+    updatePageControls();
 }
 
 //-------------------
@@ -667,14 +667,21 @@ function toggleOptionsView(index) {
     displayBookPage();
 }
 
-function updatePageIndicator() {
+function updatePageControls() {
     const activeBinder = binders[activeBinderIndex];
-    let pageIndicator = document.getElementById("pageIndicator");
 
-    if(!pageIndicator) return;
+    const pageIndicator = document.getElementById("pageIndicator");
+    const pageSlider = document.getElementById("pageSlider");
 
-    pageIndicator.textContent = `Page ${currentPage} / ${activeBinder.totalPages}`;
+    if(pageIndicator) {
+        pageIndicator.textContent = `Page ${currentPage} / ${activeBinder.totalPages}`;
+    }
 
+    if(pageSlider) {
+        pageSlider.min = 1;
+        pageSlider.max = activeBinder.totalPages;
+        pageSlider.value = currentPage;
+    }
 }
 
 function nextPage() {
