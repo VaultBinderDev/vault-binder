@@ -446,6 +446,7 @@ function favoriteCard() {
 
 function displayTabs() {
     const binderTabs = document.getElementById("binderTabs");
+    let activeBinder = binders[activeBinderIndex];
 
     binderTabs.innerHTML = "";
 
