@@ -676,7 +676,7 @@ function updatePageIndicator() {
 
     console.log(
         "Tab",
-        binders[activeBinderIndex],
+        binders[activeBinderIndex].name,
         "Current: ",
         currentPage,
         "Total: ",
