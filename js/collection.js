@@ -675,6 +675,8 @@ function updatePageIndicator() {
     pageIndicator.textContent = `Page ${currentPage} / ${totalPages}`;
 
     console.log(
+        "Tab",
+        binders[activeBinderIndex],
         "Current: ",
         currentPage,
         "Total: ",
