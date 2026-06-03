@@ -19,7 +19,6 @@ let currentPage = 1;
 let totalPages = Number(localStorage.getItem("totalPages")) || 1;
 let maxPage = totalPages;
 
-
 // JUST CHANGE THESE VARIABLES TO CHANGE THE ENTIRE LAYOUT
 const COLUMNS = 4;
 const ROWS = 4;
@@ -29,6 +28,26 @@ binderPage.style.setProperty("--rows", ROWS);
 
 const SLOTS_PER_PAGE = COLUMNS * ROWS;
 let slotsPerPage = SLOTS_PER_PAGE;
+
+let binders = JSON.parse(localStorage.getItem("binders")) || [
+    {
+        name: "Main Binder",
+        color: "#111111",
+        totalPages: 1
+    },
+    {
+        name:   "Trades",
+        color: "#1f3f2f",
+        totalPages: 1
+    },
+    {
+        name: "Favorites",
+        color: "#2f243f",
+        totalPages: 1
+    }
+];
+
+let activeBinderIndex = Number(localStorage.getItem("activeBinderIndex")) || 0;
 
 let currentTheme = "pastelSherbet";
 let settingsText = "";
@@ -409,6 +428,36 @@ function favoriteCard() {
     );
 
     displayBookPage();
+}
+
+
+
+//-------------------
+// TABS FUNCTIONS
+//-------------------
+
+function displayTabs() {
+    let tabs = document.querySelectorAll(".binderTab");
+
+    tabs.forEach((tab, index) => {
+        tab.classList.toggle("active", index === activeBinderIndex);
+    });
+}
+
+function changeTab(index) {
+
+    activeBinderIndex = index;
+
+    currentPage = 1;
+
+    displayTabs();
+    displayBookPage();
+
+}
+
+function saveBinderState() {
+    localStorage.setItem("binders", JSON.stringify(binders));
+    localStorage.setItem("activeBinderIndex", activeBinderIndex);
 }
 
 
