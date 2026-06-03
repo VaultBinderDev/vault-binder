@@ -29,6 +29,7 @@ let slotsPerPage = SLOTS_PER_PAGE;
 
 let binders = JSON.parse(localStorage.getItem("binders")) || [
     {
+        id: "main",
         name: "Main Binder",
         color: "#111111",
         totalPages: 1
@@ -62,7 +63,11 @@ let cards = JSON.parse(localStorage.getItem("cards")) || [];
 
 function displayBookPage(cardList) {
     if (!cardList) {
-        cardList = cards;
+        let activeBinder = binders[activeBinderIndex];
+
+        cardList = cards.filter(card => 
+            card.binderId === activeBinder.id
+        );
     }
 
     const sidebar = document.getElementById("binderSidebar");
@@ -292,6 +297,7 @@ function addCard(imageData = "") {
 
         id: createCardId(),
         createdAt: Date.now(),
+        binderId: binders[activeBinderIndex].id,
 
         name:
             document.getElementById("cardName").value,
@@ -472,6 +478,7 @@ function changeTab(index) {
 
 function addBinderTab() {
     binders.push({
+        id: crypto.randomUUID(),
         name: `Binder ${binders.length + 1}`,
         color: getRandomBinderColor(),
         totalPages: 1
