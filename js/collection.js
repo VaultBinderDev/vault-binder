@@ -463,6 +463,8 @@ function displayTabs() {
         <button class="binderTab addTab" onclick="addBinderTab()">+</button>
     `;
 
+
+    showToast(`Opened: ${activeBinder.name}`);
 }
 
 function changeTab(index) {
@@ -844,7 +846,7 @@ function showToast(message) {
 
         toast.classList.remove("show");
 
-    }, 2500);
+    }, 1000);
 }
 
 
