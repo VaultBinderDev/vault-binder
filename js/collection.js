@@ -32,16 +32,6 @@ let binders = JSON.parse(localStorage.getItem("binders")) || [
         name: "Main Binder",
         color: "#111111",
         totalPages: 1
-    },
-    {
-        name:   "Trades",
-        color: "#1f3f2f",
-        totalPages: 1
-    },
-    {
-        name: "Favorites",
-        color: "#2f243f",
-        totalPages: 1
     }
 ];
 
