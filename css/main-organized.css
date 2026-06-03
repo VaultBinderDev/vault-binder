@@ -352,7 +352,7 @@ button:active {
 }
 
 .binderTab.active {
-    background: #111;
+    background: var(--active-tab-color);
     color: white;
 }
 
@@ -385,7 +385,7 @@ button:active {
     gap: 28px;
 
     border-radius: 36px;
-    background: var(--binder-bg);
+    background: var(--active-tab-color);
     overflow: hidden;
 }
 

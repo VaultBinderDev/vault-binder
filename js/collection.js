@@ -78,6 +78,9 @@ function displayBookPage(cardList) {
         openSidebarBtn.style.display = "block";
     }
 
+    let activeBinder = binder[activeBinderIndex];
+    document.documentElement.style.setProperty("--active-tab-color", activeBinder.color);
+
     let binderPage = document.getElementById("binderPage");
 
     if (!binderPage) return;
