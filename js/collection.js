@@ -449,11 +449,24 @@ function favoriteCard() {
 //-------------------
 
 function displayTabs() {
-    let tabs = document.querySelectorAll(".binderTab");
+    const binderTabs = document.getElementById("binderTabs");
 
-    tabs.forEach((tab, index) => {
-        tab.classList.toggle("active", index === activeBinderIndex);
+    binderTabs.innerHTML = "";
+
+    binders.forEach((binder, index) => {
+        binderTabs.innerHTML += `
+            <button
+                class="binderTab ${index === activeBinderIndex ? "active" : ""}"
+                onclick="changeTab(${index})">
+                ${binder.name}
+            </button>
+        `;
     });
+
+    binderTabs.innerHTML += `
+        <button class="binderTab addTab" onclick="addBinderTab()">+</button>
+    `;
+
 }
 
 function changeTab(index) {
@@ -845,6 +858,8 @@ document.getElementById("pageSlider").oninput = function () {
     currentPage = Number(this.value);
     displayBookPage();
 }
+
+displayTabs();
 
 loadDefaultTheme();
 
