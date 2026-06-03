@@ -47,6 +47,17 @@ let binders = JSON.parse(localStorage.getItem("binders")) || [
 
 let activeBinderIndex = Number(localStorage.getItem("activeBinderIndex")) || 0;
 
+const binderColors = [
+    "#111111",
+    "#1f3f2f",
+    "#22364a",
+    "#3a243f",
+    "#3f2d1f",
+    "#1f3f3c",
+    "#3f1f2b",
+    "#2d2d3f",
+]
+
 let currentTheme = "pastelSherbet";
 let settingsText = "";
 
@@ -434,7 +445,7 @@ function favoriteCard() {
 
 
 //-------------------
-// TABS FUNCTIONS
+// TABS FUNCTIONS (tk)
 //-------------------
 
 function displayTabs() {
@@ -454,6 +465,27 @@ function changeTab(index) {
     displayTabs();
     displayBookPage();
 
+}
+
+function addBinderTab() {
+    binders.push({
+        name: `Binder ${binders.length + 1}`,
+        color: getRandomBinderColor(),
+        totalPages: 1
+    });
+
+    activeBinderIndex = binders.length - 1;
+    currentPage = 1;
+
+    saveBinderState();
+    displayTabs();
+    displayBookPage();
+}
+
+function getRandomBinderColor() {
+    let randIndex = Math.floor(Math.random() * binderColors.length);
+
+    return binderColors[randIndex];
 }
 
 function saveBinderState() {
