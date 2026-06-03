@@ -16,8 +16,7 @@ let selectedCardView = "info";
 let selectedCardIndex = "";
 
 let currentPage = 1;
-let totalPages = Number(localStorage.getItem("totalPages")) || 1;
-let maxPage = totalPages;
+let maxPage = binders[activeBinderIndex].totalPages;
 
 // JUST CHANGE THESE VARIABLES TO CHANGE THE ENTIRE LAYOUT
 const COLUMNS = 4;
@@ -667,25 +666,18 @@ function toggleOptionsView(index) {
 }
 
 function updatePageIndicator() {
-
+    const activeBinder = binders[activeBinderIndex];
     let pageIndicator = document.getElementById("pageIndicator");
 
     if(!pageIndicator) return;
 
-    pageIndicator.textContent = `Page ${currentPage} / ${totalPages}`;
+    pageIndicator.textContent = `Page ${currentPage} / ${activeBinder.totalPages}`;
 
-    console.log(
-        "Tab",
-        binders[activeBinderIndex].name,
-        "Current: ",
-        currentPage,
-        "Total: ",
-        totalPages
-    );
 }
 
 function nextPage() {
-    if (currentPage < totalPages) {
+    const activeBinder = binders[activeBinderIndex]; 
+    if (currentPage < activeBinder.totalPages) {
         currentPage++;
         displayBookPage();
     }
@@ -699,11 +691,11 @@ function previousPage() {
 }
 
 function addPage() {
-    totalPages++;
+    const activeBinder = binders[activeBinderIndex];
 
-    localStorage.setItem("totalPages", totalPages);
+    activeBinder.totalPages++;
 
-    currentPage = totalPages;
+    localStorage.setItem("binders", JSON.stringify(binders));
 
     displayBookPage();
 }
