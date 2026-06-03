@@ -16,7 +16,6 @@ let selectedCardView = "info";
 let selectedCardIndex = "";
 
 let currentPage = 1;
-let maxPage = binders[activeBinderIndex].totalPages;
 
 // JUST CHANGE THESE VARIABLES TO CHANGE THE ENTIRE LAYOUT
 const COLUMNS = 4;
