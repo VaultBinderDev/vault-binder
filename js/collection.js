@@ -809,6 +809,11 @@ function showToast(message) {
 // STARTUP
 //-------------------
 
+document.getElementById("pageSlider").oninput = function () {
+    currentPage = Number(this.value);
+    displayBookPage();
+}
+
 loadDefaultTheme();
 
 cards = JSON.parse(
