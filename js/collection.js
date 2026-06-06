@@ -329,7 +329,9 @@ function addCard(imageData = "") {
         notes: "",
 
         imageData: imageData,
-        imageLayout: "vertical"
+        imageLayout: "vertical",
+
+
     };
 
     cards.push(card);
