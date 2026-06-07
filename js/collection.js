@@ -843,6 +843,12 @@ function updateOldCards(cardList) {
 
             imageLayout:
                 card.imageLayout || "vertical",
+            
+            page:
+                card.page || 1,
+            
+            slot:
+                card.slot || getNextOpenSlot(),
 
             ...card
         };
