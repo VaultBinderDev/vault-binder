@@ -93,22 +93,6 @@
                 </div>
                 `;
             }
-
-            // CARD TYPES
-            function displayTypeGuide() {
-                let guide = document.getElementById("typeGuide");
-
-                pokemonTypes.forEach(type => {
-                    guide.innerHTML += `
-                    <div class="typeBadge" style="border-color:${type.color}">
-                        <span>${type.emoji}</span>
-                        <strong>${type.name}</strong>
-                    </div>
-                    `;
-                })
-            }
-
-
-            displayTypeGuide();
+            
             document.body.style.visibility = "visible";
             loadLocalProfile();

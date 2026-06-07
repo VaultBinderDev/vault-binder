@@ -331,7 +331,8 @@ function addCard(imageData = "") {
         imageData: imageData,
         imageLayout: "vertical",
 
-
+        page: currentPage,
+        slot: getNextOpenSlot()
     };
 
     cards.push(card);
@@ -759,6 +760,23 @@ function addPage() {
 //-------------------
 // UTILITY FUNCTIONS
 //-------------------
+
+function getNextOpenSlot() {
+    const activeBinder = binders[activeBinderIndex];
+
+    const binderCards = cards.filter(card => 
+        card.binderId === activeBinder.id &&
+        card.page === currentPage
+    );
+
+    for(let slot = 0; slot < slotsPerPage; slot++) {
+        let slotTaken = binderCards.some(card => card.slot === slot);
+
+        if(!slotTaken) {
+            return slot;
+        }
+    }
+}
 
 function createCardId() {
 
