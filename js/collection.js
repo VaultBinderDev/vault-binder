@@ -299,6 +299,9 @@ function addCard(imageData = "") {
         createdAt: Date.now(),
         binderId: binders[activeBinderIndex].id,
 
+        page: currentPage,
+        slot: getNextOpenSlot(),
+
         name:
             document.getElementById("cardName").value,
 
@@ -331,8 +334,7 @@ function addCard(imageData = "") {
         imageData: imageData,
         imageLayout: "vertical",
 
-        page: currentPage,
-        slot: getNextOpenSlot()
+        
     };
 
     cards.push(card);
@@ -794,63 +796,47 @@ function updateOldCards(cardList) {
     return cardList.map(card => {
 
         return {
+
+            ...card,
+
             binderId: card.binderId || "main",
 
-            id:
-                card.id || createCardId(),
-
-            createdAt:
-                card.createdAt || Date.now(),
-
-            name:
-                card.name || "",
-
-            setName:
-                card.setName || "",
-
-            cardNum:
-                card.cardNum || "",
-
-            quantity:
-                card.quantity || 1,
-
-            cardRarity:
-                card.cardRarity || "",
-
-            cardVariant:
-                card.cardVariant || "",
-
-            cardCondition:
-                card.cardCondition || "",
-
-            cardStatus:
-                card.cardStatus || "Owned",
-
-            estimatedValue:
-                card.estimatedValue || "",
-
-            fav:
-                card.fav || false,
-
-            wishlist:
-                card.wishlist || false,
-
-            notes:
-                card.notes || "",
-
-            imageData:
-                card.imageData || "",
-
-            imageLayout:
-                card.imageLayout || "vertical",
+            page: card.page || 1,
             
-            page:
-                card.page || 1,
-            
-            slot:
-                card.slot || getNextOpenSlot(),
+            slot: card.slot ?? index,
 
-            ...card
+            id: card.id || createCardId(),
+
+            createdAt: card.createdAt || Date.now(),
+
+            name: card.name || "",
+
+            setName: card.setName || "",
+
+            cardNum: card.cardNum || "",
+
+            quantity: card.quantity || 1,
+
+            cardRarity: card.cardRarity || "",
+
+            cardVariant: card.cardVariant || "",
+
+            cardCondition: card.cardCondition || "",
+
+            cardStatus: card.cardStatus || "Owned",
+
+            estimatedValue: card.estimatedValue || "",
+
+            fav: card.fav ?? false,
+
+            wishlist: card.wishlist ?? false,
+
+            notes: card.notes || "",
+
+            imageData: card.imageData || "",
+
+            imageLayout: card.imageLayout || "vertical",
+
         };
     });
 }
