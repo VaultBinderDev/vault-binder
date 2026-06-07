@@ -20,7 +20,6 @@ let currentPage = 1;
 // JUST CHANGE THESE VARIABLES TO CHANGE THE ENTIRE LAYOUT
 const COLUMNS = 4;
 const ROWS = 4;
-const index = getNextOpenSlot();
 
 binderPage.style.setProperty("--columns", COLUMNS);
 binderPage.style.setProperty("--rows", ROWS);
@@ -804,7 +803,7 @@ function updateOldCards(cardList) {
 
             page: card.page || 1,
             
-            slot: card.slot ?? index,
+            slot: card.slot ?? getNextOpenSlot(),
 
             id: card.id || createCardId(),
 
