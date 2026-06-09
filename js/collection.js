@@ -763,6 +763,14 @@ function addPage() {
 // UTILITY FUNCTIONS
 //-------------------
 
+function getCardInSlot(binderId, page, slot) {
+    return cards.find(card => 
+        card.binderId === binderId &&
+        card.page === page && 
+        card.slot === slot
+    )
+}
+
 function getNextOpenSlot() {
     const activeBinder = binders[activeBinderIndex];
 
