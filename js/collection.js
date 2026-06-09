@@ -464,8 +464,9 @@ function displayTabs() {
 function changeTab(index) {
 
     activeBinderIndex = index;
-
     currentPage = 1;
+
+    localStorage.setItem("activeBinderIndex", activeBinderIndex);
 
     displayTabs();
     displayBookPage();
