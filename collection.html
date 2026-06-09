@@ -164,7 +164,7 @@
                     <option value="trade">For Trade</option>
                     <option value="sold">Sold</option>
                 </select>
-                <button id="quikAddCards" onclick="quikAddCards()">Add Cards</button>
+                <button class="sidebarBtn" id="quikAddCards" onclick="quikAddCards()">Add Cards</button>
             </div>
 
             <h3>Import/Export</h3>
@@ -174,23 +174,13 @@
                 <input type="text" placeholder="Paste to import/Copy after clicking export">
             </div>
 
-            <h3>Themes</h3>
-            <p><i>Choose a webpage theme.</i></p>
-            <div class="sidebarSection">
-                <p>Coming Soon. . .</p>
-            </div>
-
-            <h3>Accessibility</h3>
-            <p><i>Use if needed.</i></p>
-            <div class="sidebarSection">
-                <input type="checkbox" id="colorHelp" name="accessibility" value="colorHelp">
-                <label for="colorHelp">For Color Blindness:</label>
-                <input type="checkbox" id="textHelp" name="textReadability" value="textHelp">
-                <label for="textHelp">For Text Readability</label>
-            </div>
-            
             <p><i>General Use Settings</i></p>
-            <div class="sidebarSection"></div>
+            <div class="sidebarSection">
+                <button class="sidebarBtn" id="generalSettings" onclick="toggleSettings()">Settings</button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
         </aside>
 
         <!-- Main binder area -->
@@ -224,17 +214,24 @@
 
     <!-- Settings Custom Popup -->
     <div id="settingsPopup">
-        <h2>Settings</h2>
-        <p>Coming Soon. . . .</p>
+        <h3>General Settings</h3>
+        <p><b>Accessibility</b></p>
+            <p><i>Use if needed.</i></p>
+            <div class="sidebarSection">
+                <label for="colorHelp">For Color Blindness:  </label><input type="checkbox" id="colorHelp" name="accessibility" value="colorHelp">
+                
+                <label for="textHelp">For Text Readability:  </label><input type="checkbox" id="textHelp" name="textReadability" value="textHelp">
+            </div>
         <p>-------------------</p>
-        <label>Themes:</label><br>
+        <p><b>Webpage Themes:</b></p><br>
         <input type="radio" name="theme" onchange="applyTheme('pastelSherbet')">Pastel Sherbet<br>
+        <p>More Coming Soon. . .</p>
         <button onclick="setDefaultTheme()">Make Default</button>
         <button onclick="toggleSettings()">Close</button>
     </div>
 
     <div id="notesPopup">
-        <h2>Take Notes:</h2>  <button class="closeBtn" title="Close Notes" onclick="saveNotes(selectedCardIndex)">X</button>
+        <h3>Take Notes:</h3>  <button class="closeBtn" title="Close Notes" onclick="saveNotes(selectedCardIndex)">X</button>
         <textarea 
         id="notesInput"
         maxlength="300"

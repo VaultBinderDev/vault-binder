@@ -1,0 +1,20 @@
+<!-- CODE DUMP TO SAVE FOR LATER -->
+        <!-- API CARD USAGES -->
+        <!-- <div class="searchSection">
+        <input id="cardSearchInput" type="text" placeholder="Search for a Pokemon Card">
+        <button onclick="searchPokemonCard()">Search</button> <button onclick="randomCard()">Surprise Me!</button>
+        </div> --> (From Index Html)
+
+ <div class="sideBarSection">
+                <label for="binderSearch">Search</label>
+                <input id="binderSearch" type="text" placeholder="Seach cards..." />
+            </div>
+
+            <div class="sidebarSection">
+                <h3>Sort</h3>
+                <button>Name</button>
+                <button>Set</button>
+                <button>Rarity</button>
+                <button>Value</button>
+                <button>Conditions</button>
+            </div> (Save for uses later under the second page)
