@@ -154,20 +154,45 @@
             <button id="closeSidebarBtn">×</button>
 
             <h2>Binder Tools</h2>
-
-            <div class="sideBarSection">
-                <label for="binderSearch">Search</label>
-                <input id="binderSearch" type="text" placeholder="Seach cards..." />
-            </div>
-
+            <h3>Quik Add Cards</h3>
+            <p><i>Input name, quantity & status.</i></p>
             <div class="sidebarSection">
-                <h3>Sort</h3>
-                <button>Name</button>
-                <button>Set</button>
-                <button>Rarity</button>
-                <button>Value</button>
-                <button>Conditions</button>
+                <input type="text" id="quikName" placeholder="Input Quik Add Names. . ."><br>
+                <input type="number" id="quikQty" placeholder="Amount of Cards. . .">
+                <select id="quikStatus">
+                    <option value="">Choose a Status:</option>
+                    <option value="owned">Owned</option>
+                    <option value="wishlist">Wishlist</option>
+                    <option value="trade">For Trade</option>
+                    <option value="sold">Sold</option>
+                </select>
+                <button id="quikAddCards" onclick="quikAddCards()">Add Cards</button>
             </div>
+
+            <h3>Import/Export</h3>
+            <p><i>Use to go between devices</i></p>
+            <div class="sidebarSection">
+                <button id="importUser">Import</button> <button id="exportUser">Export</button>
+                <input type="text" placeholder="Paste to import/Copy after clicking export">
+            </div>
+
+            <h3>Themes</h3>
+            <p><i>Choose a webpage theme.</i></p>
+            <div class="sidebarSection">
+                <p>Coming Soon. . .</p>
+            </div>
+
+            <h3>Accessibility</h3>
+            <p><i>Use if needed.</i></p>
+            <div class="sidebarSection">
+                <input type="checkbox" id="colorHelp" name="accessibility" value="colorHelp">
+                <label for="colorHelp">For Color Blindness:</label>
+                <input type="checkbox" id="textHelp" name="textReadability" value="textHelp">
+                <label for="textHelp">For Text Readability</label>
+            </div>
+            
+            <p><i>General Use Settings</i></p>
+            <div class="sidebarSection"></div>
         </aside>
 
         <!-- Main binder area -->
