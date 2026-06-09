@@ -103,8 +103,16 @@ function displayBookPage(cardList) {
     let end = start + slotsPerPage;
 
     for(let slot = 0; slot < slotsPerPage; slot++) {
-        let cardIndex = start + slot;
-        let card = cardList[cardIndex];
+        let visualSlot = slot;
+
+        let card = cardList.find(card => 
+            card.page === currentPage && 
+            card.slot === visualSlot
+        );
+        
+        let cardIndex = cards.findIndex(savedCard => 
+            savedCard.id === card?.id
+        );
 
         if(card) {
             let selectedClass = selectedCardIndex === cardIndex ? " selectedCard" : "";
