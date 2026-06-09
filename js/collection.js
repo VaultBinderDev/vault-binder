@@ -798,6 +798,22 @@ function moveCardToSlot(cardId, slot) {
     saveCards();
     displayBookPage();
 }
+
+function swapCardSlots(cardAId, cardBId) {
+    let cardA = cards.find(card => card.id === cardAId);
+    let cardB = cards.find(card => card.id === cardBId);
+
+    if(!cardA || !cardB) return;
+
+    let oldSlotA = cardA.slot;
+    let oldSlotB = cardB.slot;
+
+    cardA.slot = oldSlotB;
+    cardB.slot = oldSlotA;
+
+    saveCards();
+    displayBookPage();
+}
  
 //-------------------
 // UTILITY FUNCTIONS
