@@ -341,10 +341,7 @@ function addCard(imageData = "") {
 
     cards = updateOldCards(cards);
 
-    localStorage.setItem(
-        "cards",
-        JSON.stringify(cards)
-    );
+    saveCards();
 
     currentPage =
         Math.ceil(cards.length / slotsPerPage);
@@ -378,10 +375,7 @@ function deleteCard(index) {
 
     cards.splice(index, 1);
 
-    localStorage.setItem(
-        "cards",
-        JSON.stringify(cards)
-    );
+    saveCards();
 
     selectedCardIndex = null;
 
@@ -421,10 +415,7 @@ function saveEditedCard(index) {
     cards[index].cardCondition =
         document.getElementById(`editCondition-${index}`).value;
 
-    localStorage.setItem(
-        "cards",
-        JSON.stringify(cards)
-    );
+    saveCards();
 }
 
 function favoriteCard() {
@@ -435,10 +426,7 @@ function favoriteCard() {
 
     card.fav = !card.fav;
 
-    localStorage.setItem(
-        "cards",
-        JSON.stringify(cards)
-    );
+    saveCards();
 
     displayBookPage();
 }
@@ -507,8 +495,8 @@ function getRandomBinderColor() {
 }
 
 function saveBinderState() {
-    localStorage.setItem("binders", JSON.stringify(binders));
-    localStorage.setItem("activeBinderIndex", activeBinderIndex);
+    saveBinders();
+    saveActiveBinder();
 }
 
 
@@ -754,22 +742,15 @@ function addPage() {
 
     activeBinder.totalPages++;
 
-    localStorage.setItem("binders", JSON.stringify(binders));
+    saveBinders();
 
     displayBookPage();
 }
 
-//-------------------
-// UTILITY FUNCTIONS
-//-------------------
 
-function getCardInSlot(binderId, page, slot) {
-    return cards.find(card => 
-        card.binderId === binderId &&
-        card.page === page && 
-        card.slot === slot
-    )
-}
+//-------------------
+// DRAG & DROP CARDS
+//-------------------
 
 function getNextOpenSlot() {
     const activeBinder = binders[activeBinderIndex];
@@ -786,6 +767,47 @@ function getNextOpenSlot() {
             return slot;
         }
     }
+}
+
+function getCardInSlot(binderId, page, slot) {
+    return cards.find(card => 
+        card.binderId === binderId &&
+        card.page === page && 
+        card.slot === slot
+    )
+}
+
+function moveCardToSlot(cardId, slot) {
+    let card = cards.find(card => card.id === cardId);
+
+    console.log(card);
+
+    if(!card) return;
+
+    card.slot = slot;
+
+    saveCards();
+    displayBookPage();
+}
+ 
+//-------------------
+// UTILITY FUNCTIONS
+//-------------------
+
+
+
+// SAVE FUNCTIONS tk
+
+function saveCards() {
+    localStorage.setItem("cards", JSON.stringify(cards));
+}
+
+function saveBinders() {
+    localStorage.setItem("binders", JSON.stringify(binders));
+}
+
+function saveActiveBinder() {
+    localStorage.setItem("activeBinderIndex", activeBinderIndex);
 }
 
 function createCardId() {
