@@ -726,6 +726,10 @@ button:active {
 
 /* NEW SETUP */
 
+.quikAddSlice {
+    align-content: center;
+}
+
 #quikName {
     width: 200px;
 }
@@ -741,6 +745,7 @@ button:active {
 #quikAddCards {
     width: 100px;
 }
+
 
 
 /* =========================================================
