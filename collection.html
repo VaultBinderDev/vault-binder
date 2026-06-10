@@ -32,8 +32,9 @@
     <p>This is a fan made Pokemon site, designed to give card collectors a eorkspace platform to store a visual card for their own personal collection. You can add cards manually, and later on automatically using basic imaging software. You can favorite cards, wishlist cards you want in the future (coming soon), check the pricing of your owned cards (coming soon), and organize theme via tabs.</p>
     <!-- LOG-IN/SIGN-UP POP UP LATER ON -->
     <button id="settingsBtn" onclick="toggleSettings()">Settings</button><br><br>
+
+    <h1>Add Your Cards</h1>
     <div id="addCardSection">
-    <h2 class="sectionHeader">Add a Card</h2>
     <!-- ====================== -->
     <!--    CARD NAME INPUT     -->
     <!-- ====================== -->
@@ -223,8 +224,8 @@
                 <label for="textHelp">For Text Readability:  </label><input type="checkbox" id="textHelp" name="textReadability" value="textHelp">
             </div>
         <p>-------------------</p>
-        <p><b>Webpage Themes:</b></p><br>
-        <input type="radio" name="theme" onchange="applyTheme('pastelSherbet')">Pastel Sherbet<br>
+        <p><b>Webpage Themes:</b></p>
+        <input type="radio" name="theme" onchange="applyTheme('pastelSherbet')">Pastel Sherbet
         <p>More Coming Soon. . .</p>
         <button onclick="setDefaultTheme()">Make Default</button>
         <button onclick="toggleSettings()">Close</button>
