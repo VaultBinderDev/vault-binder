@@ -47,27 +47,25 @@
     <!-- ====================== -->
     <!--    CARD NAME INPUT     -->
     <!-- ====================== -->
-    <div class="editorGrid">
-    
-    <div class="column"> <!-- COLUMN ONE START -->
+
     <div class="form-row">
-    <label>Card Name:</label>
+    <label>Card Name:</label><br>
     <input type="text" class="input" id="cardName" placeholder="Bulbasaur"></div><br>
 
     <div class="form-row">
-    <label>Set Name</label>
+    <label>Set Name</label><br>
     <input type="text" class="input" id="setname" placeholder="team rocket"></div><br>
 
     <div class="form-row">
-    <label>Card Number</label>
+    <label>Card Number</label><br>
     <input type="text" class="input" id="cardnumber" placeholder="018"></div><br>
 
     <div class="form-row">
-    <label>Quantity</label>
+    <label>Quantity</label><br>
     <input type="number" min="0" class="input" id="quantity" placeholder="Ex. 1 2 3..."></div><br>
 
     <div class="form-row">
-    <label>Rarity</label> <!-- DROPDOWN -->
+    <label>Rarity</label><br> <!-- DROPDOWN -->
     <select class="input" id="rarity">
         <option value="">Choose a Rarity:</option>
         <option value="common">● Common</option>
@@ -81,7 +79,7 @@
     </select></div><br>
 
     <div class="form-row">
-    <label>Variant</label> <!-- DROPDOWN -->
+    <label>Variant</label><br> <!-- DROPDOWN -->
     <select class="input" id="variant">
         <option value="">Choose a Variant:</option>
         <option value="normal">Normal</option>
@@ -100,7 +98,7 @@
     </select></div><br>
 
     <div class="form-row">
-    <label>Condition</label> <!-- DROPDOWN -->
+    <label>Condition</label><br> <!-- DROPDOWN -->
     <select class="input" id="condition">
         <option value="">Choose a Condition:</option>
         <option value="mint">Mint</option>
@@ -113,7 +111,7 @@
     </select></div><br>
 
     <div class="form-row">
-    <label>Status</label> <!-- DROPDOWN -->
+    <label>Status</label><br> <!-- DROPDOWN -->
     <select class="input" id="status">
         <option value="">Choose a Status:</option>
         <option value="owned">Owned</option>
@@ -124,36 +122,22 @@
 
     <button onclick="event.stopPropagation(); addCardWithImage()">Add Card</button>
     
-    </div>
     <!-- ====================== -->
     <!--     IMAGING COLUMN     --> 
     <!--     (LATER ON (tk))    -->
     <!-- ====================== -->
-    <div class="column"> <!-- COLUMN TWO -->
-        <label class="imageActionBtn">
-            Take Photo
-        </label><br>
             <input 
                 id="cardImageInput"
                 type="file"
                 accept="image/*"
                 capture="environment"
                 onchange="previewImage()"
-                ><br><br><br>
-        <!-- EXPORT/IMPORT -->
-        <label>Export/Import Here</label>
+                >
 
-        <p></p>
-        
-
-    </div> <!-- COLUMN THREE START -->
-    <div class="column">
-        
         <div id="imagePreviewBox" class="imgPreviewBox">
             <p>Image Preview</p>
         </div>
-    </div>
-    </div>
+
 
 
 
