@@ -29,109 +29,114 @@
 
     <button id="settingsBtn" onclick="toggleSettings()">Settings</button><br><br>
 
+    <section id="quikAddBar">
         <h1>Quik Add</h1>
-    <div class="quikAddSlice">
-            <input type="text" id="quikName" placeholder="Input Quik Add Names. . ."> <input type="number" id="quikQty" placeholder="Amount of Cards. . ."> <select id="quikStatus">
+
+        <input type="text" id="quikName" placeholder="Input Quik Add Names. . ."> <input type="number" id="quikQty" placeholder="Amount of Cards. . ."> <select id="quikStatus">
             <option value="">Choose a Status:</option>
             <option value="owned">Owned</option>
             <option value="wishlist">Wishlist</option>
             <option value="trade">For Trade</option>
             <option value="sold">Sold</option>
-        </select> <button class="sidebarBtn" id="quikAddCards" onclick="quikAddCards()">Add Cards</button>
-    </div>
+        </select> <button class="sidebarBtn" id="quikAddCards" onclick="quikAddCards()">Add Card(s)</button>
+    </section>
 
 
-    <h1>Add Your Cards</h1>
 
-    <div class="form-row">
-    <label>Card Name:</label><br>
-    <input type="text" class="input" id="cardName" placeholder="Bulbasaur"></div><br>
+    <section class="addCardPanel">
+        <h1>Add Your Cards Here</h1>
+        <div class="addCardFields">
+            <!-- INPUTS HERE -->
+            <div class="inputGroup"> <!-- NAME INPUT -->
+                <label>Card Name:</label>
+                <input type="text" class="input" id="cardName" placeholder="Bulbasaur">
+            </div>
 
-    <div class="form-row">
-    <label>Set Name</label><br>
-    <input type="text" class="input" id="setname" placeholder="team rocket"></div><br>
+            <div class="inputGroup"> <!-- SET NAME INPUT -->
+                <label>Set Name</label>
+                <input type="text" class="input" id="setname" placeholder="team rocket">
+            </div>
 
-    <div class="form-row">
-    <label>Card Number</label><br>
-    <input type="text" class="input" id="cardnumber" placeholder="018"></div><br>
+            <div class="inputGroup"> <!-- CARD NUMBER INPUT -->
+                <label>Card Number</label>
+                <input type="text" class="input" id="cardnumber" placeholder="018">
+            </div>
 
-    <div class="form-row">
-    <label>Quantity</label><br>
-    <input type="number" min="0" class="input" id="quantity" placeholder="Ex. 1 2 3..."></div><br>
+            <div class="inputGroup"> <!-- QUANTITY INPUT -->
+                <label>Quantity</label>
+                <input type="number" min="0" class="input" id="quantity" placeholder="Ex. 1 2 3...">
+            </div>
 
-    <div class="form-row">
-    <label>Rarity</label><br> <!-- DROPDOWN -->
-    <select class="input" id="rarity">
-        <option value="">Choose a Rarity:</option>
-        <option value="common">● Common</option>
-        <option value="uncommon">◆ Uncommon</option>
-        <option value="rare">★ Rare</option>
-        <option value="double rare">★★ Double Rare</option>
-        <option value="triple rare">★★★ Triple Rare</option>
-        <option value="secret rare">✨ Secret Rare</option>
-        <option value="promo">PROMO Promo</option>
-        <option value="other">? Other</option>
-    </select></div><br>
+            <div class="inputGroup"> <!-- RARITY INPUT -->
+                <label>Rarity</label>
+                <select class="input" id="rarity">
+                    <option value="">Choose a Rarity:</option>
+                    <option value="common">● Common</option>
+                    <option value="uncommon">◆ Uncommon</option>
+                    <option value="rare">★ Rare</option>
+                    <option value="double rare">★★ Double Rare</option>
+                    <option value="triple rare">★★★ Triple Rare</option>
+                    <option value="secret rare">✨ Secret Rare</option>
+                    <option value="promo">PROMO Promo</option>
+                    <option value="other">? Other</option>
+                </select>
+            </div>
 
-    <div class="form-row">
-    <label>Variant</label><br> <!-- DROPDOWN -->
-    <select class="input" id="variant">
-        <option value="">Choose a Variant:</option>
-        <option value="normal">Normal</option>
-        <option value="reverse holo">Reverse Holo</option>
-        <option value="holo">Holo</option>
-        <option value="full art">Full Art</option>
-        <option value="ultra rare">Ultra Rare</option>
-        <option value="secret rare">Secret Rare</option>
-        <option value="illustration rare">Illustration Rare</option>
-        <option value="special illustration rare">Special Illustration Rare</option>
-        <option value="promo">Promo</option>
-        <option value="1st edition">1st Edition</option>
-        <option value="shadowless">Shadowless</option>
-        <option value="error">Error</option>
-        <option value="other">Other</option>
-    </select></div><br>
+            <div class="inputGroup"> <!-- VARIANT INPUT -->
+                <label>Variant</label>
+                <select class="input" id="variant">
+                    <option value="">Choose a Variant:</option>
+                    <option value="normal">Normal</option>
+                    <option value="reverse holo">Reverse Holo</option>
+                    <option value="holo">Holo</option>
+                    <option value="full art">Full Art</option>
+                    <option value="ultra rare">Ultra Rare</option>
+                    <option value="secret rare">Secret Rare</option>
+                    <option value="illustration rare">Illustration Rare</option>
+                    <option value="special illustration rare">Special Illustration Rare</option>
+                    <option value="promo">Promo</option>
+                    <option value="1st edition">1st Edition</option>
+                    <option value="shadowless">Shadowless</option>
+                    <option value="error">Error</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
 
-    <div class="form-row">
-    <label>Condition</label><br> <!-- DROPDOWN -->
-    <select class="input" id="condition">
-        <option value="">Choose a Condition:</option>
-        <option value="mint">Mint</option>
-        <option value="near mint">Near Mint</option>
-        <option value="lightly played">Lightly Played</option>
-        <option value="moderately played">Moderately Played</option>
-        <option value="heavily played">Heavily Played</option>
-        <option value="damaged">Damaged</option>
-        <option value="graded">Graded</option>
-    </select></div><br>
+            <div class="inputGroup"> <!-- CONDITION INPUT -->
+                <label>Condition</label>
+                <select class="input" id="condition">
+                    <option value="">Choose a Condition:</option>
+                    <option value="mint">Mint</option>
+                    <option value="near mint">Near Mint</option>
+                    <option value="lightly played">Lightly Played</option>
+                    <option value="moderately played">Moderately Played</option>
+                    <option value="heavily played">Heavily Played</option>
+                    <option value="damaged">Damaged</option>
+                    <option value="graded">Graded</option>
+                </select>
+            </div>
 
-    <div class="form-row">
-    <label>Status</label><br> <!-- DROPDOWN -->
-    <select class="input" id="status">
-        <option value="">Choose a Status:</option>
-        <option value="owned">Owned</option>
-        <option value="wishlist">Wishlist</option>
-        <option value="for trade">For Trade</option>
-        <option value="sold">Sold</option>
-    </select></div><br>
-
-    <button onclick="event.stopPropagation(); addCardWithImage()">Add Card</button>
-    
-    <!-- ====================== -->
-    <!--     IMAGING COLUMN     --> 
-    <!--     (LATER ON (tk))    -->
-    <!-- ====================== -->
-            <input 
-                id="cardImageInput"
-                type="file"
-                accept="image/*"
-                capture="environment"
-                onchange="previewImage()"
-                >
-
-        <div id="imagePreviewBox" class="imgPreviewBox">
-            <p>Image Preview</p>
+            <div class="inputGroup"> <!-- STATUS INPUT -->
+                <label>Status</label>
+                <select class="input" id="status">
+                    <option value="">Choose a Status:</option>
+                    <option value="owned">Owned</option>
+                    <option value="wishlist">Wishlist</option>
+                    <option value="for trade">For Trade</option>
+                    <option value="sold">Sold</option>
+                </select>
+            </div>
         </div>
+
+        <div class="addCardPreview">
+            <div id="imagePreviewBox">
+                <p>Image Preview</p>
+            </div>
+
+            <input id="cardImageInput" type="file" accept="image/*" capture="environment" onchange="previewImage()">
+            <button onclick="event.stopPropagation(); addCardWithImage()">Add Card</button>
+        </div>
+    </section>
 
 
 
