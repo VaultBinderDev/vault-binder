@@ -724,6 +724,25 @@ button:active {
     grid-column: span 2;
 }
 
+/* NEW SETUP */
+
+#quikName {
+    width: 200px;
+}
+
+#quikQty {
+    width: 40px;
+}
+
+#quikStatus {
+    width: 150;
+}
+
+#quikAddCards {
+    width: 100px;
+}
+
+
 /* =========================================================
    7. LEGACY SELECTED CARD EDIT ROWS
    Keep while still used; remove when selected section retires.
