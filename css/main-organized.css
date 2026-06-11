@@ -250,8 +250,8 @@ button:active {
 }
 
 #imagePreviewBox {
-    width: 220px;
-    min-height: 800px;
+    width: 3870px;
+    min-height: 581px;
     border-radius: 16px;
     padding: 10px;
     border: 3px solid rgba(28, 26, 26, 0.80);
@@ -685,7 +685,7 @@ button:active {
 /* NEW SETUP */
 
 #quikAddBar {
-    width: min(90vw, 1200px);
+    width: min(90vw, 900px);
     margin: 24px auto;
     display: flex;
     align-items: center;
@@ -716,7 +716,8 @@ button:active {
 }
 
 .addCardFields input, .addCardFields select {
-    width: 100%;
+
+    width: 70%;
 }
 
 .addCardPreview {
