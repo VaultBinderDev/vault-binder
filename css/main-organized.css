@@ -277,6 +277,11 @@ button:active {
    Main app shell, binder page, card grid, sidebar, navigation.
 ========================================================= */
 
+.pageSection {
+    width: min(88vw, 1200px);
+    margin: 32px auto;
+}
+
 #vaultBinderApp {
     min-height: 100vh;
     background: var(--binder-surface);
@@ -332,16 +337,16 @@ button:active {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 40px 0;
+    padding: 24px 0;
 }
 
 #binderPage {
     --columns: 4;
     --rows: 4;
 
-    width: min(88vw, 1400px);
+    width: 100%;
     min-height: 190vh;
-    padding: 40px;
+    padding: 28px;
 
     display: grid;
     grid-template-columns: repeat(var(--columns), 240px);
