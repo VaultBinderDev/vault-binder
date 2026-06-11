@@ -269,7 +269,7 @@ button:active {
 .imgPreviewBox img,
 .imgPreview img {
     max-width: 100%;
-    max-height: 300px;
+    max-height: 800px;
     object-fit: contain;
     border-radius: 12px;
 }
