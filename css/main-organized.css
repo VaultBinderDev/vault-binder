@@ -250,8 +250,10 @@ button:active {
 }
 
 #imagePreviewBox {
-    width: 387px;
-    min-height: 581px;
+    width: 280px;
+    aspect-ratio: 63 / 88;
+    min-height: auto;
+
     border-radius: 16px;
     padding: 10px;
     border: 3px solid rgba(28, 26, 26, 0.80);
@@ -697,10 +699,10 @@ button:active {
 }
 
 #addCardPanel {
-    width: min(90vw, 1200px);
+    width: min(82vw, 1050px);
     margin: 24px auto;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1fr 320px;
     gap: 32px;
 }
 
