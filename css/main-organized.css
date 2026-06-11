@@ -249,11 +249,9 @@ button:active {
     max-width: 100%;
 }
 
-#imagePreviewBox,
-.imgPreviewBox,
-.imgPreview {
+#imagePreviewBox {
     width: 220px;
-    min-height: 320px;
+    min-height: 800px;
     border-radius: 16px;
     padding: 10px;
     border: 3px solid rgba(28, 26, 26, 0.80);
@@ -265,11 +263,9 @@ button:active {
     overflow: hidden;
 }
 
-#imagePreviewBox img,
-.imgPreviewBox img,
-.imgPreview img {
+#imagePreviewBox img {
     max-width: 100%;
-    max-height: 800px;
+    max-height: 300px;
     object-fit: contain;
     border-radius: 12px;
 }
