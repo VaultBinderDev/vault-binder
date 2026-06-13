@@ -774,7 +774,7 @@ function addPage() {
 // DRAG & DROP CARDS
 //-------------------
 
-function startDrag() {
+function startDrag(cardId) {
     draggedCardId = cardId;
 }
 
