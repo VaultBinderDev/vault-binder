@@ -250,6 +250,35 @@ function displayBookPage(cardList) {
 // IMAGE FUNCTIONS
 //-------------------
 
+function compressImage(file, callback) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        const img = new Image();
+
+        img.onload = function () {
+            const canvas = document.createElement("canvas");
+
+            const maxHeight = 700;
+            const scale = maxHeight / img.height;
+
+            canvas.width = img.width * scale;
+            canvas.height = maxHeight;
+
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            const compressedImage = canvas.toDataURL("image/jpeg", 0.75);
+
+            callback(compressedImage);
+        };
+
+        img.src = event.target.result;
+    };
+
+    reader.readAsDataURL(file);
+}
+
 function previewImage() {
 
     let imageInput =
@@ -284,10 +313,7 @@ function previewImage() {
 }
 
 function addCardWithImage() {
-
-    let imageInput =
-        document.getElementById("cardImageInput");
-
+    let imageInput = document.getElementById("cardImageInput");
     let file = imageInput.files[0];
 
     if (!file) {
@@ -295,16 +321,10 @@ function addCardWithImage() {
         return;
     }
 
-    let reader = new FileReader();
-
-    reader.onload = function () {
-
-        addCard(reader.result);
-
+    compressImage(file, function (compressedImage) {
+        addCard(compressedImage);
         imageInput.value = "";
-    };
-
-    reader.readAsDataURL(file);
+    }) 
 }
 
 
