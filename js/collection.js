@@ -12,6 +12,8 @@ let isOldest = false;
 let showingFavorites = false;
 let settingsOpen = false;
 
+let draggedCardId = null;
+
 let selectedCardView = "info";
 let selectedCardIndex = "";
 
@@ -197,7 +199,14 @@ function displayBookPage(cardList) {
 
 
             binderPage.innerHTML += `
-            <div class="binderCard${selectedClass}" id="card-${cardIndex}" onclick="selectCard(${cardIndex})">
+            <div 
+            class="binderCard${selectedClass}" 
+            id="card-${cardIndex}"
+            draggable="true" 
+            ondragstart="startDrag('${card.id}')"
+            ondragover="event.preventDefault()"
+            ondrop="dropOnSlot(${slot})"
+            onclick="selectCard(${cardIndex})">
             <div class="cardTopTabs">
             <button onclick="event.stopPropagation(); selectedCardIndex=${cardIndex}; selectedCardView='image'; displayBookPage();">Image</button>
             <button onclick="event.stopPropagation(); selectedCardIndex=${cardIndex}; selectedCardView='info'; displayBookPage();">Info</button>
@@ -218,7 +227,11 @@ function displayBookPage(cardList) {
         } else {
             // Render Empty slot
             binderPage.innerHTML += `
-                <div class="binderCard emptySlot testSlot">
+                <div 
+                class="binderCard emptySlot testSlot"
+                ondragover="event.preventDefault()"
+                ondrop="dropOnSlot(${slot})"
+                >
                     <div class="mainCardArea">
                         <div class="emptySlotContent">
                             <h3>Empty Slot</h3>
@@ -760,6 +773,36 @@ function addPage() {
 //-------------------
 // DRAG & DROP CARDS
 //-------------------
+
+function startDrag() {
+    draggedCardId = cardId;
+}
+
+function dropOnSlot() {
+    const activeBinder = binders[activeBinderIndex];
+
+    const draggedCard = cards.find(card =>
+        card.id === draggedCardId
+    );
+
+    if(!draggedCard) return;
+
+    const targetCard = getCardInSlot(
+        activeBinder.id,
+        currentPage,
+        slot
+    );
+
+    if(draggedCard.slot === slot) return;
+
+    if(!targetCard) {
+        moveCardToSlot(draggedCardId, slot);
+    } else {
+        swapCardSlots(draggedCardId, targetCard.id);
+    }
+
+    draggedCardId = null;
+}
 
 function getNextOpenSlot() {
     const activeBinder = binders[activeBinderIndex];
