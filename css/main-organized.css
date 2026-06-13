@@ -886,3 +886,55 @@ button:active {
         transform: rotate(360deg);
     }
 }
+
+
+
+/*
+
+MEDIA CSS
+
+*/
+
+
+@media (max-width: 768px) {
+    #quikAddBar {
+        flex-direction: column;
+        align-items: stretch;
+        width: 92vw;
+    }
+
+    #addCardPanel {
+        width: 92vw;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .addCardPreview {
+        order: -1;
+    }
+
+    #imagePreviewBox {
+        width: 220px;
+        aspect-ratio: 63 / 88;
+    }
+
+    #binderTabs {
+        width: 92vw;
+        overflow-x: auto;
+    }
+
+    #binderPage {
+        width: 92vw;
+        padding: 18px;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        grid-template-rows: auto;
+        gap: 16px;
+        min-height: auto;
+        overflow: visible;
+    }
+
+    .binderCard {
+        aspect-ratio: 63 / 88;
+        height: auto;
+    }
+}
