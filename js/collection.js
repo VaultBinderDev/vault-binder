@@ -778,7 +778,7 @@ function startDrag(cardId) {
     draggedCardId = cardId;
 }
 
-function dropOnSlot() {
+function dropOnSlot(slot) {
     const activeBinder = binders[activeBinderIndex];
 
     const draggedCard = cards.find(card =>
