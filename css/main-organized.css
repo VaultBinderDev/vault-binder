@@ -898,7 +898,7 @@ MEDIA CSS
 
 @media (max-width: 768px) {
     body {
-        background: pink;
+        background: pink !important;
     }
 
     #quikAddBar {
