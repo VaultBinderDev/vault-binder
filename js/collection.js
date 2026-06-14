@@ -896,7 +896,6 @@ function exportVaultData() {
         vaultUser,
         cards,
         binders,
-        totalPages,
         activeBinderIndex
     };
 
