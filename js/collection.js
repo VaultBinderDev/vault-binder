@@ -7,12 +7,21 @@
 // GLOBAL VARIABLES
 //-------------------
 
+let vaultUser = 
+    JSON.parse(localStorage.getItem("vaultUser")) || {
+        id: createCardId,
+        username: "Guest Vault",
+        createdAt: Date.now(),
+        createdAtReadable: new Date().toLocaleString()
+    }
+
 let favorite = false;
 let isOldest = false;
 let showingFavorites = false;
 let settingsOpen = false;
 
 let draggedCardId = null;
+
 
 let selectedCardView = "info";
 let selectedCardIndex = "";
