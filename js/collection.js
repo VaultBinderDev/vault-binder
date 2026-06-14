@@ -909,7 +909,7 @@ function exportVaultData() {
 }
 
 function importVaultData() {
-    const vaultDataBox = getElementById("vaultDataBox");
+    const vaultDataBox = document.getElementById("vaultDataBox");
 
     if(!vaultDataBox.value.trim()) {
         showToast("Nothing to import")
