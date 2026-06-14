@@ -277,6 +277,21 @@ button:active {
    Main app shell, binder page, card grid, sidebar, navigation.
 ========================================================= */
 
+.backupButtons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+#vaultDataBox {
+    width: 100%;
+    min-height: 180px;
+    margin-top: 10px;
+    resize: vertical;
+    font-size: 11px;
+}
+
+
 .pageSection {
     width: min(88vw, 1200px);
     margin: 32px auto;

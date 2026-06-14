@@ -143,17 +143,21 @@
         <!-- Left slide-out drawer later -->
         <aside id="binderSidebar">
             <button id="closeSidebarBtn">×</button>
-            <h3>Quik Add Cards</h3>
-            <p><i>Input name, quantity & status.</i></p>
             <div class="sidebarSection">
-                
+                <p>Profile Area</p>
             </div>
-
-            <h3>Import/Export</h3>
-            <p><i>Use to go between devices</i></p>
             <div class="sidebarSection">
-                <button id="importUser">Import</button> <button id="exportUser">Export</button>
-                <input type="text" placeholder="Paste to import/Copy after clicking export">
+                <h3>Vault Backup</h3>
+                <div class="backupButtons">
+                    <button onclick="importVaultData()">Import</button>
+                    <button onclick="exportVaultData()">Export</button>
+                    <button onclick="copyVaultData()">Copy</button>
+                </div>
+
+                <textarea
+                    id="vaultDataBox"
+                    placeholder="Paste or export Vault JSON here..."
+                ></textarea>
             </div>
 
             <p><i>General Use Settings</i></p>
