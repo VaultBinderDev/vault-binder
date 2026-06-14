@@ -877,6 +877,30 @@ function swapCardSlots(cardAId, cardBId) {
     saveCards();
     displayBookPage();
 }
+
+//------------------
+// IMPORT / EXPORT  
+//------------------
+
+function exportVaultData() {
+    const vaultData = {
+        vaultUser,
+        cards,
+        binders,
+        totalPages,
+        activeBinderIndex
+    };
+
+    const jsonString = JSON.stringify(vaultData, null, 2);
+
+    document.getElementById("vaultDataBox").value = jsonString;
+
+    showToast(
+        `${vaultUser.username} | ${cards.length} cards exported.`
+    );
+}
+
+
  
 //-------------------
 // UTILITY FUNCTIONS
