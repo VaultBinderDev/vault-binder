@@ -909,6 +909,16 @@ function exportVaultData() {
 }
 
 
+
+function copyVaultData() {
+    const vaultDataBox = document.getElementById("vaultDataBox");
+
+    navigator.clipboard.writeText(vaultDataBox.value);
+
+    showToast("Vault Data Copied Successfully!");
+}
+
+
  
 //-------------------
 // UTILITY FUNCTIONS
