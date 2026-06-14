@@ -908,7 +908,36 @@ function exportVaultData() {
     );
 }
 
+function importVaultData() {
+    const vaultDataBox = getElementById("vaultDataBox");
 
+    if(!vaultDataBox.value.trim()) {
+        showToast("Nothing to import")
+        return;
+    }
+
+    try {
+        const importedData = JSON.parse(vaultDataBox.value);
+
+        vaultUser = importedData.vaultUser || vaultUser;
+        cards = importedData.cards || [];
+        binders = importedData.binders || binders;
+        activeBinderIndex = importedData.activeBinderIndex ?? 0;
+        currentPage = 1;
+
+        localStorage.setItem("vaultUser", JSON.stringify(vaultUser));
+        saveCards();
+        saveBinders()
+        saveActiveBinder();
+
+        displayTabs();
+        displayBookPage();
+        showToast("Vault Imported!")
+    } catch (error) {
+        showToast("Invalid JSON");
+        console.error(error);
+    }
+}
 
 function copyVaultData() {
     const vaultDataBox = document.getElementById("vaultDataBox");
