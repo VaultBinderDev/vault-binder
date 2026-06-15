@@ -144,7 +144,14 @@
         <aside id="binderSidebar">
             <button id="closeSidebarBtn">×</button>
             <div class="sidebarSection">
-                <p>Profile Area</p>
+            <div id="loginBox">
+                <p>Create a local profile to personalize your collection.</p>
+                <button onclick="createLocalProfile()">Create Profile</button>
+            </div>
+            
+            <div id="profileBox" style="display: none;">
+                <p>Logged in as: <span id="usernameDisplay"></span></p>
+            </div>
             </div>
             <div class="sidebarSection">
                 <h3>Vault Backup</h3>
@@ -163,9 +170,6 @@
             <p><i>General Use Settings</i></p>
             <div class="sidebarSection">
                 <button class="sidebarBtn" id="generalSettings" onclick="toggleSettings()">Settings</button>
-                <button></button>
-                <button></button>
-                <button></button>
             </div>
         </aside>
 
