@@ -84,7 +84,7 @@ const featuredSets = [
         badge: "⚪ Not Started"
 
     }
-]
+];
 
 // DISPLAY SETS
 
