@@ -887,6 +887,49 @@ function swapCardSlots(cardAId, cardBId) {
     displayBookPage();
 }
 
+//
+// LOG IN START UP
+//
+
+
+            // // RANDOMLY GENERATED USERNAMES
+            
+            // const adjectives = ["Swift", "Lucky", "Calm", "Bright", "Shadow", "Golden"];
+            // const collectorWords = ["Binder", "Holo", "Dex", "Pocket", "Booster", "Trainer"];
+
+            // function generateUsername() {
+            //     let adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+            //     let word = collectorWords[Math.floor(Math.random() * collectorWords.length)];
+            //     let num = Math.floor(Math.random() * 1000);
+            //     return adj + word + num;
+            // }
+
+            // function createLocalProfile() {
+            //     let user = {
+            //         id: Date.now() + "-" + Math.random().toString(36).slice(2, 8),
+            //         username: generateUsername(),
+            //         createdAt: Date.now(),
+            //         createdAtReadable: new Date().toLocaleString()
+            //     };
+
+            //     localStorage.setItem("vaultUser", JSON.stringify(user));
+
+            //     loadLocalProfile();
+            // }
+
+            // function loadLocalProfile() {
+            //     let savedUser = localStorage.getItem("vaultUser");
+            //     if(savedUser) {
+            //         let user = JSON.parse(savedUser);
+
+                    
+            //         document.getElementById("profileBox").style.display = "block";
+            //         document.getElementById("usernameDisplay").textContent = user.username;
+            //     }
+            // }
+
+
+
 //------------------
 // IMPORT / EXPORT  
 //------------------
