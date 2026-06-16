@@ -97,8 +97,8 @@ function displayFeaturedSets() {
         html += `
             <div class="setCard"> <!--  EACH SET CARD  --> 
                 <div class="setHeader" onclick="toggleSetCard(this)">
-                    <span>(${featuredSets.year}) | (${featuredSets.code}) | ${featuredSets.name}</span>
-                    <span>${featuredSets.badge}</span>
+                    <span>(${set.year}) | (${set.code}) | ${set.name}</span>
+                    <span>${set.badge}</span>
                 </div>
 
                 <span class="setArrow">▼</span>
@@ -107,7 +107,7 @@ function displayFeaturedSets() {
                     <div class="progressBar">
                         <div class="progressFill" style="width: 10%;"></div>
                     </div>
-                    <p>0% | 0/${featuredSets.totalCards}</p>
+                    <p>0% | 0/${set.totalCards}</p>
 
                     <br>
                     <p>Collected: --</p>
