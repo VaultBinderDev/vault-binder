@@ -93,6 +93,11 @@
                 </div>
                 `;
             }
+
+            function toggleSetCard(button) {
+                const setCard = button.closest(".setCard");
+                setCard.classList.toggle("open");
+            }
             
             document.body.style.visibility = "visible";
             loadLocalProfile();
