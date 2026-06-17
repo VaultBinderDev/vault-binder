@@ -148,7 +148,7 @@
                 <p>Create a local profile to personalize your collection.</p>
                 <button onclick="createLocalProfile()">Create Profile</button>
             </div>
-            
+
             <div id="profileBox" style="display: none;">
                 <p>Logged in as: <span id="usernameDisplay"></span></p>
             </div>
@@ -170,6 +170,7 @@
             <p><i>General Use Settings</i></p>
             <div class="sidebarSection">
                 <button class="sidebarBtn" id="generalSettings" onclick="toggleSettings()">Settings</button>
+                <small><a href="https://forms.gle/AHGcnaRg4rQDCvZH6" target="_blank">Suggestions</a></small>
             </div>
         </aside>
 
@@ -216,6 +217,11 @@
         <p><b>Webpage Themes:</b></p>
         <input type="radio" name="theme" onchange="applyTheme('pastelSherbet')">Pastel Sherbet
         <p>More Coming Soon. . .</p>
+        <p>-------------------</p>
+        <p class="quietFeedback">
+            Help Improve Vault Binder:
+            <a href="https://forms.gle/AHGcnaRg4rQDCvZH6" target="_blank">Feedback Form</a>
+        </p>
         <button onclick="setDefaultTheme()">Make Default</button>
         <button onclick="toggleSettings()">Close</button>
     </div>
