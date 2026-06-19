@@ -227,7 +227,7 @@ function displayBookPage(cardList) {
                 <button onclick="event.stopPropagation(); toggleNotesView(${cardIndex})">
                     Notes
                 </button>
-                <button onclick="event.stopPropagation(); openEditDrawer(${card.id})">
+                <button onclick="event.stopPropagation(); openEditDrawer('${card.id}')">
                     Edit
                 </button>
                 <button onclick="event.stopPropagation(); deleteCard(${cardIndex})">
