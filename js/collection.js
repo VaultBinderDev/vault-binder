@@ -536,30 +536,24 @@ function openEditDrawer() {
     document.getElementById("editDrawer").classList.add("open");
 }
 
-function closeEditDrawer() {
-    document.getElementById("editDrawer").classList.remove("open");
-}
-
 // SAVE EDITED CARD
 
-function saveEditedCard(index) {
+function saveEditedCard() {
 
-    cards[index].name =
-        document.getElementById(`editName-${index}`).value;
-
-    cards[index].setName =
-        document.getElementById(`editSet-${index}`).value;
-
-    cards[index].cardNum =
-        document.getElementById(`editNumber-${index}`).value;
-
-    cards[index].cardRarity =
-        document.getElementById(`editRarity-${index}`).value;
-
-    cards[index].cardCondition =
-        document.getElementById(`editCondition-${index}`).value;
+    cards[selectedCardIndex].name = document.getElementById("editCardName").value;
+    cards[selectedCardIndex].setName = document.getElementById("editSetName").value;
+    cards[selectedCardIndex].cardNum = document.getElementById("editCardNumber").value;
+    cards[selectedCardIndex].quantity = document.getElementById("editQuantity").value;
+    cards[selectedCardIndex].rarity = document.getElementById("editRarity").value;
+    cards[selectedCardIndex].variant = document.getElementById("editVariant").value;
+    cards[selectedCardIndex].condition = document.getElementById("editCondition").value;
+    cards[selectedCardIndex].status = document.getElementById("editStatus").value;
 
     saveCards();
+
+    displayBookPage();
+
+    document.getElementById("editDrawer").classList.remove("open");
 }
 
 // FAVORITE CARD

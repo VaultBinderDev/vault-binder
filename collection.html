@@ -182,13 +182,90 @@
             </div>
 
             <div class="drawerSection">
-                <input type="text" class="editTextbox" id="editName" placeholder="">
-                <input type="text" class="editTextbox" id="editName" placeholder="">
-                <input type="text" class="editTextbox" id="editName" placeholder="">
-                <input type="text" class="editTextbox" id="editName" placeholder="">
+                <div class="addCardFields"> <!-- INPUTS HERE -->
+                    <div class="inputGroup"> <!-- NAME INPUT -->
+                        <label>Card Name:</label>
+                        <input type="text" class="input" id="editCardName" placeholder="Bulbasaur">
+                    </div>
+
+                    <div class="inputGroup"> <!-- SET NAME INPUT -->
+                        <label>Set Name</label>
+                        <input type="text" class="input" id="editSetName" placeholder="team rocket">
+                    </div>
+
+                    <div class="inputGroup"> <!-- CARD NUMBER INPUT -->
+                        <label>Card Number</label>
+                        <input type="text" class="input" id="editCardNumber" placeholder="018">
+                    </div>
+
+                    <div class="inputGroup"> <!-- QUANTITY INPUT -->
+                        <label>Quantity</label>
+                        <input type="number" min="0" class="input" id="editQuantity" placeholder="Ex. 1 2 3...">
+                    </div>
+
+                    <div class="inputGroup"> <!-- RARITY INPUT -->
+                        <label>Rarity</label>
+                        <select class="input" id="editRarity">
+                            <option value="">Choose a Rarity:</option>
+                            <option value="common">● Common</option>
+                            <option value="uncommon">◆ Uncommon</option>
+                            <option value="rare">★ Rare</option>
+                            <option value="double rare">★★ Double Rare</option>
+                            <option value="triple rare">★★★ Triple Rare</option>
+                            <option value="secret rare">✨ Secret Rare</option>
+                            <option value="promo">PROMO Promo</option>
+                            <option value="other">? Other</option>
+                        </select>
+                    </div>
+
+                    <div class="inputGroup"> <!-- VARIANT INPUT -->
+                        <label>Variant</label>
+                        <select class="input" id="editVariant">
+                            <option value="">Choose a Variant:</option>
+                            <option value="normal">Normal</option>
+                            <option value="reverse holo">Reverse Holo</option>
+                            <option value="holo">Holo</option>
+                            <option value="full art">Full Art</option>
+                            <option value="ultra rare">Ultra Rare</option>
+                            <option value="secret rare">Secret Rare</option>
+                            <option value="illustration rare">Illustration Rare</option>
+                            <option value="special illustration rare">Special Illustration Rare</option>
+                            <option value="promo">Promo</option>
+                            <option value="1st edition">1st Edition</option>
+                            <option value="shadowless">Shadowless</option>
+                            <option value="error">Error</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="inputGroup"> <!-- CONDITION INPUT -->
+                        <label>Condition</label>
+                        <select class="input" id="editCondition">
+                            <option value="">Choose a Condition:</option>
+                            <option value="mint">Mint</option>
+                            <option value="near mint">Near Mint</option>
+                            <option value="lightly played">Lightly Played</option>
+                            <option value="moderately played">Moderately Played</option>
+                            <option value="heavily played">Heavily Played</option>
+                            <option value="damaged">Damaged</option>
+                            <option value="graded">Graded</option>
+                        </select>
+                    </div>
+
+                    <div class="inputGroup"> <!-- STATUS INPUT -->
+                        <label>Status</label>
+                        <select class="input" id="editStatus">
+                            <option value="">Choose a Status:</option>
+                            <option value="owned">Owned</option>
+                            <option value="wishlist">Wishlist</option>
+                            <option value="for trade">For Trade</option>
+                            <option value="sold">Sold</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
-            <button onclick="closeEditDrawer()">Save Changes</button>
+            <button onclick="saveEditedCard()">Save Changes</button>
         </aside>
 
         <!-- Main binder area -->
