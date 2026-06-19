@@ -534,19 +534,23 @@ function deleteCard(index) {
 
 function openEditDrawer(cardId) {
     selectedCardIndex = cardId;
-
+    console.log("ONE");
     const card = cards.find(card => card.id === cardId);
 
     if(!card) return;
-
+    console.log("TWO");
     document.getElementById("editCardName").value = card.name || "";
     document.getElementById("editSetName").value = card.setName || "";
     document.getElementById("editCardNumber").value = card.cardNum || "";
     document.getElementById("editQuantity").value = card.quantity || "";
+
+    console.log("THREE");
     document.getElementById("editRarity").value = card.cardRarity || "";
     document.getElementById("editVariant").value = card.cardVariant || "";
     document.getElementById("editCondition").value = card.cardCondition || "";
     document.getElementById("editStatus").value = card.cardStatus || "";
+
+    console.log("FOUR");
 
     document.getElementById("editDrawer").classList.add("open");
 }
