@@ -692,6 +692,28 @@ button:active {
     text-align: right;
 }
 
+#editDrawer {
+    position: fixed;
+    top: 0;
+    right: -350px;
+
+    width: 350px;
+    height: 100vh;
+
+    background: white;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+
+    transition: right 0.3s ease;
+
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+#editDrawer.open {
+    right: 0;
+}
+
+
 .optionsView {
     display: flex;
     flex-direction: column;

@@ -1,11 +1,31 @@
-//-------------------
-// START SCRIPT (tk)
-//-------------------
-
-
-//-------------------
-// GLOBAL VARIABLES
-//-------------------
+/*                                                                                                         
+                                                                                         
+                                           bbbbbbbb                                      
+                   lllllll                 b::::::b                              lllllll 
+                   l:::::l                 b::::::b                              l:::::l 
+                   l:::::l                 b::::::b                              l:::::l 
+                   l:::::l                  b:::::b                              l:::::l 
+   ggggggggg   gggggl::::l    ooooooooooo   b:::::bbbbbbbbb      aaaaaaaaaaaaa    l::::l 
+  g:::::::::ggg::::gl::::l  oo:::::::::::oo b::::::::::::::bb    a::::::::::::a   l::::l 
+ g:::::::::::::::::gl::::l o:::::::::::::::ob::::::::::::::::b   aaaaaaaaa:::::a  l::::l 
+g::::::ggggg::::::ggl::::l o:::::ooooo:::::ob:::::bbbbb:::::::b           a::::a  l::::l 
+g:::::g     g:::::g l::::l o::::o     o::::ob:::::b    b::::::b    aaaaaaa:::::a  l::::l 
+g:::::g     g:::::g l::::l o::::o     o::::ob:::::b     b:::::b  aa::::::::::::a  l::::l 
+g:::::g     g:::::g l::::l o::::o     o::::ob:::::b     b:::::b a::::aaaa::::::a  l::::l 
+g::::::g    g:::::g l::::l o::::o     o::::ob:::::b     b:::::ba::::a    a:::::a  l::::l 
+g:::::::ggggg:::::gl::::::lo:::::ooooo:::::ob:::::bbbbbb::::::ba::::a    a:::::a l::::::l
+ g::::::::::::::::gl::::::lo:::::::::::::::ob::::::::::::::::b a:::::aaaa::::::a l::::::l
+  gg::::::::::::::gl::::::l oo:::::::::::oo b:::::::::::::::b   a::::::::::aa:::al::::::l
+    gggggggg::::::gllllllll   ooooooooooo   bbbbbbbbbbbbbbbb     aaaaaaaaaa  aaaallllllll
+            g:::::g                                                                      
+gggggg      g:::::g                                                                      
+g:::::gg   gg:::::g                                                                      
+ g::::::ggg:::::::g                                                                      
+  gg:::::::::::::g                                                                       
+    ggg::::::ggg                                                                         
+       gggggg                                                                                                                             
+                                                                                         
+*/
 
 let vaultUser = 
     JSON.parse(localStorage.getItem("vaultUser")) || {
@@ -68,9 +88,36 @@ let editModeIndex = -1;
 let cards = JSON.parse(localStorage.getItem("cards")) || [];
 
 
-//-------------------
-// DISPLAY FUNCTIONS
-//-------------------
+/*                                                                                                                                       
+                                                                                                                                              
+                                                                                                                 
+            dddddddd                                                                                             
+            d::::::d  iiii                                       lllllll                                         
+            d::::::d i::::i                                      l:::::l                                         
+            d::::::d  iiii                                       l:::::l                                         
+            d:::::d                                              l:::::l                                         
+    ddddddddd:::::d iiiiiii     ssssssssss   ppppp   ppppppppp    l::::l   aaaaaaaaaaaaayyyyyyy           yyyyyyy
+  dd::::::::::::::d i:::::i   ss::::::::::s  p::::ppp:::::::::p   l::::l   a::::::::::::ay:::::y         y:::::y 
+ d::::::::::::::::d  i::::i ss:::::::::::::s p:::::::::::::::::p  l::::l   aaaaaaaaa:::::ay:::::y       y:::::y  
+d:::::::ddddd:::::d  i::::i s::::::ssss:::::spp::::::ppppp::::::p l::::l            a::::a y:::::y     y:::::y   
+d::::::d    d:::::d  i::::i  s:::::s  ssssss  p:::::p     p:::::p l::::l     aaaaaaa:::::a  y:::::y   y:::::y    
+d:::::d     d:::::d  i::::i    s::::::s       p:::::p     p:::::p l::::l   aa::::::::::::a   y:::::y y:::::y     
+d:::::d     d:::::d  i::::i       s::::::s    p:::::p     p:::::p l::::l  a::::aaaa::::::a    y:::::y:::::y      
+d:::::d     d:::::d  i::::i ssssss   s:::::s  p:::::p    p::::::p l::::l a::::a    a:::::a     y:::::::::y       
+d::::::ddddd::::::ddi::::::is:::::ssss::::::s p:::::ppppp:::::::pl::::::la::::a    a:::::a      y:::::::y        
+ d:::::::::::::::::di::::::is::::::::::::::s  p::::::::::::::::p l::::::la:::::aaaa::::::a       y:::::y         
+  d:::::::::ddd::::di::::::i s:::::::::::ss   p::::::::::::::pp  l::::::l a::::::::::aa:::a     y:::::y          
+   ddddddddd   dddddiiiiiiii  sssssssssss     p::::::pppppppp    llllllll  aaaaaaaaaa  aaaa    y:::::y           
+                                              p:::::p                                         y:::::y            
+                                              p:::::p                                        y:::::y             
+                                             p:::::::p                                      y:::::y              
+                                             p:::::::p                                     y:::::y               
+                                             p:::::::p                                    yyyyyyy                
+                                             ppppppppp                                                           
+                                                                                                                 
+                                                                                                                                              
+                                                                                                                                                                      
+*/
 
 function displayBookPage(cardList) {
     if (!cardList) {
@@ -180,7 +227,7 @@ function displayBookPage(cardList) {
                 <button onclick="event.stopPropagation(); toggleNotesView(${cardIndex})">
                     Notes
                 </button>
-                <button onclick="event.stopPropagation(); editCard(${cardIndex})">
+                <button onclick="event.stopPropagation(); openEditDrawer()">
                     Edit
                 </button>
                 <button onclick="event.stopPropagation(); deleteCard(${cardIndex})">
@@ -255,9 +302,33 @@ function displayBookPage(cardList) {
     updatePageControls();
 }
 
-//-------------------
-// IMAGE FUNCTIONS
-//-------------------
+/*
+                                                                                                          
+                                                                                                          
+  iiii                                                                                                    
+ i::::i                                                                                                   
+  iiii                                                                                                    
+                                                                                                          
+iiiiiii    mmmmmmm    mmmmmmm     aaaaaaaaaaaaa     ggggggggg   ggggg    eeeeeeeeeeee        ssssssssss   
+i:::::i  mm:::::::m  m:::::::mm   a::::::::::::a   g:::::::::ggg::::g  ee::::::::::::ee    ss::::::::::s  
+ i::::i m::::::::::mm::::::::::m  aaaaaaaaa:::::a g:::::::::::::::::g e::::::eeeee:::::eess:::::::::::::s 
+ i::::i m::::::::::::::::::::::m           a::::ag::::::ggggg::::::gge::::::e     e:::::es::::::ssss:::::s
+ i::::i m:::::mmm::::::mmm:::::m    aaaaaaa:::::ag:::::g     g:::::g e:::::::eeeee::::::e s:::::s  ssssss 
+ i::::i m::::m   m::::m   m::::m  aa::::::::::::ag:::::g     g:::::g e:::::::::::::::::e    s::::::s      
+ i::::i m::::m   m::::m   m::::m a::::aaaa::::::ag:::::g     g:::::g e::::::eeeeeeeeeee        s::::::s   
+ i::::i m::::m   m::::m   m::::ma::::a    a:::::ag::::::g    g:::::g e:::::::e           ssssss   s:::::s 
+i::::::im::::m   m::::m   m::::ma::::a    a:::::ag:::::::ggggg:::::g e::::::::e          s:::::ssss::::::s
+i::::::im::::m   m::::m   m::::ma:::::aaaa::::::a g::::::::::::::::g  e::::::::eeeeeeee  s::::::::::::::s 
+i::::::im::::m   m::::m   m::::m a::::::::::aa:::a gg::::::::::::::g   ee:::::::::::::e   s:::::::::::ss  
+iiiiiiiimmmmmm   mmmmmm   mmmmmm  aaaaaaaaaa  aaaa   gggggggg::::::g     eeeeeeeeeeeeee    sssssssssss    
+                                                             g:::::g                                      
+                                                 gggggg      g:::::g                                      
+                                                 g:::::gg   gg:::::g                                      
+                                                  g::::::ggg:::::::g                                      
+                                                   gg:::::::::::::g                                       
+                                                     ggg::::::ggg                                         
+                                                        gggggg                                            
+*/
 
 function compressImage(file, callback) {
     const reader = new FileReader();
@@ -337,9 +408,36 @@ function addCardWithImage() {
 }
 
 
-//-------------------
-// CARD FUNCTIONS
-//-------------------
+/*
+                                                                                                                   
+                                                                                     dddddddd                      
+                                                                                     d::::::d                      
+                                                                                     d::::::d                      
+                                                                                     d::::::d                      
+                                                                                     d:::::d                       
+    cccccccccccccccc       aaaaaaaaaaaaa        rrrrr   rrrrrrrrr            ddddddddd:::::d          ssssssssss   
+  cc:::::::::::::::c       a::::::::::::a       r::::rrr:::::::::r         dd::::::::::::::d        ss::::::::::s  
+ c:::::::::::::::::c       aaaaaaaaa:::::a      r:::::::::::::::::r       d::::::::::::::::d      ss:::::::::::::s 
+c:::::::cccccc:::::c                a::::a      rr::::::rrrrr::::::r     d:::::::ddddd:::::d      s::::::ssss:::::s
+c::::::c     ccccccc         aaaaaaa:::::a       r:::::r     r:::::r     d::::::d    d:::::d       s:::::s  ssssss 
+c:::::c                    aa::::::::::::a       r:::::r     rrrrrrr     d:::::d     d:::::d         s::::::s      
+c:::::c                   a::::aaaa::::::a       r:::::r                 d:::::d     d:::::d            s::::::s   
+c::::::c     ccccccc     a::::a    a:::::a       r:::::r                 d:::::d     d:::::d      ssssss   s:::::s 
+c:::::::cccccc:::::c     a::::a    a:::::a       r:::::r                 d::::::ddddd::::::dd     s:::::ssss::::::s
+ c:::::::::::::::::c     a:::::aaaa::::::a       r:::::r                  d:::::::::::::::::d     s::::::::::::::s 
+  cc:::::::::::::::c      a::::::::::aa:::a      r:::::r                   d:::::::::ddd::::d      s:::::::::::ss  
+    cccccccccccccccc       aaaaaaaaaa  aaaa      rrrrrrr                    ddddddddd   ddddd       sssssssssss    
+                                                                                                                   
+                                                                                                                   
+                                                                                                                   
+                                                                                                                   
+                                                                                                                   
+                                                                                                                   
+                                                                                                                                                                                                     
+*/
+
+
+// ADD CARD
 
 function addCard(imageData = "") {
 
@@ -421,6 +519,8 @@ function clearAddCardForm() {
     document.getElementById("imagePreviewBox").innerHTML = `<p>Image Preview</p>`;
 }
 
+// DELETE CARD
+
 function deleteCard(index) {
 
     cards.splice(index, 1);
@@ -432,21 +532,15 @@ function deleteCard(index) {
     displayBookPage();
 }
 
-function editCard(index) {
-
-    if (editModeIndex === index) {
-
-        saveEditedCard(index);
-
-        editModeIndex = -1;
-
-    } else {
-
-        editModeIndex = index;
-    }
-
-    displayBookPage();
+function openEditDrawer() {
+    document.getElementById("editDrawer").classList.add("open");
 }
+
+function closeEditDrawer() {
+    document.getElementById("editDrawer").classList.remove("open");
+}
+
+// SAVE EDITED CARD
 
 function saveEditedCard(index) {
 
@@ -468,6 +562,8 @@ function saveEditedCard(index) {
     saveCards();
 }
 
+// FAVORITE CARD
+
 function favoriteCard() {
 
     let card = cards[selectedCardIndex];
@@ -483,9 +579,33 @@ function favoriteCard() {
 
 
 
-//-------------------
-// TABS FUNCTIONS (tk)
-//-------------------
+/*
+                                                                                             
+                                                   bbbbbbbb                                  
+         tttt                                      b::::::b                                  
+      ttt:::t                                      b::::::b                                  
+      t:::::t                                      b::::::b                                  
+      t:::::t                                       b:::::b                                  
+ttttttt:::::ttttttt           aaaaaaaaaaaaa         b:::::bbbbbbbbb             ssssssssss   
+t:::::::::::::::::t           a::::::::::::a        b::::::::::::::bb         ss::::::::::s  
+t:::::::::::::::::t           aaaaaaaaa:::::a       b::::::::::::::::b      ss:::::::::::::s 
+tttttt:::::::tttttt                    a::::a       b:::::bbbbb:::::::b     s::::::ssss:::::s
+      t:::::t                   aaaaaaa:::::a       b:::::b    b::::::b      s:::::s  ssssss 
+      t:::::t                 aa::::::::::::a       b:::::b     b:::::b        s::::::s      
+      t:::::t                a::::aaaa::::::a       b:::::b     b:::::b           s::::::s   
+      t:::::t    tttttt     a::::a    a:::::a       b:::::b     b:::::b     ssssss   s:::::s 
+      t::::::tttt:::::t     a::::a    a:::::a       b:::::bbbbbb::::::b     s:::::ssss::::::s
+      tt::::::::::::::t     a:::::aaaa::::::a       b::::::::::::::::b      s::::::::::::::s 
+        tt:::::::::::tt      a::::::::::aa:::a      b:::::::::::::::b        s:::::::::::ss  
+          ttttttttttt         aaaaaaaaaa  aaaa      bbbbbbbbbbbbbbbb          sssssssssss    
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                                                                                                                                                                                
+*/
 
 function displayTabs() {
     const binderTabs = document.getElementById("binderTabs");
@@ -551,9 +671,33 @@ function saveBinderState() {
 }
 
 
-//-------------------
-// NOTES FUNCTIONS
-//-------------------
+/*
+                                                                                                                        
+                                                                                                                        
+                                                      tttt                                                              
+                                                   ttt:::t                                                              
+                                                   t:::::t                                                              
+                                                   t:::::t                                                              
+nnnn  nnnnnnnn            ooooooooooo        ttttttt:::::ttttttt             eeeeeeeeeeee             ssssssssss        
+n:::nn::::::::nn        oo:::::::::::oo      t:::::::::::::::::t           ee::::::::::::ee         ss::::::::::s       
+n::::::::::::::nn      o:::::::::::::::o     t:::::::::::::::::t          e::::::eeeee:::::ee     ss:::::::::::::s      
+nn:::::::::::::::n     o:::::ooooo:::::o     tttttt:::::::tttttt         e::::::e     e:::::e     s::::::ssss:::::s     
+  n:::::nnnn:::::n     o::::o     o::::o           t:::::t               e:::::::eeeee::::::e      s:::::s  ssssss      
+  n::::n    n::::n     o::::o     o::::o           t:::::t               e:::::::::::::::::e         s::::::s           
+  n::::n    n::::n     o::::o     o::::o           t:::::t               e::::::eeeeeeeeeee             s::::::s        
+  n::::n    n::::n     o::::o     o::::o           t:::::t    tttttt     e:::::::e                ssssss   s:::::s      
+  n::::n    n::::n     o:::::ooooo:::::o           t::::::tttt:::::t     e::::::::e               s:::::ssss::::::s     
+  n::::n    n::::n     o:::::::::::::::o           tt::::::::::::::t      e::::::::eeeeeeee       s::::::::::::::s      
+  n::::n    n::::n      oo:::::::::::oo              tt:::::::::::tt       ee:::::::::::::e        s:::::::::::ss       
+  nnnnnn    nnnnnn        ooooooooooo                  ttttttttttt           eeeeeeeeeeeeee         sssssssssss         
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+*/
 
 function toggleNotesView(index) {
 
@@ -594,9 +738,33 @@ function saveNotes(index) {
 }
 
 
-//-------------------
-// SEARCH / SORT
-//-------------------
+/*
+                                                                                                                          
+                                                                                                                          
+                                                               tttt            iiii                                       
+                                                            ttt:::t           i::::i                                      
+                                                            t:::::t            iiii                                       
+                                                            t:::::t                                                       
+    ssssssssss      ooooooooooo   rrrrr   rrrrrrrrr   ttttttt:::::ttttttt    iiiiiiinnnn  nnnnnnnn       ggggggggg   ggggg
+  ss::::::::::s   oo:::::::::::oo r::::rrr:::::::::r  t:::::::::::::::::t    i:::::in:::nn::::::::nn    g:::::::::ggg::::g
+ss:::::::::::::s o:::::::::::::::or:::::::::::::::::r t:::::::::::::::::t     i::::in::::::::::::::nn  g:::::::::::::::::g
+s::::::ssss:::::so:::::ooooo:::::orr::::::rrrrr::::::rtttttt:::::::tttttt     i::::inn:::::::::::::::ng::::::ggggg::::::gg
+ s:::::s  ssssss o::::o     o::::o r:::::r     r:::::r      t:::::t           i::::i  n:::::nnnn:::::ng:::::g     g:::::g 
+   s::::::s      o::::o     o::::o r:::::r     rrrrrrr      t:::::t           i::::i  n::::n    n::::ng:::::g     g:::::g 
+      s::::::s   o::::o     o::::o r:::::r                  t:::::t           i::::i  n::::n    n::::ng:::::g     g:::::g 
+ssssss   s:::::s o::::o     o::::o r:::::r                  t:::::t    tttttt i::::i  n::::n    n::::ng::::::g    g:::::g 
+s:::::ssss::::::so:::::ooooo:::::o r:::::r                  t::::::tttt:::::ti::::::i n::::n    n::::ng:::::::ggggg:::::g 
+s::::::::::::::s o:::::::::::::::o r:::::r                  tt::::::::::::::ti::::::i n::::n    n::::n g::::::::::::::::g 
+ s:::::::::::ss   oo:::::::::::oo  r:::::r                    tt:::::::::::tti::::::i n::::n    n::::n  gg::::::::::::::g 
+  sssssssssss       ooooooooooo    rrrrrrr                      ttttttttttt  iiiiiiii nnnnnn    nnnnnn    gggggggg::::::g 
+                                                                                                                  g:::::g 
+                                                                                                      gggggg      g:::::g 
+                                                                                                      g:::::gg   gg:::::g 
+                                                                                                       g::::::ggg:::::::g 
+                                                                                                        gg:::::::::::::g  
+                                                                                                          ggg::::::ggg    
+                                                                                                             gggggg       
+*/
 
 function search() {
 
@@ -655,9 +823,58 @@ function sortCardName() {
 }
 
 
-//-------------------
-// SETTINGS / THEMES
-//-------------------
+/*
+                                                                                                                                             
+                                                                                                                                             
+                                              tttt               tttt            iiii                                                        
+                                           ttt:::t            ttt:::t           i::::i                                                       
+                                           t:::::t            t:::::t            iiii                                                        
+                                           t:::::t            t:::::t                                                                        
+    ssssssssss       eeeeeeeeeeee    ttttttt:::::tttttttttttttt:::::ttttttt    iiiiiiinnnn  nnnnnnnn       ggggggggg   ggggg    ssssssssss   
+  ss::::::::::s    ee::::::::::::ee  t:::::::::::::::::tt:::::::::::::::::t    i:::::in:::nn::::::::nn    g:::::::::ggg::::g  ss::::::::::s  
+ss:::::::::::::s  e::::::eeeee:::::eet:::::::::::::::::tt:::::::::::::::::t     i::::in::::::::::::::nn  g:::::::::::::::::gss:::::::::::::s 
+s::::::ssss:::::se::::::e     e:::::etttttt:::::::tttttttttttt:::::::tttttt     i::::inn:::::::::::::::ng::::::ggggg::::::ggs::::::ssss:::::s
+ s:::::s  ssssss e:::::::eeeee::::::e      t:::::t            t:::::t           i::::i  n:::::nnnn:::::ng:::::g     g:::::g  s:::::s  ssssss 
+   s::::::s      e:::::::::::::::::e       t:::::t            t:::::t           i::::i  n::::n    n::::ng:::::g     g:::::g    s::::::s      
+      s::::::s   e::::::eeeeeeeeeee        t:::::t            t:::::t           i::::i  n::::n    n::::ng:::::g     g:::::g       s::::::s   
+ssssss   s:::::s e:::::::e                 t:::::t    tttttt  t:::::t    tttttt i::::i  n::::n    n::::ng::::::g    g:::::g ssssss   s:::::s 
+s:::::ssss::::::se::::::::e                t::::::tttt:::::t  t::::::tttt:::::ti::::::i n::::n    n::::ng:::::::ggggg:::::g s:::::ssss::::::s
+s::::::::::::::s  e::::::::eeeeeeee        tt::::::::::::::t  tt::::::::::::::ti::::::i n::::n    n::::n g::::::::::::::::g s::::::::::::::s 
+ s:::::::::::ss    ee:::::::::::::e          tt:::::::::::tt    tt:::::::::::tti::::::i n::::n    n::::n  gg::::::::::::::g  s:::::::::::ss  
+  sssssssssss        eeeeeeeeeeeeee            ttttttttttt        ttttttttttt  iiiiiiii nnnnnn    nnnnnn    gggggggg::::::g   sssssssssss    
+                                                                                                                    g:::::g                  
+                                                                                                        gggggg      g:::::g                  
+                                                                                                        g:::::gg   gg:::::g                  
+                                                                                                         g::::::ggg:::::::g                  
+                                                                                                          gg:::::::::::::g                   
+                                                                                                            ggg::::::ggg                     
+                                                                                                               gggggg                        
+                                                                                                                                             
+                                                                                                                                             
+         tttt         hhhhhhh                                                                                                                
+      ttt:::t         h:::::h                                                                                                                
+      t:::::t         h:::::h                                                                                                                
+      t:::::t         h:::::h                                                                                                                
+ttttttt:::::ttttttt    h::::h hhhhh           eeeeeeeeeeee       mmmmmmm    mmmmmmm       eeeeeeeeeeee        ssssssssss                     
+t:::::::::::::::::t    h::::hh:::::hhh      ee::::::::::::ee   mm:::::::m  m:::::::mm   ee::::::::::::ee    ss::::::::::s                    
+t:::::::::::::::::t    h::::::::::::::hh   e::::::eeeee:::::eem::::::::::mm::::::::::m e::::::eeeee:::::eess:::::::::::::s                   
+tttttt:::::::tttttt    h:::::::hhh::::::h e::::::e     e:::::em::::::::::::::::::::::me::::::e     e:::::es::::::ssss:::::s                  
+      t:::::t          h::::::h   h::::::he:::::::eeeee::::::em:::::mmm::::::mmm:::::me:::::::eeeee::::::e s:::::s  ssssss                   
+      t:::::t          h:::::h     h:::::he:::::::::::::::::e m::::m   m::::m   m::::me:::::::::::::::::e    s::::::s                        
+      t:::::t          h:::::h     h:::::he::::::eeeeeeeeeee  m::::m   m::::m   m::::me::::::eeeeeeeeeee        s::::::s                     
+      t:::::t    tttttth:::::h     h:::::he:::::::e           m::::m   m::::m   m::::me:::::::e           ssssss   s:::::s                   
+      t::::::tttt:::::th:::::h     h:::::he::::::::e          m::::m   m::::m   m::::me::::::::e          s:::::ssss::::::s                  
+      tt::::::::::::::th:::::h     h:::::h e::::::::eeeeeeee  m::::m   m::::m   m::::m e::::::::eeeeeeee  s::::::::::::::s                   
+        tt:::::::::::tth:::::h     h:::::h  ee:::::::::::::e  m::::m   m::::m   m::::m  ee:::::::::::::e   s:::::::::::ss                    
+          ttttttttttt  hhhhhhh     hhhhhhh    eeeeeeeeeeeeee  mmmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee    sssssssssss                      
+                                                                                                                                             
+                                                                                                                                             
+                                                                                                                                             
+                                                                                                                                             
+                                                                                                                                             
+                                                                                                                                             
+                                                                                                                                                                                                    
+*/
 
 function toggleSettings() {
 
@@ -724,9 +941,35 @@ function loadDefaultTheme() {
 }
 
 
-//-------------------
-// PAGE CONTROL
-//-------------------
+/*
+                                                                                              
+                                                                                              
+                                                                                              
+                                                                                              
+                                                                                              
+                                                                                              
+ppppp   ppppppppp     aaaaaaaaaaaaa     ggggggggg   ggggg    eeeeeeeeeeee        ssssssssss   
+p::::ppp:::::::::p    a::::::::::::a   g:::::::::ggg::::g  ee::::::::::::ee    ss::::::::::s  
+p:::::::::::::::::p   aaaaaaaaa:::::a g:::::::::::::::::g e::::::eeeee:::::eess:::::::::::::s 
+pp::::::ppppp::::::p           a::::ag::::::ggggg::::::gge::::::e     e:::::es::::::ssss:::::s
+ p:::::p     p:::::p    aaaaaaa:::::ag:::::g     g:::::g e:::::::eeeee::::::e s:::::s  ssssss 
+ p:::::p     p:::::p  aa::::::::::::ag:::::g     g:::::g e:::::::::::::::::e    s::::::s      
+ p:::::p     p:::::p a::::aaaa::::::ag:::::g     g:::::g e::::::eeeeeeeeeee        s::::::s   
+ p:::::p    p::::::pa::::a    a:::::ag::::::g    g:::::g e:::::::e           ssssss   s:::::s 
+ p:::::ppppp:::::::pa::::a    a:::::ag:::::::ggggg:::::g e::::::::e          s:::::ssss::::::s
+ p::::::::::::::::p a:::::aaaa::::::a g::::::::::::::::g  e::::::::eeeeeeee  s::::::::::::::s 
+ p::::::::::::::pp   a::::::::::aa:::a gg::::::::::::::g   ee:::::::::::::e   s:::::::::::ss  
+ p::::::pppppppp      aaaaaaaaaa  aaaa   gggggggg::::::g     eeeeeeeeeeeeee    sssssssssss    
+ p:::::p                                         g:::::g                                      
+ p:::::p                             gggggg      g:::::g                                      
+p:::::::p                            g:::::gg   gg:::::g                                      
+p:::::::p                             g::::::ggg:::::::g                                      
+p:::::::p                              gg:::::::::::::g                                       
+ppppppppp                                ggg::::::ggg                                         
+                                            gggggg                                            
+*/
+
+
 
 function selectCard(index) {
 
@@ -799,9 +1042,59 @@ function addPage() {
 }
 
 
-//-------------------
-// DRAG & DROP CARDS
-//-------------------
+
+/*
+                                                                                                        
+            dddddddd                                                            ''''''                  
+            d::::::d                                                            '::::'                  
+            d::::::d                                                            '::::'                  
+            d::::::d                                                            ':::''                  
+            d:::::d                                                            ':::'                    
+    ddddddddd:::::drrrrr   rrrrrrrrr   aaaaaaaaaaaaa     ggggggggg   ggggg     ''''   nnnn  nnnnnnnn    
+  dd::::::::::::::dr::::rrr:::::::::r  a::::::::::::a   g:::::::::ggg::::g            n:::nn::::::::nn  
+ d::::::::::::::::dr:::::::::::::::::r aaaaaaaaa:::::a g:::::::::::::::::g            n::::::::::::::nn 
+d:::::::ddddd:::::drr::::::rrrrr::::::r         a::::ag::::::ggggg::::::gg            nn:::::::::::::::n
+d::::::d    d:::::d r:::::r     r:::::r  aaaaaaa:::::ag:::::g     g:::::g               n:::::nnnn:::::n
+d:::::d     d:::::d r:::::r     rrrrrrraa::::::::::::ag:::::g     g:::::g               n::::n    n::::n
+d:::::d     d:::::d r:::::r           a::::aaaa::::::ag:::::g     g:::::g               n::::n    n::::n
+d:::::d     d:::::d r:::::r          a::::a    a:::::ag::::::g    g:::::g               n::::n    n::::n
+d::::::ddddd::::::ddr:::::r          a::::a    a:::::ag:::::::ggggg:::::g               n::::n    n::::n
+ d:::::::::::::::::dr:::::r          a:::::aaaa::::::a g::::::::::::::::g               n::::n    n::::n
+  d:::::::::ddd::::dr:::::r           a::::::::::aa:::a gg::::::::::::::g               n::::n    n::::n
+   ddddddddd   dddddrrrrrrr            aaaaaaaaaa  aaaa   gggggggg::::::g               nnnnnn    nnnnnn
+                                                                  g:::::g                               
+                                                      gggggg      g:::::g                               
+                                                      g:::::gg   gg:::::g                               
+                                                       g::::::ggg:::::::g                               
+                                                        gg:::::::::::::g                                
+                                                          ggg::::::ggg                                  
+                                                             gggggg                                     
+                                                                                                        
+            dddddddd                                                                                    
+            d::::::d                                                                                    
+            d::::::d                                                                                    
+            d::::::d                                                                                    
+            d:::::d                                                                                     
+    ddddddddd:::::drrrrr   rrrrrrrrr      ooooooooooo   ppppp   ppppppppp                               
+  dd::::::::::::::dr::::rrr:::::::::r   oo:::::::::::oo p::::ppp:::::::::p                              
+ d::::::::::::::::dr:::::::::::::::::r o:::::::::::::::op:::::::::::::::::p                             
+d:::::::ddddd:::::drr::::::rrrrr::::::ro:::::ooooo:::::opp::::::ppppp::::::p                            
+d::::::d    d:::::d r:::::r     r:::::ro::::o     o::::o p:::::p     p:::::p                            
+d:::::d     d:::::d r:::::r     rrrrrrro::::o     o::::o p:::::p     p:::::p                            
+d:::::d     d:::::d r:::::r            o::::o     o::::o p:::::p     p:::::p                            
+d:::::d     d:::::d r:::::r            o::::o     o::::o p:::::p    p::::::p                            
+d::::::ddddd::::::ddr:::::r            o:::::ooooo:::::o p:::::ppppp:::::::p                            
+ d:::::::::::::::::dr:::::r            o:::::::::::::::o p::::::::::::::::p                             
+  d:::::::::ddd::::dr:::::r             oo:::::::::::oo  p::::::::::::::pp                              
+   ddddddddd   dddddrrrrrrr               ooooooooooo    p::::::pppppppp                                
+                                                         p:::::p                                        
+                                                         p:::::p                                        
+                                                        p:::::::p                                       
+                                                        p:::::::p                                       
+                                                        p:::::::p                                       
+                                                        ppppppppp                                       
+                                                                                                        
+*/
 
 function startDrag(cardId) {
     draggedCardId = cardId;
@@ -929,11 +1222,33 @@ function swapCardSlots(cardAId, cardBId) {
             // }
 
 
-
-//------------------
-// IMPORT / EXPORT  
-//------------------
-
+/*
+                                                                                                                
+                                                                                                                
+  iiii                                                                                            tttt          
+ i::::i                                                                                        ttt:::t          
+  iiii                                                                                         t:::::t          
+                                                                                               t:::::t          
+iiiiiii    mmmmmmm    mmmmmmm   ppppp   ppppppppp      ooooooooooo   rrrrr   rrrrrrrrr   ttttttt:::::ttttttt    
+i:::::i  mm:::::::m  m:::::::mm p::::ppp:::::::::p   oo:::::::::::oo r::::rrr:::::::::r  t:::::::::::::::::t    
+ i::::i m::::::::::mm::::::::::mp:::::::::::::::::p o:::::::::::::::or:::::::::::::::::r t:::::::::::::::::t    
+ i::::i m::::::::::::::::::::::mpp::::::ppppp::::::po:::::ooooo:::::orr::::::rrrrr::::::rtttttt:::::::tttttt    
+ i::::i m:::::mmm::::::mmm:::::m p:::::p     p:::::po::::o     o::::o r:::::r     r:::::r      t:::::t          
+ i::::i m::::m   m::::m   m::::m p:::::p     p:::::po::::o     o::::o r:::::r     rrrrrrr      t:::::t          
+ i::::i m::::m   m::::m   m::::m p:::::p     p:::::po::::o     o::::o r:::::r                  t:::::t          
+ i::::i m::::m   m::::m   m::::m p:::::p    p::::::po::::o     o::::o r:::::r                  t:::::t    tttttt
+i::::::im::::m   m::::m   m::::m p:::::ppppp:::::::po:::::ooooo:::::o r:::::r                  t::::::tttt:::::t
+i::::::im::::m   m::::m   m::::m p::::::::::::::::p o:::::::::::::::o r:::::r                  tt::::::::::::::t
+i::::::im::::m   m::::m   m::::m p::::::::::::::pp   oo:::::::::::oo  r:::::r                    tt:::::::::::tt
+iiiiiiiimmmmmm   mmmmmm   mmmmmm p::::::pppppppp       ooooooooooo    rrrrrrr                      ttttttttttt  
+                                 p:::::p                                                                        
+                                 p:::::p                                                                        
+                                p:::::::p                                                                       
+                                p:::::::p                                                                       
+                                p:::::::p                                                                       
+                                ppppppppp                                                                       
+                                                                                                                
+*/
 function exportVaultData() {
     const vaultData = {
         vaultUser,
@@ -992,9 +1307,31 @@ function copyVaultData() {
 
 
  
-//-------------------
-// UTILITY FUNCTIONS
-//-------------------
+/*                                                                                             
+                         tttt            iiii  lllllll   iiii          tttt                               
+                      ttt:::t           i::::i l:::::l  i::::i      ttt:::t                               
+                      t:::::t            iiii  l:::::l   iiii       t:::::t                               
+                      t:::::t                  l:::::l              t:::::t                               
+uuuuuu    uuuuuuttttttt:::::ttttttt    iiiiiii  l::::l iiiiiiittttttt:::::tttttttyyyyyyy           yyyyyyy
+u::::u    u::::ut:::::::::::::::::t    i:::::i  l::::l i:::::it:::::::::::::::::t y:::::y         y:::::y 
+u::::u    u::::ut:::::::::::::::::t     i::::i  l::::l  i::::it:::::::::::::::::t  y:::::y       y:::::y  
+u::::u    u::::utttttt:::::::tttttt     i::::i  l::::l  i::::itttttt:::::::tttttt   y:::::y     y:::::y   
+u::::u    u::::u      t:::::t           i::::i  l::::l  i::::i      t:::::t          y:::::y   y:::::y    
+u::::u    u::::u      t:::::t           i::::i  l::::l  i::::i      t:::::t           y:::::y y:::::y     
+u::::u    u::::u      t:::::t           i::::i  l::::l  i::::i      t:::::t            y:::::y:::::y      
+u:::::uuuu:::::u      t:::::t    tttttt i::::i  l::::l  i::::i      t:::::t    tttttt   y:::::::::y       
+u:::::::::::::::uu    t::::::tttt:::::ti::::::il::::::li::::::i     t::::::tttt:::::t    y:::::::y        
+ u:::::::::::::::u    tt::::::::::::::ti::::::il::::::li::::::i     tt::::::::::::::t     y:::::y         
+  uu::::::::uu:::u      tt:::::::::::tti::::::il::::::li::::::i       tt:::::::::::tt    y:::::y          
+    uuuuuuuu  uuuu        ttttttttttt  iiiiiiiilllllllliiiiiiii         ttttttttttt     y:::::y           
+                                                                                       y:::::y            
+                                                                                      y:::::y             
+                                                                                     y:::::y              
+                                                                                    y:::::y               
+                                                                                   yyyyyyy                
+                                                                                                          
+                                                                                                          
+*/
 
 
 
@@ -1095,9 +1432,33 @@ function showToast(message) {
 }
 
 
-//-------------------
-// STARTUP
-//-------------------
+/*
+                                                                                                                          
+                                                                                                                          
+                          tttt                                                        tttt                      ^^^       
+                       ttt:::t                                                     ttt:::t                     ^:::^      
+                       t:::::t                                                     t:::::t                    ^:::::^     
+                       t:::::t                                                     t:::::t                   ^:::::::^    
+    ssssssssss   ttttttt:::::ttttttt      aaaaaaaaaaaaa  rrrrr   rrrrrrrrr   ttttttt:::::ttttttt            ^:::::::::^   
+  ss::::::::::s  t:::::::::::::::::t      a::::::::::::a r::::rrr:::::::::r  t:::::::::::::::::t           ^:::::^:::::^  
+ss:::::::::::::s t:::::::::::::::::t      aaaaaaaaa:::::ar:::::::::::::::::r t:::::::::::::::::t          ^:::::^ ^:::::^ 
+s::::::ssss:::::stttttt:::::::tttttt               a::::arr::::::rrrrr::::::rtttttt:::::::tttttt         ^^^^^^^   ^^^^^^^
+ s:::::s  ssssss       t:::::t              aaaaaaa:::::a r:::::r     r:::::r      t:::::t                                
+   s::::::s            t:::::t            aa::::::::::::a r:::::r     rrrrrrr      t:::::t                                
+      s::::::s         t:::::t           a::::aaaa::::::a r:::::r                  t:::::t                                
+ssssss   s:::::s       t:::::t    tttttta::::a    a:::::a r:::::r                  t:::::t    tttttt                      
+s:::::ssss::::::s      t::::::tttt:::::ta::::a    a:::::a r:::::r                  t::::::tttt:::::t                      
+s::::::::::::::s       tt::::::::::::::ta:::::aaaa::::::a r:::::r                  tt::::::::::::::t                      
+ s:::::::::::ss          tt:::::::::::tt a::::::::::aa:::ar:::::r                    tt:::::::::::tt                      
+  sssssssssss              ttttttttttt    aaaaaaaaaa  aaaarrrrrrr                      ttttttttttt                        
+                                                                                                                          
+                                                                                                                          
+                                                                                                                          
+                                                                                                                          
+                                                                                                                          
+                                                                                                                          
+                                                                                                                          
+*/
 
 document.getElementById("pageSlider").oninput = function () {
     currentPage = Number(this.value);
