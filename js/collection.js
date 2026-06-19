@@ -533,6 +533,7 @@ function deleteCard(index) {
 }
 
 function openEditDrawer(cardId) {
+    document.getElementById("editDrawer").classList.add("open");
     selectedCardIndex = cardId;
     const card = cards.find(card => card.id === cardId);
 
@@ -547,7 +548,7 @@ function openEditDrawer(cardId) {
     document.getElementById("editCondition").value = card.cardCondition || "";
     document.getElementById("editStatus").value = card.cardStatus || "";
 
-    document.getElementById("editDrawer").classList.add("open");
+    
 }
 
 // SAVE EDITED CARD
