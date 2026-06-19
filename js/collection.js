@@ -533,8 +533,8 @@ function deleteCard(index) {
 }
 
 function openEditDrawer(cardId) {
-    document.getElementById("editDrawer").classList.add("open");
     selectedCardIndex = cardId;
+
     const card = cards.find(card => card.id === cardId);
 
     if(!card) return;
@@ -543,12 +543,12 @@ function openEditDrawer(cardId) {
     document.getElementById("editSetName").value = card.setName || "";
     document.getElementById("editCardNumber").value = card.cardNum || "";
     document.getElementById("editQuantity").value = card.quantity || "";
-    document.getElementById("editRarity").value = card.rarity || "";
-    document.getElementById("editVariant").value = card.variant || "";
+    document.getElementById("editRarity").value = card.cardRarity || "";
+    document.getElementById("editVariant").value = card.cardVariant || "";
     document.getElementById("editCondition").value = card.cardCondition || "";
     document.getElementById("editStatus").value = card.cardStatus || "";
 
-    
+    document.getElementById("editDrawer").classList.add("open");
 }
 
 // SAVE EDITED CARD
