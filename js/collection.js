@@ -227,7 +227,7 @@ function displayBookPage(cardList) {
                 <button onclick="event.stopPropagation(); toggleNotesView(${cardIndex})">
                     Notes
                 </button>
-                <button onclick="event.stopPropagation(); openEditDrawer()">
+                <button onclick="event.stopPropagation(); openEditDrawer(${cardIndex})">
                     Edit
                 </button>
                 <button onclick="event.stopPropagation(); deleteCard(${cardIndex})">
@@ -532,7 +532,21 @@ function deleteCard(index) {
     displayBookPage();
 }
 
-function openEditDrawer() {
+function openEditDrawer(cardId) {
+    selectedCardIndex = cardId;
+    const card = cards.find(card => card.id === cardId);
+
+    if(!card) return;
+
+    document.getElementById("editCardName").value = card.name || "";
+    document.getElementById("editSetName").value = card.setName || "";
+    document.getElementById("editCardNumber").value = card.cardNum || "";
+    document.getElementById("editQuantity").value = card.quantity || "";
+    document.getElementById("editRarity").value = card.rarity || "";
+    document.getElementById("editVariant").value = card.variant || "";
+    document.getElementById("editCondition").value = card.cardCondition || "";
+    document.getElementById("editStatus").value = card.cardStatus || "";
+
     document.getElementById("editDrawer").classList.add("open");
 }
 
@@ -540,14 +554,7 @@ function openEditDrawer() {
 
 function saveEditedCard() {
 
-    cards[selectedCardIndex].name = document.getElementById("editCardName").value;
-    cards[selectedCardIndex].setName = document.getElementById("editSetName").value;
-    cards[selectedCardIndex].cardNum = document.getElementById("editCardNumber").value;
-    cards[selectedCardIndex].quantity = document.getElementById("editQuantity").value;
-    cards[selectedCardIndex].rarity = document.getElementById("editRarity").value;
-    cards[selectedCardIndex].variant = document.getElementById("editVariant").value;
-    cards[selectedCardIndex].condition = document.getElementById("editCondition").value;
-    cards[selectedCardIndex].status = document.getElementById("editStatus").value;
+    
 
     saveCards();
 
