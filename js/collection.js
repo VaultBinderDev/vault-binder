@@ -436,7 +436,7 @@ function addCardWithImage() {
     compressImage(file, function (compressedImage) {
         addCard(compressedImage);
         imageInput.value = "";
-    }) 
+    }); 
 }
 
 
