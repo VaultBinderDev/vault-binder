@@ -463,17 +463,16 @@ button:active {
 }
 
 #binderTabs {
-    width: min(88vw, 1400px);
+    max-width: 100%;
     display: flex;
     gap: 8px;
-    align-items: flex-end;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .binderTab {
-    flex: 1 1 160px;
+    flex: 1 1 140px;
     max-width: 220px;
-    min-width: 80;
+    min-width: 0;
 
     white-space: nowrap;
     overflow: hidden;
