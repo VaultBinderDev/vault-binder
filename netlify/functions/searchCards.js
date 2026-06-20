@@ -7,7 +7,7 @@ exports.handler = async function(event) {
                 "X-Api-Key": process.env.POKEMON_TCG_API_KEY
             }
     });
-
+    /* LiCHess Lp431234*!!! PASSWOrd*/
     const data = await response.json();
 
     return {

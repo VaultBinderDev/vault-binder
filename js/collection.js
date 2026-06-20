@@ -359,6 +359,38 @@ function compressImage(file, callback) {
     reader.readAsDataURL(file);
 }
 
+function viewImage() {
+    let imageInput =
+        document.getElementById("editImageInput");
+
+    let previewBox =
+        document.getElementById("imageView");
+
+    let file = imageInput.files[0];
+
+    if (!file) {
+
+        previewBox.innerHTML =
+            "<p>No image for this card.</p>";
+
+        return;
+    }
+
+    let reader = new FileReader();
+
+    reader.onload = function () {
+
+        previewBox.innerHTML = `
+            <img
+                src="${reader.result}"
+                alt="Card image preview"
+            >
+        `;
+    };
+
+    reader.readAsDataURL(file);
+}
+
 function previewImage() {
 
     let imageInput =
