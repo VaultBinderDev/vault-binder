@@ -80,7 +80,6 @@ const binderColors = [
     "#2d2d3f",
 ]
 
-let currentTheme = "pastelSherbet";
 let settingsText = "";
 
 let editModeIndex = -1;
@@ -979,18 +978,6 @@ function toggleSettings() {
     }
 }
 
-function setTheme(themeName) {
-    document.body.classList.remove(
-        "theme-classic",
-        "theme-metallic",
-        "theme-leather",
-        "theme-carbon"
-    );
-
-    document.body.className = themeName;
-    localStorage.setItem("theme", themeName);
-}
-
 /*
                                                                                               
                                                                                               
@@ -1508,16 +1495,7 @@ s::::::::::::::s       tt::::::::::::::ta:::::aaaa::::::a r:::::r               
                                                                                                                           
                                                                                                                           
 */
-// PAGE THEMES
-const savedTheme = localStorage.getItem("theme") || "theme-classic";
 
-document.body.classList.add(savedTheme);
-
-const radio = document.querySelector(`input[value="${savedTheme}"]`);
-
-if(radio) {
-    radio.checked = true;
-}
 
 // PAGE CHANGE DISPLAY
 document.getElementById("pageSlider").oninput = function () {

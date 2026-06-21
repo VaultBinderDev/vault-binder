@@ -92,6 +92,8 @@ const featuredSets = [
 ];
 
 
+
+
 // TIME TO POPULATE SETS FROM SET NAMES 
 
 
@@ -223,6 +225,8 @@ function toggleSetCard(button) {
 
 
 window.onload = function() {
+    // PAGE THEMES
+    loadSavedTheme();
     displayStats();
     displayFeaturedSets();
 }
