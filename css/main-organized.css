@@ -13,7 +13,6 @@
     --panel-bg: #fffdf9;
     --soft-border: #cfc7bc;
     --binder-bg: #111111;
-    --binder-surface: #f4f1ea;
     --accent-highlight: #f5f1ad;
     --shadow-soft: 0 6px 12px rgba(0,0,0,0.18);
     --shadow-panel: 0 10px 25px rgba(0,0,0,0.20);
@@ -25,9 +24,9 @@
 
 /* FOR TEST ONLY */
 
-* {
+/* * {
     outline: 1px solid red;
-} 
+}  */
 
 html {
     scroll-behavior: smooth;
@@ -539,7 +538,7 @@ FUTURE PREMIUM THEMES BELOW \/ \/
 
 #vaultBinderApp {
     min-height: 100vh;
-    background: var(--binder-surface);
+    background: var(--bg-main);
     position: relative;
 }
 
