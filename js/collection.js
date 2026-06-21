@@ -1379,7 +1379,6 @@ u:::::::::::::::uu    t::::::tttt:::::ti::::::il::::::li::::::i     t::::::tttt:
 */
 
 
-
 // SAVE FUNCTIONS tk
 
 function saveCards() {

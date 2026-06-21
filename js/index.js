@@ -1,6 +1,8 @@
 
 // GLOBAL VARIABLES
 
+let cards = JSON.parse(localStorage.getItem("cards")) || [];
+
 // ⚪ Not Started,🟢 Beginner,🔵 Started,🟡 Almost Complete,🏆Set Mastery
 
 const featuredSets = [
@@ -86,6 +88,41 @@ const featuredSets = [
     }
 ];
 
+
+// TIME TO POPULATE SETS FROM SET NAMES 
+
+
+function normalizeSetName(name) {
+    return (name || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function getSetProgress(setName, totalCards) {
+
+    const targetSetName = normalizeSetName(setName);
+
+    const setCards = cards.filter(card => 
+        normalizeSetName(card.setName) === targetSetName
+    );
+
+    const uniqueCardNumbers = new Set(
+        setCards.map(card => card.cardNum)
+    );
+
+    const collected = uniqueCardNumbers.size;
+
+    const missing = Math.max(totalCards - collected, 0);
+
+    const percent = Math.floor(
+        (collected / totalCards) * 100
+    );
+
+    return {
+        collected,
+        missing,
+        percent
+    };
+}
+
 // DISPLAY SETS
 
 function displayFeaturedSets() {
@@ -94,6 +131,7 @@ function displayFeaturedSets() {
     let html = "";
 
     featuredSets.forEach(set => {
+        const progress = getSetProgress(set.title, set.totalCards);
         html += `
             <div class="setCard"> <!--  EACH SET CARD  --> 
                 <div class="setHeader" onclick="toggleSetCard(this)">
@@ -105,13 +143,12 @@ function displayFeaturedSets() {
                 <div class="setDetails">
                     <p>Progress</p>
                     <div class="progressBar">
-                        <div class="progressFill" style="width: 10%;"></div>
+                        <div class="progressFill" style="width: ${progress.percent};"></div>
                     </div>
-                    <p>0% | 0/${set.totalCards}</p>
-
+                    <p>${progress.percent} | ${progress.collected}/${set.totalCards}</p>
                     <br>
-                    <p>Collected: --</p>
-                    <p>Missing: --</p>
+                    <p>Collected: ${progress.collected}</p>
+                    <p>Missing: ${progress.missing}</p>
                 </div>
             </div>
         `;
