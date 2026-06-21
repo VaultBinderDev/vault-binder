@@ -14,7 +14,6 @@
     --soft-border: #cfc7bc;
     --binder-bg: #111111;
     --binder-surface: #f4f1ea;
-    --accent-soft: #c9f4e8;
     --accent-highlight: #f5f1ad;
     --shadow-soft: 0 6px 12px rgba(0,0,0,0.18);
     --shadow-panel: 0 10px 25px rgba(0,0,0,0.20);
@@ -36,9 +35,11 @@ html {
 
 body {
     margin: 0;
-    background-color: var(--page-bg);
+    background-color: var(--bg-main);
     color: var(--text-main);
 }
+
+
 
 h1 {
     margin: 0;
@@ -67,15 +68,12 @@ select {
 }
 
 button {
+    border-color: var(--accent);
     cursor: pointer;
 }
 
 button:hover {
     box-shadow: var(--shadow-soft);
-}
-
-button:active {
-    background-color: var(--accent-soft);
 }
 
 .disabledBtn {
@@ -849,15 +847,17 @@ FUTURE PREMIUM THEMES BELOW \/ \/
     left: 0;
 }
 
-.sidebarSection,
-.sideBarSection {
+.sidebarSection {
     margin-top: 18px;
 }
 
-.sidebarSection button,
-.sideBarSection button {
+.sidebarSection button {
     width: 100%;
     margin: 5px 0;
+}
+
+#binderSidebar {
+    background: var(--card-bg);
 }
 
 #openSidebarBtn {
