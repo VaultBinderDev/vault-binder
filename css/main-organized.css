@@ -835,11 +835,12 @@ FUTURE PREMIUM THEMES BELOW \/ \/
     height: 100vh;
     padding: 20px;
 
-    background: #eee;
+    background: rgba(255, 255, 255, 0.73);
     z-index: 1000;
 
-    transition: left 0.25s ease;
-    box-shadow: 4px 0 18px rgba(0,0,0,0.25);
+    transition: left 0.25s ease;    
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 #binderSidebar.open {
