@@ -88,6 +88,58 @@ button:active {
 }
 
 /* =========================================================
+   FUTURE THEME WORK
+========================================================= */
+
+.theme-classic {
+    --bg-main: #f4f7fc;
+    --card-bg: white;
+    --accent: #5d7ea6;
+    --border: #d8e1ee;
+}
+
+.theme-metallic {
+    --bg-main: linear-gradient(
+        135deg,
+        #d9d9d9,
+        #b9bcc3,
+        #e4e4e4
+    );
+    --card-bg: rgba(255,255,255,.92);
+    --accent: #66707d;
+}
+
+.theme-leather {
+    --bg-main: linear-gradient(
+        135deg,
+        #4d2e1f,
+        #5f3a28,
+        #3f2418
+    );
+    --card-bg: rgba(255,255,255,.95);
+    --accent: #8b5a3c;
+}
+
+.theme-carbon {
+    --bg-main:
+        repeating-linear-gradient(
+            45deg,
+            #202020,
+            #202020 10px,
+            #262626 10px,
+            #262626 20px
+        );
+
+    --card-bg: rgba(255,255,255,.94);
+    --accent: #3d4d66;
+}
+
+/*
+FUTURE PREMIUM THEMES BELOW \/ \/
+*/
+
+
+/* =========================================================
    2. SHARED NAVIGATION
 ========================================================= */
 
@@ -1030,42 +1082,6 @@ button:active {
 #settingsBtn.active {
     background-color: var(--accent-soft);
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.2);
-}
-
-
-/* =========================================================
-   9. THEMES - PASTEL SHERBET
-   Main active theme.
-========================================================= */
-
-.theme-pastelSherbet {
-    background-color: #f2efe9;
-    color: var(--text-main);
-
-    --psherb-addcard: 234, 224, 161;
-    --psherb-book: 143, 172, 204;
-}
-
-.theme-pastelSherbet .sectionHeader {
-    background-color: #c2dfad;
-    color: #3f3f3f;
-}
-
-.theme-pastelSherbet #addCardSection {
-    border: 4px solid rgb(var(--psherb-addcard));
-    background-color: rgba(var(--psherb-addcard), 0.45);
-}
-
-.theme-pastelSherbet button {
-    background-color: #ffffff;
-    color: #444;
-    border: none;
-    border-radius: 10px;
-    padding: 6px 10px;
-}
-
-.theme-pastelSherbet button:hover {
-    background-color: #dff5ec;
 }
 
 /* =========================================================

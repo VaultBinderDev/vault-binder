@@ -275,7 +275,6 @@
             <header id="binderHeader">
                 <button id="openSidebarBtn">≡</button>
                 <h1>Vault Binder</h1>
-                <p id="binderCount">Total Cards: 0</p>
             </header>
 
             <div id="binderTabs" class="pageSection"></div>
@@ -310,7 +309,26 @@
             </div>
         <p>-------------------</p>
         <p><b>Webpage Themes:</b></p>
-        <input type="radio" name="theme" onchange="applyTheme('pastelSherbet')">Pastel Sherbet
+        <label><input 
+                    type="radio" 
+                    name="theme" 
+                    value="theme-classic"
+                    onchange="setTheme(this.value)">Classic</label>
+        <label><input 
+                    type="radio" 
+                    name="theme" 
+                    value="theme-metallic"
+                    onchange="setTheme(this.value)">Metallic</label>
+        <label><input 
+            type="radio" 
+            name="theme" 
+            value="theme-leather"
+            onchange="setTheme(this.value)">Leather</label>
+        <label><input 
+            type="radio" 
+            name="theme" 
+            value="theme-carbon"
+            onchange="setTheme(this.value)">Carbon Fiber</label>
         <p>More Coming Soon. . .</p>
         <p>-------------------</p>
         <p class="quietFeedback">

@@ -979,46 +979,17 @@ function toggleSettings() {
     }
 }
 
-function applyTheme(themeName) {
-
-    currentTheme = themeName;
-
+function setTheme(themeName) {
     document.body.classList.remove(
-        "theme-pastelSherbet",
-        "theme-sleekModern",
-        "theme-mutedNeon"
+        "theme-classic",
+        "theme-metallic",
+        "theme-leather",
+        "theme-carbon"
     );
 
-    document.body.classList.add(
-        "theme-" + themeName
-    );
+    document.body.className = themeName;
+    localStorage.setItem("theme", themeName);
 }
-
-function setDefaultTheme() {
-
-    localStorage.setItem(
-        "defaultTheme",
-        currentTheme
-    );
-
-    showToast("Default Theme Saved!");
-}
-
-function loadDefaultTheme() {
-
-    let savedTheme =
-        localStorage.getItem("defaultTheme");
-
-    if (savedTheme) {
-
-        applyTheme(savedTheme);
-
-    } else {
-
-        applyTheme("pastelSherbet");
-    }
-}
-
 
 /*
                                                                                               
@@ -1537,15 +1508,25 @@ s::::::::::::::s       tt::::::::::::::ta:::::aaaa::::::a r:::::r               
                                                                                                                           
                                                                                                                           
 */
+// PAGE THEMES
+const savedTheme = localStorage.getItem("theme") || "theme-classic";
 
+document.body.classList.add(savedTheme);
+
+const radio = document.querySelector(`input[value="${savedTheme}"]`);
+
+if(radio) {
+    radio.checked = true;
+}
+
+// PAGE CHANGE DISPLAY
 document.getElementById("pageSlider").oninput = function () {
     currentPage = Number(this.value);
     displayBookPage();
 }
 
+// DISPLAY TABS
 displayTabs();
-
-loadDefaultTheme();
 
 cards = JSON.parse(
     localStorage.getItem("cards")
@@ -1558,4 +1539,6 @@ localStorage.setItem(
     JSON.stringify(cards)
 );
 
+
+// DEGFAULT DISPLAY
 displayBookPage();
