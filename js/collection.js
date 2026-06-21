@@ -634,8 +634,20 @@ function saveEditedCard() {
 // FAVORITE CARD
 
 function favoriteCard() {
-    console.log("One");
+
+    console.log("selectedCardIndex: ", selectedCardIndex);
+    console.log("selected type: ", typeof selectedCardIndex);
+
+    console.log("card ids: ", cards.map(card => ({
+        name: card.name,
+        id: card.id,
+        type: typeof card.id
+    })));
+    
     const card = cards.find(card => card.id === selectedCardIndex);
+
+
+    
 
     if (!card) return;
 
