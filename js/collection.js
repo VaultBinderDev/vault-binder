@@ -561,9 +561,15 @@ function favoriteCard(cardId) {
 
     card.fav = !card.fav;
 
+    if(card.fav) {
+        showToast(`${card.name} was favorited!`);
+    } else {
+        showToast("Card was unfavorited");
+    }
+
     saveCards();
     displayBookPage();
-    showToast(`${card.name} was favorited!`);
+    
 }
 
 // DELETE CARD
