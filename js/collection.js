@@ -593,30 +593,42 @@ function saveEditedCard() {
     
     const card = cards.find(card => card.id === selectedCardIndex);
 
-    const newImage = document.getElementById("editImageInput");
-    const newFile = newImage.files[0];
-
     if(!card) return;
 
-    if(newFile) {
-        card.imageData = await compressImage(newFile);
+
+    const imageInput = document.getElementById("editImageInput");
+    const newFile = imageInput.files[0];
+
+    function finishSavingEdit() {
+        card.name = document.getElementById("editCardName").value.trim() || card.name;
+        card.setName = document.getElementById("editSetName").value.trim() || card.setName;
+        card.cardNum = document.getElementById("editCardNumber").value.trim() || card.cardNum;
+        card.quantity = document.getElementById("editQuantity").value.trim() || card.quantity;
+
+        card.cardRarity = document.getElementById("editRarity").value.trim() || card.cardRarity;
+        card.cardVariant = document.getElementById("editVariant").value.trim() || card.cardVariant;
+        card.cardCondition = document.getElementById("editCondition").value.trim() || card.cardCondition;
+        card.cardStatus = document.getElementById("editStatus").value.trim() || card.cardStatus;
+
+        saveCards();
+        displayBookPage();
+
+        imageInput.value = "";
+        document.getElementById("editDrawer").classList.remove("open");
+
+        showToast("Card updated!");
     }
 
-    card.name = document.getElementById("editCardName").value.trim() || card.name;
-    card.setName = document.getElementById("editSetName").value.trim() || card.setName;
-    card.cardNum = document.getElementById("editCardNumber").value.trim() || card.cardNum;
-    card.quantity = document.getElementById("editQuantity").value.trim() || card.quantity;
+    if(newFile) {
+        compressImage(newFile, function(compressedImage) {
+            card.imageData = compressedImage;
+            finishSavingEdit();
+        });
+    } else {
+        finishSavingEdit();
+    }
 
-    card.cardRarity = document.getElementById("editRarity").value.trim() || card.cardRarity;
-    card.cardVariant = document.getElementById("editVariant").value.trim() || card.cardVariant;
-    card.cardCondition = document.getElementById("editCondition").value.trim() || card.cardCondition;
-    card.cardStatus = document.getElementById("editStatus").value.trim() || card.cardStatus;
-
-    saveCards();
-
-    displayBookPage();
-
-    document.getElementById("editDrawer").classList.remove("open");
+    
 }
 
 // FAVORITE CARD
