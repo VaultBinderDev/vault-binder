@@ -34,7 +34,7 @@ html {
 
 body {
     margin: 0;
-    background-color: var(--bg-main);
+    background: var(--bg-main);
     color: var(--text-main);
 }
 
