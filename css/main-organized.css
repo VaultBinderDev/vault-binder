@@ -1136,9 +1136,6 @@ MEDIA CSS
 
 
 @media (max-width: 768px) {
-    body {
-        background: pink !important;
-    }
 
     #quikAddBar {
         flex-direction: column;
