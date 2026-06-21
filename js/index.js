@@ -1,7 +1,10 @@
 
 // GLOBAL VARIABLES
 
-let cards = JSON.parse(localStorage.getItem("cards")) || [];
+const cards = JSON.parse(localStorage.getItem("cards")) || [];
+
+const binders = JSON.parse(localStorage.getItem("binders")) || [];
+
 
 // ⚪ Not Started,🟢 Beginner,🔵 Started,🟡 Almost Complete,🏆Set Mastery
 
@@ -123,6 +126,63 @@ function getSetProgress(setName, totalCards) {
     };
 }
 
+function getCollectionStats() {
+    const totalCards = cards.length;
+
+    const favoriteCards = cards.filter(card => card.fav).length;
+
+    const setsStarted = 
+    new set(
+        cards
+            .map(card => card.setName?.trim().toLowerCase())
+            .filter(Boolean)
+    ).size;
+
+    const bestSet = getBestCompletedSet();
+
+    return {
+        totalCards,
+        favoriteCards,
+        setsStarted,
+        bestSet
+    };
+}
+
+function getBestCompletedSet() {
+    let bestSet = {
+        name: "None Yet",
+        percent: 0
+    };
+
+    featuredSets.forEach(set => {
+        const progress = getSetProgress(
+            set.title,
+            set.totalCards
+        );
+
+        if(progress.percent > bestSet.percent) {
+            bestSet = {
+                name: set.title,
+                percent: progress.percent
+            };
+        }
+    });
+
+    return bestSet;
+}
+
+// DISPLAY STATS
+
+function displayStats() {
+    const stats = getCollectionStats();
+
+    document.getElementById("totalCardsStat").textContent = stats.totalCards;
+    document.getElementById("setsStartedStat").textContent = stats.setsStarted;
+    document.getElementById("favoriteCardsStat").textContent = stats.favoriteCards;
+    document.getElementById("bestSetPercent").textContent = `${stats.bestSet.percent}%`;
+    document.getElementById("bestSetName").textContent = stats.bestSet.name;
+}
+
 // DISPLAY SETS
 
 function displayFeaturedSets() {
@@ -224,5 +284,6 @@ function toggleSetCard(button) {
 
 
 window.onload = function() {
+    displayStats();
     displayFeaturedSets();
 }

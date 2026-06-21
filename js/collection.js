@@ -151,11 +151,13 @@ function displayBookPage(cardList) {
 
     binderPage.innerHTML = "";
 
+    // CODE FOR TOTAL CARDS STATS
     let totalCount = document.getElementById("binderCount");
 
     if (totalCount) {
         totalCount.textContent = cardList.length;
     }
+    //------------------------------
 
     let start = (currentPage - 1) * slotsPerPage;
     let end = start + slotsPerPage;
