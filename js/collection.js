@@ -1459,7 +1459,7 @@ s::::::::::::::s       tt::::::::::::::ta:::::aaaa::::::a r:::::r               
                                                                                                                           
                                                                                                                           
 */
-
+loadSavedTheme();
 
 // PAGE CHANGE DISPLAY
 document.getElementById("pageSlider").oninput = function () {
@@ -1482,5 +1482,5 @@ localStorage.setItem(
 );
 
 
-// DEGFAULT DISPLAY
+// DEFAULT DISPLAY
 displayBookPage();
