@@ -635,7 +635,7 @@ function saveEditedCard() {
 
 function favoriteCard() {
     console.log("One");
-    let card = cards.find(card => card.id === selectedCardIndex);
+    const card = cards.find(card => card.id === selectedCardIndex);
 
     if (!card) return;
 
