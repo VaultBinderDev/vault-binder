@@ -635,15 +635,15 @@ function saveEditedCard() {
 
 function favoriteCard() {
 
-    let card = cards[selectedCardIndex];
+    let card = cards.find(card => cards.id === selectedCardIndex);
 
     if (!card) return;
 
     card.fav = !card.fav;
 
     saveCards();
-
     displayBookPage();
+    showToast(`${card.name} was favproted!`);
 }
 
 
