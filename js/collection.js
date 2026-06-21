@@ -569,9 +569,10 @@ function openEditDrawer(cardId) {
     const card = cards.find(card => card.id === cardId);
 
     if(!card) return;
-    document.getElementById("imageView").innerHTML = `
-        <img src="${card.imageData}" alt="Editable Image">
-    `;
+    document.getElementById("imageView").innerHTML = 
+    card.imageData 
+    ? `<img src="${card.imageData}" alt="Editable Image">` 
+    : `<div>No Image</div>`;
 
     document.getElementById("editCardName").value = card.name || "";
     document.getElementById("editSetName").value = card.setName || "";
@@ -592,10 +593,14 @@ function saveEditedCard() {
     
     const card = cards.find(card => card.id === selectedCardIndex);
 
-    const newImage = document.getElementById("editImageInput").value
+    const newImage = document.getElementById("editImageInput");
+    const newFile = newImage.files[0];
 
     if(!card) return;
-    card.imageData = compressImage(newImage.file[0]) || card.imageData;
+
+    if(newFile) {
+        card.imageData = await compressImage(newFile);
+    }
 
     card.name = document.getElementById("editCardName").value.trim() || card.name;
     card.setName = document.getElementById("editSetName").value.trim() || card.setName;
