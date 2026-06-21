@@ -551,6 +551,21 @@ function clearAddCardForm() {
     document.getElementById("imagePreviewBox").innerHTML = `<p>Image Preview</p>`;
 }
 
+// FAVORITE CARD
+
+function favoriteCard(cardId) {
+    selectedCardIndex = cardId;
+    const card = cards.find(card => card.id === cardId);
+
+    if(!card) return;
+
+    card.fav = !card.fav;
+
+    saveCards();
+    displayBookPage();
+    showToast(`${card.name} was favorited!`);
+}
+
 // DELETE CARD
 
 function deleteCard(index) {
@@ -631,36 +646,7 @@ function saveEditedCard() {
     
 }
 
-// FAVORITE CARD
 
-function favoriteCard() {
-
-    console.log("selectedCardIndex: ", selectedCardIndex);
-    console.log("selected type: ", typeof selectedCardIndex);
-
-    console.log("card ids: ", cards.map(card => ({
-        name: card.name,
-        id: card.id,
-        type: typeof card.id
-    })));
-    
-    const card = cards.find(card => card.id === selectedCardIndex);
-
-
-    
-
-    if (!card) return;
-
-    console.log("Two");
-
-    card.fav = !card.fav;
-
-    console.log("Three");
-
-    saveCards();
-    displayBookPage();
-    showToast(`${card.name} was favorited!`);
-}
 
 
 
