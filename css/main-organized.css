@@ -148,6 +148,48 @@ button:active {
    Temporary API/search area. Later this can become Explore.
 ========================================================= */
 
+.landingPage {
+    margin: 48px 0;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.statCard {
+    aspect-ratio: 2.5 / 3.5;
+    border: 6px solid #2f5f8f;
+    border-radius: 18px;
+    padding: 18px;
+
+    background: rgba(255,255,255,0.72);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+
+    text-align: center;
+    box-shadow: 0 16px 24px -18px rgba(0,0,0,0.45);
+}
+
+.statCard label {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.statCard p {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+
+
+
 .sectionDivider {
     width: 100%;
     height: 2px;
@@ -387,7 +429,7 @@ button:active {
     gap: 18px;
 
     text-align: center;
-    box-shadow: 0 18px 30px -18px rgba(0,0,0,0.35);
+    
 }
 
 .statsGrid {
@@ -442,6 +484,7 @@ button:active {
 .pageSection {
     width: min(88vw, 1200px);
     margin: 32px auto;
+    box-shadow: 0 18px 30px -18px rgba(0,0,0,0.35);
 }
 
 #vaultBinderApp {
@@ -1078,6 +1121,18 @@ button:active {
 MEDIA CSS
 
 */
+
+@media (max-width: 800px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+}
 
 
 @media (max-width: 768px) {
