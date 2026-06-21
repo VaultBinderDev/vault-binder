@@ -926,55 +926,19 @@ s::::::::::::::s  e::::::::eeeeeeee        tt::::::::::::::t  tt::::::::::::::ti
                                                                                                          g::::::ggg:::::::g                  
                                                                                                           gg:::::::::::::g                   
                                                                                                             ggg::::::ggg                     
-                                                                                                               gggggg                        
-                                                                                                                                             
-                                                                                                                                             
-         tttt         hhhhhhh                                                                                                                
-      ttt:::t         h:::::h                                                                                                                
-      t:::::t         h:::::h                                                                                                                
-      t:::::t         h:::::h                                                                                                                
-ttttttt:::::ttttttt    h::::h hhhhh           eeeeeeeeeeee       mmmmmmm    mmmmmmm       eeeeeeeeeeee        ssssssssss                     
-t:::::::::::::::::t    h::::hh:::::hhh      ee::::::::::::ee   mm:::::::m  m:::::::mm   ee::::::::::::ee    ss::::::::::s                    
-t:::::::::::::::::t    h::::::::::::::hh   e::::::eeeee:::::eem::::::::::mm::::::::::m e::::::eeeee:::::eess:::::::::::::s                   
-tttttt:::::::tttttt    h:::::::hhh::::::h e::::::e     e:::::em::::::::::::::::::::::me::::::e     e:::::es::::::ssss:::::s                  
-      t:::::t          h::::::h   h::::::he:::::::eeeee::::::em:::::mmm::::::mmm:::::me:::::::eeeee::::::e s:::::s  ssssss                   
-      t:::::t          h:::::h     h:::::he:::::::::::::::::e m::::m   m::::m   m::::me:::::::::::::::::e    s::::::s                        
-      t:::::t          h:::::h     h:::::he::::::eeeeeeeeeee  m::::m   m::::m   m::::me::::::eeeeeeeeeee        s::::::s                     
-      t:::::t    tttttth:::::h     h:::::he:::::::e           m::::m   m::::m   m::::me:::::::e           ssssss   s:::::s                   
-      t::::::tttt:::::th:::::h     h:::::he::::::::e          m::::m   m::::m   m::::me::::::::e          s:::::ssss::::::s                  
-      tt::::::::::::::th:::::h     h:::::h e::::::::eeeeeeee  m::::m   m::::m   m::::m e::::::::eeeeeeee  s::::::::::::::s                   
-        tt:::::::::::tth:::::h     h:::::h  ee:::::::::::::e  m::::m   m::::m   m::::m  ee:::::::::::::e   s:::::::::::ss                    
-          ttttttttttt  hhhhhhh     hhhhhhh    eeeeeeeeeeeeee  mmmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee    sssssssssss                      
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                             
-                                                                                                                                                                                                    
+                                                                                                               gggggg                                       
 */
 
 function toggleSettings() {
 
-    let popup =
-        document.getElementById("settingsPopup");
-
-    let button =
-        document.getElementById("settingsBtn");
+    let popup = document.getElementById("settingsPopup");
 
     settingsOpen = !settingsOpen;
 
     if (settingsOpen) {
-
         popup.style.display = "block";
-
-        button.classList.add("active");
-
     } else {
-
         popup.style.display = "none";
-
-        button.classList.remove("active");
     }
 }
 

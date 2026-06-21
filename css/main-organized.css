@@ -1057,6 +1057,7 @@ FUTURE PREMIUM THEMES BELOW \/ \/
 }
 
 #settingsPopup {
+    top: 90px;
     width: 400px;
     height: 500px;
 }
