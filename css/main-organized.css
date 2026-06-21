@@ -438,12 +438,12 @@ FUTURE PREMIUM THEMES BELOW \/ \/
 
 /*  SUGGESTIONS LINK  */
 
-.quietFeedback, .quietFeedback a, .sideBarSection small a {
+.quietFeedback, .quietFeedback a, .sidebarSection small a {
     font-size: 12px;
     opacity: 0.65;
 }
 
-.quietFeedback a:hover, .sideBarSection small a:hover {
+.quietFeedback a:hover, .sidebarSection small a:hover {
     opacity: 1;
 }
 
@@ -828,7 +828,7 @@ FUTURE PREMIUM THEMES BELOW \/ \/
 
 #binderSidebar {
     position: fixed;
-    top: 0;
+    top: 120px;
     left: -300px;
 
     width: 280px;
@@ -1057,7 +1057,6 @@ FUTURE PREMIUM THEMES BELOW \/ \/
 }
 
 #settingsPopup {
-    top: 90px;
     width: 400px;
     height: 500px;
 }
