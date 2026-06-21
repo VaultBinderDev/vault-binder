@@ -635,7 +635,7 @@ function saveEditedCard() {
 
 function favoriteCard() {
     console.log("One");
-    let card = cards.find(card => cards.id === selectedCardIndex);
+    let card = cards.find(card => card.id === selectedCardIndex);
 
     if (!card) return;
 
@@ -644,7 +644,7 @@ function favoriteCard() {
     card.fav = !card.fav;
 
     console.log("Three");
-    
+
     saveCards();
     displayBookPage();
     showToast(`${card.name} was favorited!`);
