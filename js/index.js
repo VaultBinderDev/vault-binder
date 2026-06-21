@@ -131,8 +131,7 @@ function getCollectionStats() {
 
     const favoriteCards = cards.filter(card => card.fav).length;
 
-    const setsStarted = 
-    new set(
+    const setsStarted = new set(
         cards
             .map(card => card.setName?.trim().toLowerCase())
             .filter(Boolean)
