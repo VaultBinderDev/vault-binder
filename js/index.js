@@ -225,6 +225,8 @@ function toggleSetCard(button) {
 
 
 window.onload = function() {
+    // UPDATE BANNER ON STARTUP
+    initializeBanner();
     // PAGE THEMES
     loadSavedTheme();
     displayStats();

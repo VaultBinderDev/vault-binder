@@ -1466,6 +1466,12 @@ s::::::::::::::s       tt::::::::::::::ta:::::aaaa::::::a r:::::r               
                                                                                                                           
                                                                                                                           
 */
+
+// UPDATE BANNER ON STARTUP
+initializeBanner();
+
+
+// Themes
 loadSavedTheme();
 
 // PAGE CHANGE DISPLAY
