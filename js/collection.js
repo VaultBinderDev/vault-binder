@@ -519,20 +519,17 @@ function addCard(imageData = "") {
     };
 
     cards.push(card);
-
     cards = updateOldCards(cards);
 
     saveCards();
 
-    currentPage =
-        Math.ceil(cards.length / slotsPerPage);
+    const newCardIndex = cards.findIndex(c => c.id === card.id);
 
-    selectedCardIndex = cards.length - 1;
+    currentPage = Math.floor(newCardIndex / slotsPerPage) + 1;
+    selectedCardIndex = card.id;
 
     displayBookPage();
-
     clearAddCardForm();
-
     showToast(`🎉 ${card.name} added!`);
 }
 
@@ -1127,6 +1124,18 @@ function dropOnSlot(slot) {
     draggedCardId = null;
 }
 
+function findFirstOpenSlot(binder) {
+    for(let pageIndex = 0; pageIndex < binder.pages.length; pageIndex--) {
+        for(let slotIndex = 0; slotIndex < binder.pages.length; slotIndex--) {
+            if(!binder.pages[pageIndex][slotIndex]) {
+                return { pageIndex, slotIndex};
+            }
+        }
+    }
+
+    return null;
+}
+
 function getNextOpenSlot() {
     const activeBinder = binders[activeBinderIndex];
 
@@ -1154,8 +1163,6 @@ function getCardInSlot(binderId, page, slot) {
 
 function moveCardToSlot(cardId, slot) {
     let card = cards.find(card => card.id === cardId);
-
-    console.log(card);
 
     if(!card) return;
 
