@@ -8,7 +8,7 @@ function setTheme(themeName) {
         "theme-carbon"
     );
 
-    document.body.classList.add(savedTheme);
+    document.body.classList.add(themeName);
     localStorage.setItem("theme", themeName);
 }
 
