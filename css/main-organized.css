@@ -1173,6 +1173,14 @@ FUTURE PREMIUM THEMES BELOW \/ \/
     width: 8vw;
 }
 
+.thumbnailCard {
+    aspect-ratio: 2.5 / 3.5;
+    border: 6px solid #2f5f8f;
+    border-radius: 18px;
+    padding: 18px;
+
+    width: 200px;
+}
 
 
 
