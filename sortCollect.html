@@ -22,7 +22,7 @@
     </div>
 
 
-    <section id="sort" class="pageSection"> <!-- SEARCH BAR -->
+    <section id="sort"> <!-- SEARCH BAR -->
         <button id="">×</button> <input id="searchBar" type="text" placeholder="Card name to search here"> <select>
             <option value="">Sort by:</option>
             <option value="setNameSort">Set Name</option>
@@ -33,12 +33,37 @@
             <option value="conditionSort">Condition</option></select>
     </section>
 
-    <section id="thumbnailCards" class="pageSection">
+    <section id="thumbnailCards">
         <div class="thumbnailCard">
-            <label>Card Thumbnail</label>
+            <div id="sortThumbnail"></div>
             <p>--------------</p>
-            <p>Edit / Delete</p>
-            <p>Info</p>
+            <div id="sortButtons">
+                <button>Info</button>
+            </div>
+        </div>
+
+        <div class="thumbnailCard">
+            <div id="sortThumbnail"></div>
+            <p>--------------</p>
+            <div id="sortButtons">
+                <button>Info</button>
+            </div>
+        </div>
+
+        <div class="thumbnailCard">
+            <div id="sortThumbnail"></div>
+            <p>--------------</p>
+            <div id="sortButtons">
+                <button>Info</button>
+            </div>
+        </div>
+
+        <div class="thumbnailCard">
+            <div id="sortThumbnail"></div>
+            <p>--------------</p>
+            <div id="sortButtons">
+                <button>Info</button>
+            </div>
         </div>
     </section>
 
@@ -68,5 +93,6 @@
         </div>
 
     <script src="js/shared.js"></script>
+    <script src="js/sortCollect.js"></script>
 </body>
 </html>

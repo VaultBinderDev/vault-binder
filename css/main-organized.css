@@ -1182,6 +1182,13 @@ FUTURE PREMIUM THEMES BELOW \/ \/
     width: 200px;
 }
 
+#sortThumbnail {
+    aspect-ratio: 4 / 3;
+    width: 80%;
+
+    background-color: grey;
+}
+
 
 
 /* =========================================================

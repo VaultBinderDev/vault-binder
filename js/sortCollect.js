@@ -1,5 +1,11 @@
 const cards = JSON.parse(localStorage.getItem("cards")) || [];
 
+function displaySort() {
+    
+}
+
+
+
 // FUTURE THUMBNAIL TECH 
 
 function thumbnailCreation(file, callback) {
