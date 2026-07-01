@@ -1181,6 +1181,7 @@ FUTURE PREMIUM THEMES BELOW \/ \/
 
 .thumbnailCard {
     flex: 0 0 auto;
+    flex-direction: column;
     aspect-ratio: 2.5 / 3.5;
     border: 6px solid #2f5f8f;
     border-radius: 18px;
