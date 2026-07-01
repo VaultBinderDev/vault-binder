@@ -1173,7 +1173,14 @@ FUTURE PREMIUM THEMES BELOW \/ \/
     width: 8vw;
 }
 
+.rowOfCards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
 .thumbnailCard {
+    flex: 0 0 auto;
     aspect-ratio: 2.5 / 3.5;
     border: 6px solid #2f5f8f;
     border-radius: 18px;
