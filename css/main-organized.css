@@ -257,6 +257,10 @@ FUTURE PREMIUM THEMES BELOW \/ \/
     opacity: 0.7;
 }
 
+.hiddenTab {
+    cursor: not-allowed;
+}
+
 /* =========================================================
    3. INDEX PAGE / EXPLORE PAGE
    Temporary API/search area. Later this can become Explore.
