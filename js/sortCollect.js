@@ -1,58 +1,66 @@
 const cards = JSON.parse(localStorage.getItem("cards")) || [];
 
 function displaySort() {
-    
+    let cardDisplay = document.getElementById("thumbnailCards");
+
+    let cardsHTML = "";
+    for (let i = 0; i < cards.length; i++) {
+        cardsHTML += `
+            <div class="thumbnailCard">
+                <div class="sortThumbnail"></div>
+                <p>--------------</p>
+                <div class="sortButtons">
+                    <button>Info</button>
+                </div>
+            </div>
+        `;
+    }
+
+    cardDisplay.innerHTML = `
+        <div class="rowOfCards">${cardsHTML}</div>
+    `;
 }
 
 
 
-// FUTURE THUMBNAIL TECH 
+function thumbnailCreation(dataUrl, callback) {
+    const img = new Image();
 
-function thumbnailCreation(file, callback) {
-    const reader = new FileReader();
+    img.onload = function () {
+        const canvas = document.createElement("canvas");
 
-    reader.onload = function (event) {
-        const img = new Image();
+        const maxHeight = 120;
+        const scale = maxHeight / img.height;
 
-        img.onload = function () {
-            const canvas = document.createElement("canvas");
+        canvas.width = img.width * scale;
+        canvas.height = maxHeight;
 
-            const maxHeight = 120;
-            const scale = maxHeight / img.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            canvas.width = img.width * scale;
-            canvas.height = maxHeight;
-
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-            const compressedImage = canvas.toDataURL("image/jpeg", 0.75);
-
-            callback(compressedImage);
-        };
-
-        img.src = event.target.result;
+        const compressedImage = canvas.toDataURL("image/jpeg", 0.75);
+        callback(compressedImage);
     };
 
-    reader.readAsDataURL(file);
+    img.src = dataUrl;
 }
 
 function loadThumbnails() {
-    let images = cards.map(card => card.imageData);
+    const thumbnailEls = document.querySelectorAll(".sortThumbnail");
 
-    for(card of cards) {
-        if(!card) return;
-        for(image of images) {
+    cards.forEach((card, index) => {
+        const targetEl = thumbnailEls[index];
+        if (!card || !targetEl) return; // safe here, just skips this one
 
-        thumbnailCreation(image, function (compressedImage) {
-            document.getElementById("sortThumbnail").innerHTML = 
-            card.imageData
-            ? `<img src="${card.imageData}" alt="Compressed Thumbnail">` 
-            : `<div>No Image</div>`;
-        });
+        if (!card.imageData) {
+            targetEl.innerHTML = `<div>No Image</div>`;
+            return;
         }
-    }
 
+        thumbnailCreation(card.imageData, function (compressedImage) {
+            targetEl.innerHTML = `<img src="${compressedImage}" alt="Compressed Thumbnail">`;
+        });
+    });
 }
 
 window.onload() = function() {
