@@ -63,7 +63,7 @@ function loadThumbnails() {
     });
 }
 
-window.onload() = function() {
+window.onload = function() {
     loadThumbnails();
     displaySort();
 }
