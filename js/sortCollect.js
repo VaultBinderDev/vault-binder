@@ -65,4 +65,5 @@ function loadThumbnails() {
 
 window.onload() = function() {
     loadThumbnails();
+    displaySort();
 }
