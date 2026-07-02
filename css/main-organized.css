@@ -1190,9 +1190,8 @@ FUTURE PREMIUM THEMES BELOW \/ \/
 }
 
 .sortThumbnail {
-    height: 40px;
+    aspect-ratio: 4 / 3;
     width: 90%;
-    background-color: grey;
 }
 
 
